@@ -130,7 +130,7 @@
   <article class="day" id="2026-10-28" aria-labelledby="day-2026-10-28">
     <div class="day-head">
       <h2 id="day-2026-10-28">28 October 2026</h2>
-      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form and answers. 34 changes.</p>
+      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form and answers. 39 changes.</p>
       <nav class="jump" aria-label="Sections for 28 October 2026">
         <a href="#d28-whole-form">Whole form <b>2</b></a>
         <a href="#d28-employment">Employment <b>4</b></a>
@@ -139,6 +139,7 @@
         <a href="#d28-after">After applying <b>3</b></a>
         <a href="#d28-staff">Staff screens <b>9</b></a>
         <a href="#d28-product">Loan product &amp; lists <b>7</b></a>
+        <a href="#d28-rules">Lending rules <b>5</b></a>
         <a href="#d28-demo">Demo <b>1</b></a>
       </nav>
     </div>
@@ -351,6 +352,37 @@
       </ol>
     </section>
 
+    <section class="group" id="d28-rules" aria-labelledby="d28-rules-title">
+      <h3 id="d28-rules-title">Lending rules <small>From LendMo’s answers</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Loans fall due on the client’s next payday</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Repayment was due one month after the money was paid out.</p><p class="side now"><span>Now</span>Repayment is due on the client’s next payday after payout, using the pay date they gave, even if that is sooner than a month. The form shows the date (for example “Due 25 Nov 2026, your next payday”), and so does the loan agreement.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo’s loans are payday loans.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>LendMo’s affordability rule</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A test rule: a safety buffer, and repayments no more than 40% of income.</p><p class="side now"><span>Now</span>The real net salary must cover the repayment plus one more interest charge, so E3,000 real net allows a loan of up to E2,000. Clients see “you can usually borrow up to…” and a warning if they ask for more. Staff see “Most they can borrow” when assessing. The Owner can change the rule in Lending settings.</p></div>
+          <p class="why"><strong>Why:</strong> this is how LendMo decides what a client can afford.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Warning for more than 4 stop orders</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Nothing flagged a client with many stop orders.</p><p class="side now"><span>Now</span>Staff see a warning on the Loan &amp; income and Screening steps when a client has more than 4 stop orders. Staff still make the decision.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo says a client with more than 4 may not qualify.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Applying again after a decline</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A declined client could apply again straight away for any amount.</p><p class="side now"><span>Now</span>Until their next payday, they can apply again only for a smaller amount. The form tells them the date and the limit. After payday, any amount is fine.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo waits for the next payday to see whether net pay has improved.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Consultants, and approvals up to E600 at branches</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The “Loan officer” role could never approve loans.</p><p class="side now"><span>Now</span>The role is called <em>Consultant</em>. The Owner can let consultants approve loans, as with branch managers. Branch staff approve up to E600, and larger loans go to head office. A consultant who can approve sees their whole branch, but still can’t approve their own clients.</p></div>
+          <p class="why"><strong>Why:</strong> at LendMo, consultants and branch managers approve loans up to E600.</p>
+        </li>
+      </ol>
+    </section>
+
     <section class="group" id="d28-demo" aria-labelledby="d28-demo-title">
       <h3 id="d28-demo-title">Demo version <small>Test copy only</small></h3>
       <ol class="cards">
@@ -375,11 +407,11 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
-        <li>All 148 automated unit tests pass.</li>
-        <li>Four automated server tests cover the three payslips, the expense and stop-order lists, one open application at a time, locked documents and document reviews that keep other checks. All pass.</li>
+        <li>All 152 automated unit tests pass.</li>
+        <li>Five automated server tests cover the three payslips, the expense and stop-order lists, one open application at a time, locked documents, document reviews that keep other checks, and applying again after a decline. All pass.</li>
         <li>Checked by hand in the app: required-field marks, the expenses and stop-order lists, money formatting, payslip sections, +268, the sliders and costs, demo logins and the role switcher.</li>
         <li>LendMo’s affordability form example (net 5,015.79; groceries 1,200; stop orders 1,586 and 158) gives the same real net salary in the app: 2,071.79. A 1,200 loan shows 300 interest and 1,500 to repay, as on the form.</li>
-        <li>Checked by hand: recording checks in the new window (desktop and phone), the loan step with one payment (E2,000 → E2,500, fees None), the bank and MTN lists, and the five branches.</li>
+        <li>Checked by hand: recording checks in the new window (desktop and phone), the loan step with one payment (E2,000 → E2,500, fees None), the bank and MTN lists, the five branches, the next-payday due date, “you can usually borrow up to” and “Most they can borrow” (E3,000 → E2,000), the Consultant role with an E600 limit, and the new Lending settings field.</li>
         <li>Not yet tried by hand: a full submission with the thank-you pop-up.</li>
       </ul>
       <h4>Files changed</h4>
@@ -388,7 +420,8 @@
         <li>Borrower screens: <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>BorrowerWelcome.jsx</code>, <code>supportAssistant.js</code></li>
         <li>Staff screens: <code>src/lending/ApplicationCorrections.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>director-application-review.css</code>, <code>DirectorPendingApplications.jsx</code>, <code>ConnectedApplications.jsx</code> (errors shown inside the check window), <code>src/lending/workflow.css</code> (readable main and disabled buttons), <code>src/users/users.css</code> (staff access tick boxes)</li>
         <li>Demo logins: <code>src/auth/DemoLogins.jsx</code> (new), <code>src/App.jsx</code>, <code>src/main.jsx</code>, <code>src/styles.css</code>, <code>.env.example</code>, <code>functions/seed.js</code></li>
-        <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code>, <code>functions/underwriting.js</code> (wallet check without a file; reference only for credit; payslips 2 and 3 as evidence; plain document names in messages), <code>functions/loanApplicationService.js</code> (document review clears only checks that used it), <code>functions/seed-product.js</code> (LendMo’s product: E100–E10,000, one payment, 25%, no late fee, MTN only), <code>functions/seed.js</code> (LendMo’s branches)</li>
+        <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code>, <code>functions/underwriting.js</code> (wallet check without a file; reference only for credit; payslips 2 and 3 as evidence; plain document names in messages), <code>functions/loanApplicationService.js</code> (document review clears only checks that used it), <code>functions/seed-product.js</code> (LendMo’s product: E100–E10,000, one payment, 25%, no late fee, MTN only), <code>functions/seed.js</code> (LendMo’s branches; E600 branch approvals), <code>functions/lending.js</code> and <code>lendingOperations.js</code> (next-payday due dates), <code>functions/underwriting.js</code> (extra interest charge rule), <code>functions/permissions.js</code> and <code>userService.js</code> (consultant approvals), <code>functions/loanApplicationService.js</code> and <code>applicationDraftService.js</code> (applying again after a decline)</li>
+        <li>Roles: <code>src/users/userModel.js</code>, <code>UserManagement.jsx</code>, <code>src/auth/staffAccess.js</code>, <code>DemoLogins.jsx</code>, <code>src/branches/branchModel.js</code>, <code>src/dashboard/StaffRoleOverview.jsx</code>, <code>ApplicationControls.jsx</code>; settings: <code>src/lending/ProductSettings.jsx</code></li>
         <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>functions/test/lending.test.js</code>, <code>functions/test/underwriting.test.js</code> (wallet check without a file; new check rules), <code>functions/test/reviewFixes.emulator.test.js</code> (new)</li>
       </ul>
     </details>
