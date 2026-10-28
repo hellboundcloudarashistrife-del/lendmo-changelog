@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LendMo Change Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<!--
+  LendMo change log. This file is the change log itself: edit it directly.
+  To add a day: copy one <article class="entry"> block, paste it straight after the
+  "Still waiting" article (newest first), change its date and id, add a link to it in
+  both contents lists, and update the "Last updated" date in the header.
+  Keep the "Still waiting" list current.
+  Publish with: npm run changelog:publish
+  Public page: https://hellboundcloudarashistrife-del.github.io/lendmo-changelog/
+-->
+<style>
+  /* Layout: a reading column with a sticky contents list beside it on wide screens; each dated entry is its own band. */
+  :root {
+    --bg: #f5f7fb;
+    --surface: #ffffff;
+    --ink: #0b2350;
+    --text: #23324d;
+    --muted: #5d6c86;
+    --line: #dbe3ef;
+    --gold: #b8871f;
+    --gold-soft: #fbf3df;
+    --navy-soft: #e9f0fb;
+    --code: #eef2f9;
+    --display: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c1424; --surface: #131e33; --ink: #e6eeff; --text: #ccd7ec; --muted: #94a4c2; --line: #263452;
+      --gold: #e3b456; --gold-soft: #2e2614; --navy-soft: #1a2945; --code: #1b2944; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0c1424; --surface: #131e33; --ink: #e6eeff; --text: #ccd7ec; --muted: #94a4c2; --line: #263452;
+    --gold: #e3b456; --gold-soft: #2e2614; --navy-soft: #1a2945; --code: #1b2944; color-scheme: dark;
+  }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+  .page { max-width: 1120px; margin: 0 auto; padding-block: 40px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 32px; }
+  header { display: grid; gap: 10px; max-width: 760px; }
+  .eyebrow { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+  h1, h2, h3, h4 { font-family: var(--display); color: var(--ink); text-wrap: balance; }
+  h1 { margin: 0; font-size: clamp(30px, 4.6vw, 42px); line-height: 1.12; letter-spacing: -0.02em; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0; color: var(--muted); font-size: 15px; }
+  .updated { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: 999px; background: var(--gold-soft); color: var(--ink); font-weight: 600; font-size: 14px; }
+  .updated::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  .layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; align-items: start; }
+  nav.contents { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); font-size: 14px; }
+  nav.contents h2 { margin: 0 0 8px; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  nav.contents ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  nav.contents ul ul { margin: 2px 0 6px 12px; padding-left: 10px; border-left: 1px solid var(--line); }
+  nav.contents a { display: block; padding: 4px 8px; border-radius: 6px; color: var(--text); text-decoration: none; }
+  nav.contents > ul > li > a { font-weight: 700; color: var(--ink); }
+  nav.contents a:hover { background: var(--navy-soft); }
+  a { color: var(--ink); }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .mobile-contents { display: none; }
+  .log { min-width: 0; display: grid; gap: 28px; }
+  .intro { max-width: 70ch; margin: 0; font-size: 17px; }
+  .entry { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 8px 28px 24px; min-width: 0; scroll-margin-top: 16px; }
+  .entry.waiting { background: var(--gold-soft); border-color: transparent; }
+  .entry > h2 { margin: 18px 0 6px; font-size: 24px; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .entry:not(.waiting) > h2::before { content: "Changes"; font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+  .entry h3 { margin: 28px 0 8px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 19px; scroll-margin-top: 16px; }
+  .entry h4 { margin: 18px 0 6px; font-size: 15px; color: var(--muted); letter-spacing: 0.02em; }
+  .entry p, .entry li { max-width: 72ch; }
+  .entry p { margin: 8px 0; }
+  .entry ul, .entry ol { margin: 8px 0; padding-left: 26px; display: grid; gap: 6px; }
+  .entry li > ul { margin-top: 6px; gap: 4px; }
+  .entry li::marker { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .entry strong { color: var(--ink); }
+  .entry code { font-family: var(--mono); font-size: 0.86em; background: var(--code); color: var(--ink); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+  .entry blockquote { margin: 12px 0; padding: 8px 16px; border-left: 3px solid var(--gold); background: var(--navy-soft); border-radius: 0 8px 8px 0; }
+  footer { color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 16px; }
+  @media (max-width: 880px) {
+    .layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .layout > aside { display: none; }
+    .mobile-contents { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+    .mobile-contents summary { cursor: pointer; font-weight: 700; color: var(--ink); }
+    .mobile-contents nav.contents { position: static; margin-top: 8px; }
+    .mobile-contents nav.contents h2 { display: none; }
+    .entry { padding: 4px 18px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <p class="eyebrow">LendMo loan app</p>
+    <h1>Change log</h1>
+    <p class="meta"><span class="updated">Last updated 28 October 2026</span><span>Newest changes first. This page is updated as the app changes.</span></p>
+  </header>
+
+  <div class="layout">
+    <aside aria-label="Contents">
+      <nav class="contents" aria-label="Contents">
+        <h2>Contents</h2>
+        <ul>
+          <li><a href="#still-waiting">Still waiting</a></li>
+          <li><a href="#2026-10-28">28 October 2026</a>
+            <ul>
+              <li><a href="#2026-10-28-apply">Apply for a loan</a></li>
+              <li><a href="#2026-10-28-after">After submitting</a></li>
+              <li><a href="#2026-10-28-demo">Demo logins</a></li>
+              <li><a href="#2026-10-28-lendmo">Matched to LendMo’s affordability form</a></li>
+              <li><a href="#2026-10-28-small">Smaller fixes</a></li>
+              <li><a href="#2026-10-28-staff">What staff will notice</a></li>
+              <li><a href="#2026-10-28-checked">How it was checked</a></li>
+              <li><a href="#2026-10-28-files">Files changed</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="log">
+      <details class="mobile-contents">
+        <summary>Contents</summary>
+        <nav class="contents" aria-label="Contents">
+          <h2>Contents</h2>
+          <ul>
+            <li><a href="#still-waiting">Still waiting</a></li>
+            <li><a href="#2026-10-28">28 October 2026</a>
+              <ul>
+                <li><a href="#2026-10-28-apply">Apply for a loan</a></li>
+                <li><a href="#2026-10-28-after">After submitting</a></li>
+                <li><a href="#2026-10-28-demo">Demo logins</a></li>
+                <li><a href="#2026-10-28-lendmo">Matched to LendMo’s affordability form</a></li>
+                <li><a href="#2026-10-28-small">Smaller fixes</a></li>
+                <li><a href="#2026-10-28-staff">What staff will notice</a></li>
+                <li><a href="#2026-10-28-checked">How it was checked</a></li>
+                <li><a href="#2026-10-28-files">Files changed</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </details>
+
+      <p class="intro">A running record of changes to the LendMo loan app. Each day’s entry says what changed, how it was checked and which files were touched.</p>
+
+      <article class="entry waiting" id="still-waiting" aria-labelledby="still-waiting-title">
+        <h2 id="still-waiting-title">Still waiting</h2>
+        <p>These wait on LendMo’s answers or a decision:</p>
+        <ul>
+          <li>The dependants field (review point 4). LendMo’s own form doesn’t use it.</li>
+          <li>The bank list (point 5).</li>
+          <li>Fee amounts and the 25% rate (point 12).</li>
+          <li>Whether every loan is one instalment. If so, the repayment-period slider will be removed.</li>
+          <li>What is charged on loans of E500 or less.</li>
+          <li>How much real net salary must be left for a loan to count as affordable.</li>
+          <li>Role names, and whether a salespeople role is needed (point 16).</li>
+          <li>Live support chat (point 18).</li>
+        </ul>
+      </article>
+
+      <!-- Newest day first. Copy this whole <article> to start a new day. -->
+      <article class="entry" id="2026-10-28" aria-labelledby="2026-10-28-title">
+        <h2 id="2026-10-28-title">28 October 2026</h2>
+        <p>Fixes from Leon’s 27 October review of the loan application, and changes to match LendMo’s own affordability form. Numbers match the review list.</p>
+
+        <h3 id="2026-10-28-apply">Apply for a loan</h3>
+        <h4>Employment step</h4>
+        <ol>
+          <li><strong>“Variable” removed from pay frequency.</strong> The only options now are Monthly, Weekly and Every two weeks. This also applies on the server and in the correction form.</li>
+          <li><strong>Gross and net pay are asked once.</strong> The vague “Income — monthly income after tax” box is gone. Gross pay (before deductions) and net pay (take-home) are entered on each payslip in the next step, and the customer’s income is taken from the latest payslip’s net pay.</li>
+          <li><strong>Expenses are an itemised list.</strong> Each row has a dropdown of LendMo’s expense types (Rentals, Groceries, Utilities, Other personal expenditure) and an amount. Rows can be added or removed, and the total adds up automatically. The total is still what the affordability check uses.</li>
+        </ol>
+        <h4>Income &amp; documents step</h4>
+        <ol start="6">
+          <li><strong>+268 is a fixed prefix on the mobile money number.</strong> The customer only types the 8 digits.</li>
+          <li><strong>Required fields have a red asterisk</strong>, with a “* Required” note at the top of the form. Optional fields still say “(optional)”. The bank name now correctly shows as optional, as it always was.</li>
+          <li><strong>Pay date is a dropdown</strong> of the 1st to the 31st of the month, asked once for all three payslips.</li>
+          <li><strong>Three payslips, uploaded separately.</strong> There are sections for month 1 (most recent), month 2 and month 3, each with its own gross pay, net pay and file. All three are required, and staff screens list all three.</li>
+          <li><strong>Money boxes format as you type</strong>, for example 12,500.50, with SZL shown automatically.</li>
+        </ol>
+        <h4>Loan &amp; planner step</h4>
+        <ol start="11">
+          <li><strong>Sliders for the loan amount and the repayment period</strong>, limited to the product’s minimum and maximum. Typing the amount still works. A live breakdown updates as the sliders move, showing:
+            <ul>
+              <li>the monthly repayment and number of payments</li>
+              <li>the interest and the total to repay</li>
+              <li>the first and last repayment dates</li>
+              <li>how much is paid each year</li>
+              <li>a “see the full repayment schedule” table</li>
+            </ul>
+          </li>
+          <li><strong>Fees (partly done).</strong> The breakdown has a fees line reading “Confirmed in your offer”, and the terms now say fees are subject to review. The actual fee amounts wait on LendMo’s answers.</li>
+        </ol>
+
+        <h3 id="2026-10-28-after">After submitting</h3>
+        <ol start="13">
+          <li><strong>Thank-you pop-up.</strong> After submitting, the customer sees “Thank you — your application has been submitted” with a tick animation, their reference number and what happens next, then goes to their application in My loans.</li>
+          <li><strong>One open application at a time.</strong> A customer can’t submit a new application until their current one is declined, or its loan is settled, written off or cancelled. The form explains why and links to the open application. The server enforces this as well, by account and by ID number, so walk-in applications for the same person are blocked too.</li>
+          <li><strong>Documents are locked after submitting.</strong> Customers can view and download them but not replace them. The exceptions are a document the review team rejected, or any document while the team is asking for more information. The server enforces this too. Staff can still manage documents on walk-in applications.</li>
+        </ol>
+
+        <h3 id="2026-10-28-demo">Demo logins</h3>
+        <ol start="17">
+          <li><strong>One-click demo sign-in and a role switcher</strong>, in local test mode only.
+            <ul>
+              <li>The login page has a “Demo accounts” panel: Borrower, Loan officer, Branch manager, Director, Owner, Admin / IT.</li>
+              <li>Once signed in, a “Demo · viewing as” switcher at the bottom of the screen changes role.</li>
+              <li>A demo borrower account (Sipho Demo, <code>borrower@lendmo.example</code>) was added to the demo setup.</li>
+              <li>None of this appears in a production build.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h3 id="2026-10-28-lendmo">Matched to LendMo’s affordability form</h3>
+        <p>Bahle shared LendMo’s own “Total Cost of Credit (Affordability)” spreadsheet. These changes make the app work the same way. Checked with the example on that form, the app gives the same answers.</p>
+        <ul>
+          <li><strong>Expense types are LendMo’s four:</strong> Rentals, Groceries, Utilities and Other personal expenditure. Drafts that used the earlier types switch over automatically.</li>
+          <li><strong>Stop orders are listed one by one.</strong> The single “Existing monthly debt repayments” box is replaced by a list of up to six stop orders, each with an optional “paid to” name and an amount, and a running total. Leave it empty if there are none.</li>
+          <li><strong>Real net salary is shown</strong>, worked out the way LendMo’s form does it: net salary, less total personal expenditure, less total stop orders. It appears:
+            <ul>
+              <li>on the Income &amp; documents step, once month 1 net pay is entered</li>
+              <li>on the Check &amp; send step, as an “Affordability” card</li>
+              <li>on the staff assessment screen, updating as staff type, next to a list of what the applicant declared</li>
+            </ul>
+            With the form’s example (net 5,015.79, groceries 1,200, stop orders 1,586 and 158), the app shows 2,071.79, the same as the spreadsheet.
+          </li>
+          <li><strong>The loan breakdown uses LendMo’s “Total cost of credit” layout:</strong> loan amount, interest, total cost of credit, total repayable. A one-month loan shows “Total repayable (1 instalment)”. With the form’s example, 1,200 gives 300 interest and 1,500 to repay, the same as the spreadsheet.</li>
+          <li><strong>LendMo’s declaration, word for word,</strong> replaces the old “I have read these application disclosures” checkbox:
+            <blockquote>I, herewith declare/confirm that I fully understand the breakdown of the total cost of credit, and that the information I have provided for my assessment is true and correct.</blockquote>
+          </li>
+          <li><strong>Staff assessment labels</strong> now read Net salary, Total personal expenditure and Total stop orders.</li>
+        </ul>
+
+        <h3 id="2026-10-28-small">Smaller fixes found along the way</h3>
+        <ul>
+          <li><strong>Contract end date</strong> was not being saved with drafts. It now is.</li>
+          <li><strong>Older drafts update automatically:</strong>
+            <ul>
+              <li>one payslip becomes month 1</li>
+              <li>a single expenses total becomes one “Other personal expenditure” row, and older expense types switch to LendMo’s four</li>
+              <li>a single debt total becomes one stop order</li>
+              <li>“Variable” pay frequency has to be chosen again</li>
+            </ul>
+          </li>
+          <li><strong>Wording:</strong> the help assistant and the dashboard document checklist now ask for three months of payslips.</li>
+        </ul>
+
+        <h3 id="2026-10-28-staff">What staff will notice</h3>
+        <ul>
+          <li><strong>Assessments:</strong> an application now needs all three payslips verified before the eligibility check can pass.</li>
+          <li><strong>Older applications:</strong> applications submitted before 28 October with only one payslip show months 2 and 3 as missing. They need uploading if the application is sent back for corrections.</li>
+        </ul>
+
+        <h3 id="2026-10-28-checked">How it was checked</h3>
+        <ul>
+          <li><strong>Unit tests:</strong> all 147 pass, including new ones for the form changes, stop orders and real net salary.</li>
+          <li><strong>Build:</strong> the production build passes.</li>
+          <li><strong>Server rules:</strong> three new automated tests against test emulators cover the three payslips, the expense and stop-order lists, one open application and locked documents. All pass.</li>
+          <li><strong>In the browser:</strong> checked the asterisks, the expenses list and its total, money formatting, the payslip sections, the +268 prefix, the loan sliders and breakdown, the demo sign-in buttons and the role switcher.</li>
+          <li><strong>Against LendMo’s spreadsheet:</strong> typed its example into the app; the borrower form and the staff screen both show real net salary of 2,071.79, and the loan breakdown shows 1,200 → 300 → 1,500.</li>
+          <li><strong>Not checked in the browser:</strong> a full submission and the thank-you pop-up, because the test browser can’t attach files.</li>
+          <li><strong>Older emulator tests:</strong> 10 fail, but they also fail on the code from before these changes. They were already broken by an earlier product-settings rule.</li>
+        </ul>
+
+        <h3 id="2026-10-28-files">Files changed</h3>
+        <ul>
+          <li><strong>Application form:</strong> <code>src/borrower/applicationForm.js</code>, <code>BorrowerApplicationForm.jsx</code>, <code>borrower-application-form.css</code>, <code>useBorrowerApplication.js</code></li>
+          <li><strong>Borrower screens:</strong> <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>BorrowerWelcome.jsx</code>, <code>supportAssistant.js</code></li>
+          <li><strong>Staff screens:</strong> <code>src/lending/ApplicationCorrections.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>director-application-review.css</code>, <code>DirectorPendingApplications.jsx</code></li>
+          <li><strong>Demo logins:</strong> <code>src/auth/DemoLogins.jsx</code> (new), <code>src/App.jsx</code>, <code>src/main.jsx</code>, <code>src/styles.css</code>, <code>.env.example</code>, <code>functions/seed.js</code></li>
+          <li><strong>Server:</strong> <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code></li>
+          <li><strong>Tests:</strong> <code>src/borrower/applicationForm.test.js</code>, <code>functions/test/lending.test.js</code>, <code>functions/test/underwriting.test.js</code>, <code>functions/test/reviewFixes.emulator.test.js</code> (new), and the payslip fixtures in five emulator test files</li>
+          <li><strong>Notes:</strong> <code>PHASE_ONE_TESTING.md</code>, <code>ROLES_EXPLAINED.md</code>, <code>QUESTIONS_FOR_LENDMO.md</code></li>
+        </ul>
+      </article>
+    </main>
+  </div>
+
+  <footer>LendMo loan app · change log kept in the project as <code>CHANGES.html</code>.</footer>
+</div>
+</body>
+</html>
