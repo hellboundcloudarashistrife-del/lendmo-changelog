@@ -130,14 +130,14 @@
   <article class="day" id="2026-10-28" aria-labelledby="day-2026-10-28">
     <div class="day-head">
       <h2 id="day-2026-10-28">28 October 2026</h2>
-      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form. 19 changes.</p>
+      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form. 20 changes.</p>
       <nav class="jump" aria-label="Sections for 28 October 2026">
         <a href="#d28-whole-form">Whole form <b>2</b></a>
         <a href="#d28-employment">Employment <b>4</b></a>
         <a href="#d28-income">Income &amp; documents <b>4</b></a>
         <a href="#d28-loan">Loan amount &amp; terms <b>4</b></a>
         <a href="#d28-after">After applying <b>3</b></a>
-        <a href="#d28-staff">Staff screens <b>1</b></a>
+        <a href="#d28-staff">Staff screens <b>2</b></a>
         <a href="#d28-demo">Demo <b>1</b></a>
       </nav>
     </div>
@@ -266,6 +266,11 @@
           <div class="compare"><p class="side before"><span>Before</span>Boxes for net income, essential expenses and debt repayments.</p><p class="side now"><span>Now</span>Net salary, total personal expenditure and total stop orders, with real net salary worked out as staff type, next to what the customer declared. Staff also review all three payslips.</p></div>
           <p class="why"><strong>Why:</strong> staff use the same terms and sums as LendMo’s paper form.</p>
         </li>
+        <li class="card">
+          <div class="card-top"><h4>Button text is easy to read</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Some main buttons, like “Review and save access” on a staff member’s page, had dark text on a dark blue button and were hard to read.</p><p class="side now"><span>Now</span>The text is white on the blue button. When a button can’t be used yet, it shows dark text on a light background instead of fading out.</p></div>
+          <p class="why"><strong>Why:</strong> the button labels couldn’t be read.</p>
+        </li>
       </ol>
     </section>
 
@@ -303,7 +308,7 @@
       <ul>
         <li>Application form: <code>src/borrower/applicationForm.js</code>, <code>BorrowerApplicationForm.jsx</code>, <code>borrower-application-form.css</code>, <code>useBorrowerApplication.js</code></li>
         <li>Borrower screens: <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>BorrowerWelcome.jsx</code>, <code>supportAssistant.js</code></li>
-        <li>Staff screens: <code>src/lending/ApplicationCorrections.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>director-application-review.css</code>, <code>DirectorPendingApplications.jsx</code></li>
+        <li>Staff screens: <code>src/lending/ApplicationCorrections.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>director-application-review.css</code>, <code>DirectorPendingApplications.jsx</code>, <code>src/lending/workflow.css</code> (readable main and disabled buttons)</li>
         <li>Demo logins: <code>src/auth/DemoLogins.jsx</code> (new), <code>src/App.jsx</code>, <code>src/main.jsx</code>, <code>src/styles.css</code>, <code>.env.example</code>, <code>functions/seed.js</code></li>
         <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code></li>
         <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>functions/test/lending.test.js</code>, <code>functions/test/underwriting.test.js</code>, <code>functions/test/reviewFixes.emulator.test.js</code> (new)</li>
