@@ -130,14 +130,14 @@
   <article class="day" id="2026-10-28" aria-labelledby="day-2026-10-28">
     <div class="day-head">
       <h2 id="day-2026-10-28">28 October 2026</h2>
-      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form. 23 changes.</p>
+      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form. 27 changes.</p>
       <nav class="jump" aria-label="Sections for 28 October 2026">
         <a href="#d28-whole-form">Whole form <b>2</b></a>
         <a href="#d28-employment">Employment <b>4</b></a>
         <a href="#d28-income">Income &amp; documents <b>4</b></a>
         <a href="#d28-loan">Loan amount &amp; terms <b>4</b></a>
         <a href="#d28-after">After applying <b>3</b></a>
-        <a href="#d28-staff">Staff screens <b>5</b></a>
+        <a href="#d28-staff">Staff screens <b>9</b></a>
         <a href="#d28-demo">Demo <b>1</b></a>
       </nav>
     </div>
@@ -278,13 +278,33 @@
         </li>
         <li class="card">
           <div class="card-top"><h4>Screening checks explain themselves</h4><span class="pill done">Done</span></div>
-          <div class="compare"><p class="side before"><span>Before</span>A list of checks marked “Pending · Not recorded”, with no way to tell which were needed, what each meant, or how to complete them.</p><p class="side now"><span>Now</span>Each check says what staff should do (for example, Contact: call the applicant to confirm their number) and whether it’s <em>required for approval</em> or <em>optional</em>. A “Record this check” button opens the form already set to that check.</p></div>
+          <div class="compare"><p class="side before"><span>Before</span>A list of checks marked “Pending · Not recorded”, with no way to tell which were needed, what each meant, or how to complete them.</p><p class="side now"><span>Now</span>Each check says what staff should do (for example, Contact: call the applicant to confirm their number) and whether it’s <em>required for approval</em> or <em>optional</em>. Each one has its own “Record this check” button.</p></div>
           <p class="why"><strong>Why:</strong> staff got stuck on the screening step.</p>
         </li>
         <li class="card">
           <div class="card-top"><h4>Wallet check no longer needs a file</h4><span class="pill done">Done</span></div>
           <div class="compare"><p class="side before"><span>Before</span>The wallet ownership check couldn’t be passed without a wallet ownership file, even though customers are told that file is optional.</p><p class="side now"><span>Now</span>Staff can pass the wallet check by recording how they confirmed the registered name (for example, a MoMo name lookup). A file can still be attached if there is one.</p></div>
           <p class="why"><strong>Why:</strong> applications without the optional file could never be approved.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Recording a check is quicker and harder to get wrong</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>One long form at the bottom of the page with seven boxes, including two date-and-time pickers and a reference number. The result started on “Pending”, so a check could be saved as not passed without anyone noticing.</p><p class="side now"><span>Now</span>“Record this check” opens a small window for that check. You pick <em>Passed</em>, <em>Failed</em> or <em>Couldn’t check yet</em> (nothing is picked for you), choose how you checked from a list, and write what you found. The time is filled in and the check lasts as long as the company setting says. A reference number is only needed for a credit bureau check.</p></div>
+          <p class="why"><strong>Why:</strong> an ID check was saved as “Pending” by mistake.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Screening shows what to do, in order</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Nothing said that documents must be verified before the checks, or that the affordability assessment has to be run last.</p><p class="side now"><span>Now</span>Three numbered steps sit at the top: verify the documents, record the required checks (for example “1 of 3 passed”), then run the affordability assessment. Each step gets a tick when it’s done. If a check needs a document that hasn’t been verified yet, the window says so and has a button that opens Documents.</p></div>
+          <p class="why"><strong>Why:</strong> the ID check couldn’t pass because the ID card hadn’t been verified, and the screen didn’t say so.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Reviewing a document no longer wipes other checks</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Marking any document as verified or rejected erased every check already recorded on the application.</p><p class="side now"><span>Now</span>Only checks that used that document are cleared. For example, rejecting the ID card clears the Identity check, but the Contact check stays.</p></div>
+          <p class="why"><strong>Why:</strong> finished checks were disappearing.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>All three payslips count as evidence</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Only the month 1 payslip could back up the employment check and the affordability assessment.</p><p class="side now"><span>Now</span>Any of the three payslips can be used.</p></div>
+          <p class="why"><strong>Why:</strong> the form now collects three payslips.</p>
         </li>
       </ol>
     </section>
@@ -323,10 +343,10 @@
       <ul>
         <li>Application form: <code>src/borrower/applicationForm.js</code>, <code>BorrowerApplicationForm.jsx</code>, <code>borrower-application-form.css</code>, <code>useBorrowerApplication.js</code></li>
         <li>Borrower screens: <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>BorrowerWelcome.jsx</code>, <code>supportAssistant.js</code></li>
-        <li>Staff screens: <code>src/lending/ApplicationCorrections.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>director-application-review.css</code>, <code>DirectorPendingApplications.jsx</code>, <code>src/lending/workflow.css</code> (readable main and disabled buttons), <code>src/users/users.css</code> (staff access tick boxes)</li>
+        <li>Staff screens: <code>src/lending/ApplicationCorrections.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>director-application-review.css</code>, <code>DirectorPendingApplications.jsx</code>, <code>ConnectedApplications.jsx</code> (errors shown inside the check window), <code>src/lending/workflow.css</code> (readable main and disabled buttons), <code>src/users/users.css</code> (staff access tick boxes)</li>
         <li>Demo logins: <code>src/auth/DemoLogins.jsx</code> (new), <code>src/App.jsx</code>, <code>src/main.jsx</code>, <code>src/styles.css</code>, <code>.env.example</code>, <code>functions/seed.js</code></li>
-        <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code>, <code>functions/underwriting.js</code> (wallet check without a file)</li>
-        <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>functions/test/lending.test.js</code>, <code>functions/test/underwriting.test.js</code> (wallet check without a file), <code>functions/test/reviewFixes.emulator.test.js</code> (new)</li>
+        <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code>, <code>functions/underwriting.js</code> (wallet check without a file; reference only for credit; payslips 2 and 3 as evidence; plain document names in messages), <code>functions/loanApplicationService.js</code> (document review clears only checks that used it)</li>
+        <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>functions/test/lending.test.js</code>, <code>functions/test/underwriting.test.js</code> (wallet check without a file; new check rules), <code>functions/test/reviewFixes.emulator.test.js</code> (new)</li>
       </ul>
     </details>
   </article>
