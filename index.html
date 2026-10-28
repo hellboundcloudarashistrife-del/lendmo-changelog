@@ -130,7 +130,7 @@
   <article class="day" id="2026-10-28" aria-labelledby="day-2026-10-28">
     <div class="day-head">
       <h2 id="day-2026-10-28">28 October 2026</h2>
-      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form. 27 changes.</p>
+      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form and answers. 34 changes.</p>
       <nav class="jump" aria-label="Sections for 28 October 2026">
         <a href="#d28-whole-form">Whole form <b>2</b></a>
         <a href="#d28-employment">Employment <b>4</b></a>
@@ -138,6 +138,7 @@
         <a href="#d28-loan">Loan amount &amp; terms <b>4</b></a>
         <a href="#d28-after">After applying <b>3</b></a>
         <a href="#d28-staff">Staff screens <b>9</b></a>
+        <a href="#d28-product">Loan product &amp; lists <b>7</b></a>
         <a href="#d28-demo">Demo <b>1</b></a>
       </nav>
     </div>
@@ -225,8 +226,8 @@
           <p class="why"><strong>Why:</strong> customers see the cost in the same format LendMo already uses.</p>
         </li>
         <li class="card">
-          <div class="card-top"><h4>Fees mentioned up front</h4><span class="pill partly">Partly done</span></div>
-          <div class="compare"><p class="side before"><span>Before</span>“Fees and insurance are excluded from this estimate.”</p><p class="side now"><span>Now</span>A fees line reading “Confirmed in your offer”, and the terms say fees are subject to review. Fee amounts will be added once confirmed.</p></div>
+          <div class="card-top"><h4>Fees mentioned up front</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>“Fees and insurance are excluded from this estimate.”</p><p class="side now"><span>Now</span>The cost breakdown has a Fees line, which reads “None” because LendMo charges nothing besides interest. The terms say so too.</p></div>
           <p class="why"><strong>Why:</strong> customers should know about fees before applying.</p>
         </li>
         <li class="card">
@@ -309,6 +310,47 @@
       </ol>
     </section>
 
+    <section class="group" id="d28-product" aria-labelledby="d28-product-title">
+      <h3 id="d28-product-title">Loan product and lists <small>From LendMo’s answers</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Loans match LendMo’s product</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Test values: SZL 500 to 50,000, repaid over 1 to 24 months, with 25% interest added every month.</p><p class="side now"><span>Now</span>E100 to E10,000, repaid in one payment, with 25% interest charged once. The “how many months” slider is gone. For example, E2,000 borrowed means E500 interest and E2,500 to repay.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo’s loans are once-off payday loans at 25%.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>No fees besides interest</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A test late fee of SZL 100 on overdue payments.</p><p class="side now"><span>Now</span>No late fee. The cost breakdown shows Fees: None, and the loan agreement says there is no late payment fee.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo charges no fees, only interest.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>MTN Mobile Money only</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Customers could choose MTN MoMo or eMali.</p><p class="side now"><span>Now</span>MTN MoMo is the only choice.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo only uses MTN Mobile Money.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Every bank is in the list</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>FNB, Swazi Bank, Building Society, Nedbank and Other. Standard Bank was missing and Swazi Bank used its old name.</p><p class="side now"><span>Now</span>Eswatini Bank (formerly Swazi Bank), FNB, Nedbank, Standard Bank, Swaziland Building Society (SBS) and Other. Saved applications using the old names are updated automatically.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo accepts clients from all banks.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Dependants question removed</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The form asked for the number of dependants, but nothing used the answer.</p><p class="side now"><span>Now</span>The question is gone from the form and the staff screens.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo doesn’t use dependants when deciding a loan.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Bank statement asks for 3 months</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>“Upload a recent bank statement.”</p><p class="side now"><span>Now</span>“Upload your bank statements for the last 3 months. One file covering all three months is fine.”</p></div>
+          <p class="why"><strong>Why:</strong> LendMo needs 3 months of statements on a client’s first visit.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>LendMo’s own branches</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Made-up test branches such as Manzini, Nhlangano, Siteki and Mbabane East.</p><p class="side now"><span>Now</span>Mbabane, Simunye, Bhunya, Piggs Peak and Mhlambanyatsi, with one branch manager each.</p></div>
+          <p class="why"><strong>Why:</strong> these are the branches that take applications.</p>
+        </li>
+      </ol>
+    </section>
+
     <section class="group" id="d28-demo" aria-labelledby="d28-demo-title">
       <h3 id="d28-demo-title">Demo version <small>Test copy only</small></h3>
       <ol class="cards">
@@ -333,10 +375,11 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
-        <li>All 147 automated unit tests and the production build pass.</li>
-        <li>Three new automated server tests cover the three payslips, the expense and stop-order lists, one open application at a time and locked documents. All pass.</li>
+        <li>All 148 automated unit tests pass.</li>
+        <li>Four automated server tests cover the three payslips, the expense and stop-order lists, one open application at a time, locked documents and document reviews that keep other checks. All pass.</li>
         <li>Checked by hand in the app: required-field marks, the expenses and stop-order lists, money formatting, payslip sections, +268, the sliders and costs, demo logins and the role switcher.</li>
         <li>LendMo’s affordability form example (net 5,015.79; groceries 1,200; stop orders 1,586 and 158) gives the same real net salary in the app: 2,071.79. A 1,200 loan shows 300 interest and 1,500 to repay, as on the form.</li>
+        <li>Checked by hand: recording checks in the new window (desktop and phone), the loan step with one payment (E2,000 → E2,500, fees None), the bank and MTN lists, and the five branches.</li>
         <li>Not yet tried by hand: a full submission with the thank-you pop-up.</li>
       </ul>
       <h4>Files changed</h4>
@@ -345,7 +388,7 @@
         <li>Borrower screens: <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>BorrowerWelcome.jsx</code>, <code>supportAssistant.js</code></li>
         <li>Staff screens: <code>src/lending/ApplicationCorrections.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>director-application-review.css</code>, <code>DirectorPendingApplications.jsx</code>, <code>ConnectedApplications.jsx</code> (errors shown inside the check window), <code>src/lending/workflow.css</code> (readable main and disabled buttons), <code>src/users/users.css</code> (staff access tick boxes)</li>
         <li>Demo logins: <code>src/auth/DemoLogins.jsx</code> (new), <code>src/App.jsx</code>, <code>src/main.jsx</code>, <code>src/styles.css</code>, <code>.env.example</code>, <code>functions/seed.js</code></li>
-        <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code>, <code>functions/underwriting.js</code> (wallet check without a file; reference only for credit; payslips 2 and 3 as evidence; plain document names in messages), <code>functions/loanApplicationService.js</code> (document review clears only checks that used it)</li>
+        <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code>, <code>functions/underwriting.js</code> (wallet check without a file; reference only for credit; payslips 2 and 3 as evidence; plain document names in messages), <code>functions/loanApplicationService.js</code> (document review clears only checks that used it), <code>functions/seed-product.js</code> (LendMo’s product: E100–E10,000, one payment, 25%, no late fee, MTN only), <code>functions/seed.js</code> (LendMo’s branches)</li>
         <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>functions/test/lending.test.js</code>, <code>functions/test/underwriting.test.js</code> (wallet check without a file; new check rules), <code>functions/test/reviewFixes.emulator.test.js</code> (new)</li>
       </ul>
     </details>
