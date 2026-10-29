@@ -130,7 +130,7 @@
   <article class="day" id="2026-10-29" aria-labelledby="day-2026-10-29">
     <div class="day-head">
       <h2 id="day-2026-10-29">29 October 2026</h2>
-      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act, and fixes found while testing the staff and client screens. 12 changes.</p>
+      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act, and fixes found while testing the staff and client screens. 22 changes.</p>
       <nav class="jump" aria-label="Sections for 29 October 2026">
         <a href="#d29-repayments">Repayments <b>1</b></a>
         <a href="#d29-collections">Collections &amp; support <b>3</b></a>
@@ -138,6 +138,7 @@
         <a href="#d29-managers">Branch managers <b>1</b></a>
         <a href="#d29-checks">Screening checks &amp; signing <b>4</b></a>
         <a href="#d29-corrections">Correcting an application <b>2</b></a>
+        <a href="#d29-credit-act">Consumer Credit Act <b>10</b></a>
       </nav>
     </div>
 
@@ -237,6 +238,62 @@
       </ol>
     </section>
 
+    <section class="group" id="d29-credit-act" aria-labelledby="d29-credit-act-title">
+      <h3 id="d29-credit-act-title">Consumer Credit Act <small>From the check of the app against the Act</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Interest is also shown as a yearly rate</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clients saw “25%, charged once” but no yearly rate. The “My applications” page and the dashboard summary still said “25% per month” and “1 months” for one-payment loans.</p><p class="side now"><span>Now</span>The loan step, the offer, the agreement and statements show the yearly rate (300% a year for 25% over about a month) and the total cost of credit. As there are no fees, the yearly rate is also the annual percentage rate (APR). “My applications” and the dashboard now say “One payment, on your next payday” and “25%, charged once”.</p></div>
+          <p class="why"><strong>Why:</strong> Eswatini’s Consumer Credit Act (section 39) says interest must be shown as a yearly rate, with the APR and total cost of credit.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>The agreement names LendMo and lists the client’s rights</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The agreement had the loan figures and LendMo’s own wording, but not LendMo’s registration or licence number, contact details, or the client’s rights.</p><p class="side now"><span>Now</span>Each new agreement starts with LendMo’s name, registration number, credit provider licence number and contact details. It ends with “Your rights”: cancelling within 5 days, paying early without a penalty, free statements, disputing an entry, and how to complain, including the Office of the Ombudsman of Financial Services. Settings → Company has a new box for the licence number. Statements show the same details.</p></div>
+          <p class="why"><strong>Why:</strong> Sections 5 and 31 of the Act. Agreements already made keep their wording.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Printable quote and agreement for the branch</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Staff could only download the agreement as plain text, and there was no separate quote.</p><p class="side now"><span>Now</span>On the Approvals step, “Print quote” gives a one-page quotation (amount, interest, yearly rate, total cost of credit, what to repay, and the date it’s valid until). “Print agreement for signing” adds signature lines for the client and the staff member. Clients can download the quote from their offer.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (section 24) expects a written quote before the client signs, and clients sign on paper at the branch.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Clients can cancel within 5 days of signing</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no way to cancel a signed loan.</p><p class="side now"><span>Now</span>On a loan’s details, “Cancel within 5 days of signing” records when and how the client asked. If nothing has been paid out, the loan closes. If it has, the client pays back the amount they received, with no interest, and staff refund anything extra as usual.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (section 58) gives clients a 5-day cooling-off period.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A formal notice of default</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>An overdue client got a one-line message: “Repayment overdue. Please sign in…”.</p><p class="side now"><span>Now</span>The first time a loan is overdue, the client gets a “Notice of default”. It gives the amount overdue, suggests a debt counsellor if they can’t pay, says how to dispute it, and warns that LendMo may report the debt to TransUnion. Once email is set up, it is also emailed whatever the client’s notification settings. The loan’s details show staff when it was sent and whether the client has opened it.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (sections 79 and 100) says clients must be warned in writing before legal action or a credit bureau listing.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Overdue reminders go out weekly, at most 4 times</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>An overdue client got a reminder every day for as long as they were late.</p><p class="side now"><span>Now</span>Reminders go out every 7 days, at most 4 times per loan. The Owner can change both numbers in Dunning rules, which explains why.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (section 105) forbids harassing clients to pay.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>No reminders while a client disputes an entry</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Reminders carried on even after a client reported a disputed transfer, and staff could close the case with an internal note only.</p><p class="side now"><span>Now</span>While a client has an open “Disputed transfer” case about a loan, that loan gets no reminders or notices. The case can only be closed once staff have sent the client a written reply.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (section 48) says a disputed entry can’t be chased until the client has had a written answer.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>On-time payments waiting for a check don’t count as late</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A client who paid on the due date was shown as overdue, and sent overdue reminders, until staff verified the payment.</p><p class="side now"><span>Now</span>A payment dated on or before the due date covers that repayment while it waits for verification. The loan isn’t marked overdue, no reminders or late fees are added, and staff see a note to verify it.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (section 49) says a payment counts from the day it is made.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A statement every month</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clients could download a statement, but nothing was sent to them.</p><p class="side now"><span>Now</span>Each month a loan is open, the client gets a “Your monthly statement” message with the balance at their last statement and the balance now. The full statement is under Statements.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (sections 45 and 46) says clients get a free statement at least once a month.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Clients can say no to marketing</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The application didn’t ask about marketing.</p><p class="side now"><span>Now</span>Step 5 has three optional boxes: no phone calls about other offers, not on marketing lists, and no marketing emails or SMS. Staff see the client’s choices with the application details.</p></div>
+          <p class="why"><strong>Why:</strong> The Act (section 28) says clients must be offered these choices before signing.</p>
+        </li>
+      </ol>
+    </section>
+
     <div class="extras">
       <h3>Smaller fixes</h3>
       <ul>
@@ -269,6 +326,7 @@
         <li>Correcting an application: <code>functions/loanApplicationService.js</code> (<code>resubmitApplication</code> collects field errors, product limits and missing documents into one <code>invalid-argument</code> with <code>fieldErrors</code>, <code>missingDocuments</code> and <code>missingDocumentLabels</code>; a product with one term sets it; <code>get</code> now returns the product’s amount and term limits), <code>src/lending/ApplicationCorrections.jsx</code> and new <code>application-corrections.css</code>, <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>. New emulator test in <code>functions/test/reviewFixes.emulator.test.js</code> (6 tests pass); end-to-end <code>coreJourney.emulator.test.js</code> passes. Checked by hand on a temporary copy of the returned application, since deleted.</li>
         <li>Keeping checks on resubmit: <code>checksStillValid</code> in <code>functions/underwriting.js</code> keeps a check while the details it confirmed and its evidence documents are unchanged; <code>resubmitApplication</code> keeps the assessment when its fingerprint still matches and records <code>clearedChecks</code>; the Screening step names the checks to record again. 155 unit tests and 8 review-fix emulator tests pass (new: phone change clears only Contact; no change keeps all checks and the assessment); <code>coreJourney.emulator.test.js</code> passes.</li>
         <li>Screening checks and signing: <code>functions/underwriting.js</code> (<code>ALWAYS_REQUIRED_CHECKS</code> identity and wallet; <code>employmentForNewClients</code> policy flag; <code>requiredChecksFor</code>; <code>riskIndicators</code> returns <code>employment</code> from paid-out loans by ID number, and the same-ID flag ignores disbursed or cancelled applications), <code>functions/productPolicy.js</code> (<code>signAtBranch</code>), <code>functions/loanApplicationService.js</code> (staff <code>get</code> returns <code>screening</code>; borrower accept refused and staff signing allowed for every application when <code>signAtBranch</code>; offer message), <code>functions/applicationDraftService.js</code> (signed agreement upload), <code>functions/seed-product.js</code>, <code>src/lending/ProductSettings.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>src/borrower/ConnectedBorrowerLending.jsx</code>. 157 unit tests and 9 review-fix emulator tests pass (new: sign at the branch from approval to staff-recorded signing); coreJourney, phaseThree, phaseFour and phaseFive emulator tests pass. phaseTwo fails before this change because its test setup has no agreement wording. Checked by hand: Screening labels and the warning in the Fraud review window, and the Lending settings options. The borrower’s “Visit your branch” screen is covered by the server test but not yet seen by hand.</li>
+        <li>Consumer Credit Act: yearly rate helper <code>yearlyRatePct</code> (rate × 12) in <code>functions/lending.js</code> and <code>src/lending/loanPlanner.js</code>; <code>createAgreement</code> takes the company profile (new <code>licenceNumber</code> field in <code>companyProfile.js</code> and Settings → Company) and adds lender details, yearly rate, total cost of credit and a rights section; statements get <code>lender</code> and the rate (<code>getStatement</code>, <code>src/lending/statement.js</code>); new <code>src/lending/quote.js</code> for the printable quote and agreement. Collections: <code>reminderFor</code> in <code>lendingOperations.js</code> decides the notice of default (recorded as <code>loan.defaultNotice</code>, category <code>default_notice</code>, always emailed in <code>notificationDelivery.js</code>), weekly reminders capped by <code>maxOverdueReminders</code>, and no notices for loans with an open <code>disputed_transfer</code> ticket; both <code>runReminders</code> and <code>scheduledReminders.js</code> use it. Disputes record <code>answeredAt</code> on a staff reply the client can see, and can’t be resolved without it. Pending payments are kept on <code>loan.pendingPayments</code>, and <code>deriveLoan</code> marks an instalment <code>payment_pending</code> (not overdue, no late fee) when on-time pending payments cover it. <code>recordCancellation</code> (cooling-off) uses <code>settlementQuote(…, { waiveAll: true })</code>. <code>processMonthlyStatements</code> runs with the scheduled reminders. Marketing opt-outs are <code>noMarketingCalls</code>, <code>noMarketingLists</code> and <code>noMarketingMessages</code> on the application. 161 unit tests pass (new: agreement contents, reminder spacing and cap, notice of default, pending payments, cancellation amount); 11 review-fix emulator tests pass (new: lender details and 5-day cancellation; notice of default, dispute pause and written answer); operations and phaseFour emulator tests pass. Checked by hand: Dunning rules settings and note, the licence box in Settings → Company, and the yearly rate, explanation and marketing boxes on the loan step.</li>
       </ul>
     </details>
   </article>
