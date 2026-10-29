@@ -122,11 +122,47 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 28 October 2026</p>
+    <p class="updated">Last updated 29 October 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-10-29" aria-labelledby="day-2026-10-29">
+    <div class="day-head">
+      <h2 id="day-2026-10-29">29 October 2026</h2>
+      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act. 1 change.</p>
+      <nav class="jump" aria-label="Sections for 29 October 2026">
+        <a href="#d29-repayments">Repayments <b>1</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d29-repayments" aria-labelledby="d29-repayments-title">
+      <h3 id="d29-repayments-title">Repayments <small>How payments are applied to a loan</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Payments pay interest first, then the loan, then late fees</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Each payment paid off any late fee first, then interest, then the amount borrowed, one instalment at a time. The loan agreement said the same.</p><p class="side now"><span>Now</span>Each payment pays the interest that’s due first, then the amount borrowed that’s due, and only then any late fees. Anything left over goes towards the next instalment. The loan agreement now says this. Agreements already signed keep their wording, but their payments follow the new order too.</p></div>
+          <p class="why"><strong>Why:</strong> Eswatini’s Consumer Credit Act (section 98) sets this order, and it means a client’s money clears what they borrowed before it goes to fees.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>All 154 automated unit tests pass, including new tests for the payment order with one and two overdue instalments, partial payments, and money left over.</li>
+        <li>The server tests for payments, reversals, posting charges, offers and agreements pass (18 tests).</li>
+        <li>“Due” means due on or before the date the client paid. Amounts due are paid in this order across all due instalments: interest, then the amount borrowed, then late fees. Anything left prepays later instalments, interest first.</li>
+      </ul>
+      <h4>Files changed</h4>
+      <ul>
+        <li>Server: <code>functions/accounting.js</code> (<code>allocateReceipt</code> takes the payment date; same order when rebuilding older loans’ history in <code>settlementQuote</code>), <code>functions/lendingOperations.js</code> (passes the payment date; same order in <code>postCharges</code>), <code>functions/underwriting.js</code> (agreement wording)</li>
+        <li>Tests: <code>functions/test/accounting.test.js</code></li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-10-28" aria-labelledby="day-2026-10-28">
     <div class="day-head">
       <h2 id="day-2026-10-28">28 October 2026</h2>
