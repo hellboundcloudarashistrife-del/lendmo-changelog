@@ -130,9 +130,12 @@
   <article class="day" id="2026-10-29" aria-labelledby="day-2026-10-29">
     <div class="day-head">
       <h2 id="day-2026-10-29">29 October 2026</h2>
-      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act. 1 change.</p>
+      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act, and fixes found while testing the staff and client screens. 6 changes.</p>
       <nav class="jump" aria-label="Sections for 29 October 2026">
         <a href="#d29-repayments">Repayments <b>1</b></a>
+        <a href="#d29-collections">Collections &amp; support <b>3</b></a>
+        <a href="#d29-employment">Employment <b>1</b></a>
+        <a href="#d29-managers">Branch managers <b>1</b></a>
       </nav>
     </div>
 
@@ -147,6 +150,56 @@
       </ol>
     </section>
 
+    <section class="group" id="d29-collections" aria-labelledby="d29-collections-title">
+      <h3 id="d29-collections-title">Collections &amp; support <small>Staff screens</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>“Process dunning” explains what it did</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Pressing “Create in-app notices” only showed “0 in-app notices created. 0 still require processing.”, so it looked as if the button did nothing or something else had to be done first.</p><p class="side now"><span>Now</span>The page explains that the button sends a reminder to each client with a repayment due or overdue, and that this already happens automatically every 15 minutes. When there is nothing to send, it says so in plain words.</p></div>
+          <p class="why"><strong>Why:</strong> Nothing was wrong, but the page didn’t say that no client had a repayment due yet.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>“Dunning rules” shows when it is view only</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Directors and other staff saw boxes that looked editable but couldn’t be clicked. The only explanation was a small line at the bottom.</p><p class="side now"><span>Now</span>A “View only” note at the top says only the Owner can change this rule and nothing needs to be done first. The locked boxes are greyed out.</p></div>
+          <p class="why"><strong>Why:</strong> It looked like a fault when it is a deliberate limit on who can change a company-wide rule.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>“Support &amp; hardship” is now “Customer support”</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The menu said “Support &amp; hardship”, and clients could choose “Repayment hardship” as a request type.</p><p class="side now"><span>Now</span>The menu and page say “Customer support”. The request types are Support question, Complaint, Difficulty repaying and Disputed transfer. Existing cases are kept as they were.</p></div>
+          <p class="why"><strong>Why:</strong> “Hardship” is not how people here describe struggling to repay.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d29-employment" aria-labelledby="d29-employment-title">
+      <h3 id="d29-employment-title">Employment <small>Step 3 of the application</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Any expense can be typed in</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Each monthly expense had to be one of LendMo’s four types. There was no way to say what an unlisted expense, such as school fees, actually was.</p><p class="side now"><span>Now</span>Choosing “Other (type what it is)” opens a box to type the expense, for example school fees or transport. Staff see it next to the amount when they check affordability. Expenses saved earlier under a type that’s no longer listed keep their name.</p></div>
+          <p class="why"><strong>Why:</strong> Clients have regular costs the list doesn’t cover, and staff need to know what “other” means.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d29-managers" aria-labelledby="d29-managers-title">
+      <h3 id="d29-managers-title">Branch managers <small>Staff menu</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Branches removed from branch managers’ menu</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Branch managers had a “Branches” page in their menu, which only ever showed their own branch.</p><p class="side now"><span>Now</span>Branch managers no longer see “Branches”. They still see their team under Employees. Head office roles keep the Branches page.</p></div>
+          <p class="why"><strong>Why:</strong> Each branch has exactly one manager and nobody manages more than one, so the page had nothing for them.</p>
+        </li>
+      </ol>
+    </section>
+
+    <div class="extras">
+      <h3>Smaller fixes</h3>
+      <ul>
+        <li>Signing in as a client no longer records a hidden “staff account required” error in the browser.</li>
+      </ul>
+    </div>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
@@ -154,6 +207,8 @@
         <li>All 154 automated unit tests pass, including new tests for the payment order with one and two overdue instalments, partial payments, and money left over.</li>
         <li>The server tests for payments, reversals, posting charges, offers and agreements pass (18 tests).</li>
         <li>“Due” means due on or before the date the client paid. Amounts due are paid in this order across all due instalments: interest, then the amount borrowed, then late fees. Anything left prepays later instalments, interest first.</li>
+        <li>Collections, support, expenses and branch-manager changes: 154 unit tests pass, including new tests that an “Other” expense needs a description of up to 60 characters (form and server), that older unlisted expense types keep their name, and that branch managers can’t open Branches but can open Employees.</li>
+        <li>Checked by hand in the app: Process dunning wording and result (Director), the Dunning rules view-only note (Director), Customer support labels with no remaining “hardship” text, “Other (type what it is)” on the Employment step (Borrower), and Branch manager menu without Branches with Employees still loading. Client sign-in now gets an ordinary answer (200) from the staff check instead of a 403.</li>
       </ul>
       <h4>Local setup</h4>
       <ul>
@@ -163,6 +218,10 @@
       <ul>
         <li>Server: <code>functions/accounting.js</code> (<code>allocateReceipt</code> takes the payment date; same order when rebuilding older loans’ history in <code>settlementQuote</code>), <code>functions/lendingOperations.js</code> (passes the payment date; same order in <code>postCharges</code>), <code>functions/underwriting.js</code> (agreement wording)</li>
         <li>Tests: <code>functions/test/accounting.test.js</code></li>
+        <li>Collections &amp; support: <code>src/dashboard/OperationsModules.jsx</code>, <code>operations-modules.css</code>, <code>LendingOperations.jsx</code> (case-type names), <code>directorRoutes.js</code>, <code>Dashboard.jsx</code>, <code>src/borrower/ConnectedBorrowerLending.jsx</code></li>
+        <li>Expenses: <code>src/borrower/applicationForm.js</code> (<code>OTHER_EXPENSE</code>, description rule), <code>BorrowerApplicationForm.jsx</code>, <code>borrower-application-form.css</code>, <code>useBorrowerApplication.js</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>; server <code>functions/lending.js</code> and <code>applicationDraftService.js</code> keep an optional <code>description</code></li>
+        <li>Branch managers: <code>src/auth/staffAccess.js</code> (<code>canOpenStaffPage</code>); sign-in check: <code>functions/service.js</code> (<code>session</code> returns <code>{ staff: null }</code> when there is no staff record)</li>
+        <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>src/auth/staffAccess.test.js</code>, <code>functions/test/lending.test.js</code></li>
       </ul>
     </details>
   </article>
@@ -170,7 +229,7 @@
   <article class="day" id="2026-10-28" aria-labelledby="day-2026-10-28">
     <div class="day-head">
       <h2 id="day-2026-10-28">28 October 2026</h2>
-      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form and answers. 39 changes.</p>
+      <p>Improvements to the loan application from the 27 October review, and changes so the app follows LendMo’s own affordability form and answers. 41 changes.</p>
       <nav class="jump" aria-label="Sections for 28 October 2026">
         <a href="#d28-whole-form">Whole form <b>2</b></a>
         <a href="#d28-employment">Employment <b>4</b></a>
@@ -181,6 +240,7 @@
         <a href="#d28-product">Loan product &amp; lists <b>7</b></a>
         <a href="#d28-rules">Lending rules <b>5</b></a>
         <a href="#d28-demo">Demo <b>1</b></a>
+        <a href="#d28-speed">Speed &amp; reliability <b>2</b></a>
       </nav>
     </div>
 
@@ -434,6 +494,22 @@
       </ol>
     </section>
 
+    <section class="group" id="d28-speed" aria-labelledby="d28-speed-title">
+      <h3 id="d28-speed-title">Speed and reliability <small>Every screen</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Client home page no longer shows a setup error</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>In the test version, a client’s home page stayed on “Loading your account records…” and then showed “The company is not configured for borrower lending.”</p><p class="side now"><span>Now</span>The test version knows which company its clients belong to, so the home page and every other client screen load normally.</p></div>
+          <p class="why"><strong>Why:</strong> The test version wasn’t told which company clients sign up with unless a setting was typed in by hand each time.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Pages load faster</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Pages asked the server for the same information several times at once, and the client home page made three separate requests. The first page opened could take around 10 seconds in the test version.</p><p class="side now"><span>Now</span>Each page asks for each piece of information once, and the client home page asks once for everything. The test version gets the server ready in the background, so the first page doesn’t wait. Most pages open in under a second.</p></div>
+          <p class="why"><strong>Why:</strong> Loading was slow enough to look broken.</p>
+        </li>
+      </ol>
+    </section>
+
     <div class="extras">
       <h3>Smaller fixes</h3>
       <ul>
@@ -463,6 +539,7 @@
         <li>Server: <code>functions/lending.js</code>, <code>functions/applicationDraftService.js</code>, <code>functions/loanApplicationService.js</code>, <code>functions/underwriting.js</code> (wallet check without a file; reference only for credit; payslips 2 and 3 as evidence; plain document names in messages), <code>functions/loanApplicationService.js</code> (document review clears only checks that used it), <code>functions/seed-product.js</code> (LendMo’s product: E100–E10,000, one payment, 25%, no late fee, MTN only), <code>functions/seed.js</code> (LendMo’s branches; E600 branch approvals), <code>functions/upgrade-local-data.js</code> and <code>scripts/lendmo-local-setup.mjs</code> (new: <code>npm run setup:lendmo</code>), <code>functions/lending.js</code> and <code>lendingOperations.js</code> (next-payday due dates), <code>functions/underwriting.js</code> (extra interest charge rule), <code>functions/permissions.js</code> and <code>userService.js</code> (consultant approvals), <code>functions/loanApplicationService.js</code> and <code>applicationDraftService.js</code> (applying again after a decline)</li>
         <li>Roles: <code>src/users/userModel.js</code>, <code>UserManagement.jsx</code>, <code>src/auth/staffAccess.js</code>, <code>DemoLogins.jsx</code>, <code>src/branches/branchModel.js</code>, <code>src/dashboard/StaffRoleOverview.jsx</code>, <code>ApplicationControls.jsx</code>; settings: <code>src/lending/ProductSettings.jsx</code></li>
         <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>functions/test/lending.test.js</code>, <code>functions/test/underwriting.test.js</code> (wallet check without a file; new check rules), <code>functions/test/reviewFixes.emulator.test.js</code> (new)</li>
+        <li>Speed and reliability: <code>functions/.env.demo-ledmo</code> (new; <code>LENDMO_ORG_ID=lendmo-demo</code> for the demo emulators; a live deployment must set <code>LENDMO_ORG_ID</code> in its Functions environment), new <code>borrowerDashboard</code> action and batched reads in <code>functions/loanApplicationService.js</code>, <code>src/sharedReads.js</code> (new: identical reads in flight share one request; writes clear it) used by <code>loanApplicationApi.js</code>, <code>branchApi.js</code> and <code>userApi.js</code>, and <code>scripts/start-emulators.mjs</code> (warms 6 + 4 + 1 function workers after each load). Swept every read action as 7 roles and every staff and client section in the browser with no unexpected errors; warm server calls take 50–110 ms.</li>
       </ul>
     </details>
   </article>
