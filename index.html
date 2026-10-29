@@ -130,12 +130,13 @@
   <article class="day" id="2026-10-29" aria-labelledby="day-2026-10-29">
     <div class="day-head">
       <h2 id="day-2026-10-29">29 October 2026</h2>
-      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act, and fixes found while testing the staff and client screens. 8 changes.</p>
+      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act, and fixes found while testing the staff and client screens. 12 changes.</p>
       <nav class="jump" aria-label="Sections for 29 October 2026">
         <a href="#d29-repayments">Repayments <b>1</b></a>
         <a href="#d29-collections">Collections &amp; support <b>3</b></a>
         <a href="#d29-employment">Employment <b>1</b></a>
         <a href="#d29-managers">Branch managers <b>1</b></a>
+        <a href="#d29-checks">Screening checks &amp; signing <b>4</b></a>
         <a href="#d29-corrections">Correcting an application <b>2</b></a>
       </nav>
     </div>
@@ -194,6 +195,32 @@
       </ol>
     </section>
 
+    <section class="group" id="d29-checks" aria-labelledby="d29-checks-title">
+      <h3 id="d29-checks-title">Screening checks and signing <small>From LendMo’s answers</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Contact check is optional</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Every loan needed a Contact check (calling the client), and even the Owner couldn’t switch it off.</p><p class="side now"><span>Now</span>Only Identity and Wallet are needed for every loan. Contact is optional, and the Owner can still make it required in Lending settings.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo doesn’t phone clients. They come into the office to sign every loan.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Employment check for first loans and new employers</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The Employment check was always optional.</p><p class="side now"><span>Now</span>It’s required on a client’s first loan, or when their employer is different from their last loan. The Screening step says why (“client’s first loan” or “employer changed since their last loan”). Returning clients with the same employer can skip it.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo calls the employer in exactly these cases.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Fraud review shows as required when there are warning signs</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Fraud review was labelled “Optional”, but approval was blocked until it was done whenever the app found a warning sign. Returning clients were also flagged because of their own earlier, paid-out loan.</p><p class="side now"><span>Now</span>When the app finds a warning sign, such as the same MoMo number under two ID numbers, Fraud review says “Required for this application · warning signs found” and shows the warning, in the list and in its window. A returning client’s finished loans no longer count as a warning sign (loans still running are still checked).</p></div>
+          <p class="why"><strong>Why:</strong> staff couldn’t see why approval was blocked. LendMo only checks new clients across branches, and the app now does this across all branches automatically.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Every loan is signed at the branch</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A client could accept their loan offer online with one click.</p><p class="side now"><span>Now</span>The client sees their offer online with “Visit your branch to sign. Bring your ID.” They can still decline online. At the branch, staff upload the signed copy and record the signing, which the payout needs. The offer message says so too. The Owner can turn this off in Lending settings.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo’s clients sign for every loan in person, so staff can’t accept on their behalf.</p>
+        </li>
+      </ol>
+    </section>
+
     <section class="group" id="d29-corrections" aria-labelledby="d29-corrections-title">
       <h3 id="d29-corrections-title">Correcting an application <small>When staff ask for more information</small></h3>
       <ol class="cards">
@@ -241,6 +268,7 @@
         <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>src/auth/staffAccess.test.js</code>, <code>functions/test/lending.test.js</code></li>
         <li>Correcting an application: <code>functions/loanApplicationService.js</code> (<code>resubmitApplication</code> collects field errors, product limits and missing documents into one <code>invalid-argument</code> with <code>fieldErrors</code>, <code>missingDocuments</code> and <code>missingDocumentLabels</code>; a product with one term sets it; <code>get</code> now returns the product’s amount and term limits), <code>src/lending/ApplicationCorrections.jsx</code> and new <code>application-corrections.css</code>, <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>. New emulator test in <code>functions/test/reviewFixes.emulator.test.js</code> (6 tests pass); end-to-end <code>coreJourney.emulator.test.js</code> passes. Checked by hand on a temporary copy of the returned application, since deleted.</li>
         <li>Keeping checks on resubmit: <code>checksStillValid</code> in <code>functions/underwriting.js</code> keeps a check while the details it confirmed and its evidence documents are unchanged; <code>resubmitApplication</code> keeps the assessment when its fingerprint still matches and records <code>clearedChecks</code>; the Screening step names the checks to record again. 155 unit tests and 8 review-fix emulator tests pass (new: phone change clears only Contact; no change keeps all checks and the assessment); <code>coreJourney.emulator.test.js</code> passes.</li>
+        <li>Screening checks and signing: <code>functions/underwriting.js</code> (<code>ALWAYS_REQUIRED_CHECKS</code> identity and wallet; <code>employmentForNewClients</code> policy flag; <code>requiredChecksFor</code>; <code>riskIndicators</code> returns <code>employment</code> from paid-out loans by ID number, and the same-ID flag ignores disbursed or cancelled applications), <code>functions/productPolicy.js</code> (<code>signAtBranch</code>), <code>functions/loanApplicationService.js</code> (staff <code>get</code> returns <code>screening</code>; borrower accept refused and staff signing allowed for every application when <code>signAtBranch</code>; offer message), <code>functions/applicationDraftService.js</code> (signed agreement upload), <code>functions/seed-product.js</code>, <code>src/lending/ProductSettings.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>, <code>src/borrower/ConnectedBorrowerLending.jsx</code>. 157 unit tests and 9 review-fix emulator tests pass (new: sign at the branch from approval to staff-recorded signing); coreJourney, phaseThree, phaseFour and phaseFive emulator tests pass. phaseTwo fails before this change because its test setup has no agreement wording. Checked by hand: Screening labels and the warning in the Fraud review window, and the Lending settings options. The borrower’s “Visit your branch” screen is covered by the server test but not yet seen by hand.</li>
       </ul>
     </details>
   </article>
