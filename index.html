@@ -130,12 +130,13 @@
   <article class="day" id="2026-10-29" aria-labelledby="day-2026-10-29">
     <div class="day-head">
       <h2 id="day-2026-10-29">29 October 2026</h2>
-      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act, and fixes found while testing the staff and client screens. 6 changes.</p>
+      <p>Bringing repayments in line with Eswatini’s Consumer Credit Act, and fixes found while testing the staff and client screens. 7 changes.</p>
       <nav class="jump" aria-label="Sections for 29 October 2026">
         <a href="#d29-repayments">Repayments <b>1</b></a>
         <a href="#d29-collections">Collections &amp; support <b>3</b></a>
         <a href="#d29-employment">Employment <b>1</b></a>
         <a href="#d29-managers">Branch managers <b>1</b></a>
+        <a href="#d29-corrections">Correcting an application <b>1</b></a>
       </nav>
     </div>
 
@@ -193,6 +194,17 @@
       </ol>
     </section>
 
+    <section class="group" id="d29-corrections" aria-labelledby="d29-corrections-title">
+      <h3 id="d29-corrections-title">Correcting an application <small>When staff ask for more information</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Shows exactly what to fix, all at once</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Pressing “Resubmit for screening” could just say “Please correct the highlighted application details. [400]”, with nothing highlighted nearby. Problems came up one at a time, and older applications still asked for a term in months.</p><p class="side now"><span>Now</span>A box above the button lists every problem at once, for example “Contract end date: enter the date the current contract ends” and “Documents: upload Payslip (month 2), Payslip (month 3)”. “Show me” jumps to the box, which is outlined in red. The term box is gone for one-payment loans, and older applications switch to one payment automatically. The loan amount shows its limits (E100 to E10,000).</p></div>
+          <p class="why"><strong>Why:</strong> clients and staff couldn’t tell what needed fixing.</p>
+        </li>
+      </ol>
+    </section>
+
     <div class="extras">
       <h3>Smaller fixes</h3>
       <ul>
@@ -222,6 +234,7 @@
         <li>Expenses: <code>src/borrower/applicationForm.js</code> (<code>OTHER_EXPENSE</code>, description rule), <code>BorrowerApplicationForm.jsx</code>, <code>borrower-application-form.css</code>, <code>useBorrowerApplication.js</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>; server <code>functions/lending.js</code> and <code>applicationDraftService.js</code> keep an optional <code>description</code></li>
         <li>Branch managers: <code>src/auth/staffAccess.js</code> (<code>canOpenStaffPage</code>); sign-in check: <code>functions/service.js</code> (<code>session</code> returns <code>{ staff: null }</code> when there is no staff record)</li>
         <li>Tests: <code>src/borrower/applicationForm.test.js</code>, <code>src/auth/staffAccess.test.js</code>, <code>functions/test/lending.test.js</code></li>
+        <li>Correcting an application: <code>functions/loanApplicationService.js</code> (<code>resubmitApplication</code> collects field errors, product limits and missing documents into one <code>invalid-argument</code> with <code>fieldErrors</code>, <code>missingDocuments</code> and <code>missingDocumentLabels</code>; a product with one term sets it; <code>get</code> now returns the product’s amount and term limits), <code>src/lending/ApplicationCorrections.jsx</code> and new <code>application-corrections.css</code>, <code>src/borrower/ConnectedBorrowerLending.jsx</code>, <code>src/dashboard/DirectorApplicationReview.jsx</code>. New emulator test in <code>functions/test/reviewFixes.emulator.test.js</code> (6 tests pass); end-to-end <code>coreJourney.emulator.test.js</code> passes. Checked by hand on a temporary copy of the returned application, since deleted.</li>
       </ul>
     </details>
   </article>
