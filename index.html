@@ -130,12 +130,24 @@
   <article class="day" id="2026-10-30" aria-labelledby="day-2026-10-30">
     <div class="day-head">
       <h2 id="day-2026-10-30">30 October 2026</h2>
-      <p>Three months of made-up LendMo loans in the test app, so the dashboards show real numbers, and a fix for email and WhatsApp notices. 3 changes.</p>
+      <p>Three months of made-up LendMo loans in the test app, so the dashboards show real numbers; the Owner can choose who sends and approves payouts; and a fix for email and WhatsApp notices. 4 changes.</p>
       <nav class="jump" aria-label="Sections for 30 October 2026">
+        <a href="#d30-payouts">Payouts <b>1</b></a>
         <a href="#d30-notices">Notices <b>1</b></a>
         <a href="#d30-demo">Demo <b>1</b></a>
       </nav>
     </div>
+
+    <section class="group" id="d30-payouts" aria-labelledby="d30-payouts-title">
+      <h3 id="d30-payouts-title">Payouts <small>Settings, for the Owner</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The Owner chooses who sends and who approves payouts</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The Owner could only give payout duties by opening each staff member’s page in User management, so there was no single place to see who handles payouts.</p><p class="side now"><span>Now</span>Settings has a new “Payout team” page. It lists every current staff member, which loans they can see, and a choice for each: not involved, sends payouts, or approves payouts. At the top it shows who sends and who approves, or “Nobody yet”. Only an Owner can change it; Directors and Admin can see it. Nobody can both send and approve, and an Owner can’t change their own payout role. Every change goes in the audit trail.</p></div>
+          <p class="why"><strong>Why:</strong> So that, while it isn’t yet decided who does payouts at LendMo, the Owner can pick the people in one place, and everyone can see who to ask.</p>
+        </li>
+      </ol>
+    </section>
 
     <section class="group" id="d30-notices" aria-labelledby="d30-notices-title">
       <h3 id="d30-notices-title">Notices <small>Behind the scenes</small></h3>
@@ -172,6 +184,7 @@
       <ul>
         <li>Notices: <code>queueNotification</code> crashed with “The default Firebase app does not exist” because Firestore triggers already have the Functions SDK’s own app (<code>__FIREBASE_FUNCTIONS_SDK__</code>), so <code>getApps().length</code> was never 0. <code>getServices()</code> in <code>functions/index.js</code> now looks for the <code>[DEFAULT]</code> app. Checked in the emulator: the trigger finishes (about 0.35 s each) and worked through the earlier failed events; no deliveries were queued, as no one has opted into email or WhatsApp.</li>
         <li>Demo data: <code>npm run seed:loans</code> (<code>scripts/seed-demo-loans.mjs</code> runs <code>functions/seed-demo-loans.js</code>) drives the real loan service with the clock set back, through application, documents, checks, assessment, approval, signing at the branch, payout and verification, repayments and verification, interest posting, and support cases. Dates are counted back from the day it runs. Seeded application IDs are listed in <code>orgs/lendmo-demo/demoSeed/loans</code>, and <code>npm run seed:loans -- --reset</code> removes them and everything linked (loans, payments, journals, payout events, provider references, cases, notifications, audit and request records, drafts and uploaded files) before seeding again. It gives the Director <code>payouts.record</code>, <code>repayments.record</code> and <code>reconciliation.manage</code>, and the Owner <code>payouts.verify</code>, <code>repayments.verify</code> and <code>reconciliation.manage</code>. Notifications from before the last two days are marked read. Checked: a seed, then a reset and seed again, left no orphaned records; 79 journal entries (30 payouts, 21 repayments, 28 interest postings). Checked by hand: the Director overview and loan register, the Accounting and Support cases tabs, the Mbabane branch manager overview, and the Borrower’s loan page.</li>
+        <li>Payout team: new <code>payoutTeam</code> (read, staff who can manage users) and <code>setPayoutTeam</code> (Owner only, one transaction, audited as “User duties changed”) actions in <code>functions/userService.js</code>. Only active Owners, Directors, Branch Managers and Consultants are listed (Admin can’t see loans); <code>sees</code> comes from <code>scopeFor</code>, or <code>none</code> for branch staff without a branch. Other duties are kept. The screen is <code>PayoutTeamEditor</code> in <code>src/dashboard/settings/DirectorSettings.jsx</code>, with a new <code>payouts</code> section (shown with <code>users.read</code>) in <code>settingsModel.js</code>; <code>payoutTeam</code> is a read in <code>src/users/userApi.js</code>. New emulator test in <code>functions/test/users.emulator.test.js</code> passes (who is listed, saving, other duties kept, audit, and refusals: not an Owner, own duty, Admin, inactive, stale version, both duties, duplicates). The existing “trusted account activation, setup email” test fails against the running demo-ledmo emulators because the setup email goes to that project while the test uses demo-ledmo-tests; it was not touched. Checked by hand: as Owner, making S. Dlamini an approver and back (saved, audited); as Director, read-only; as Branch Manager, no Payout team in Settings.</li>
         <li>Local setup: <code>scripts/start-emulators.mjs</code> imports whichever of <code>.firebase-emulator-data</code> and the <code>firebase-export-*</code> folders has the newest <code>firebase-export-metadata.json</code>. On Windows the final rename of an export fails (EPERM) while the emulators hold the folder, so saved data often stays in a <code>firebase-export-*</code> folder. To save while running: <code>firebase emulators:export &lt;folder&gt; --project demo-ledmo</code> with TEMP set to <code>%TEMP%\lendmo-emulators</code>, so the CLI finds the hub.</li>
       </ul>
     </details>
