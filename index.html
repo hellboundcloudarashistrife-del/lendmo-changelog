@@ -130,10 +130,11 @@
   <article class="day" id="2026-11-02" aria-labelledby="day-2026-11-02">
     <div class="day-head">
       <h2 id="day-2026-11-02">2 November 2026</h2>
-      <p>Clients can sign up and sign in with Google, and choose a country code for phone numbers. 2 changes.</p>
+      <p>Clients can sign up and sign in with Google, phone numbers get a country code, and the app is a little larger on computer screens. 3 changes.</p>
       <nav class="jump" aria-label="Sections for 2 November 2026">
         <a href="#d02-signin">Signing in <b>1</b></a>
         <a href="#d02-phones">Phone numbers <b>1</b></a>
+        <a href="#d02-size">Size on screen <b>1</b></a>
       </nav>
     </div>
 
@@ -159,10 +160,22 @@
       </ol>
     </section>
 
+    <section class="group" id="d02-size" aria-labelledby="d02-size-title">
+      <h3 id="d02-size-title">Size on screen <small>The whole app</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The app is a little larger on computer screens</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Everything looked small on a full-size screen, and people had to zoom their browser in to 110% themselves.</p><p class="side now"><span>Now</span>On screens at least 1320 pixels wide, the app shows at that 110% size for everyone, with no browser setting needed. Phones, tablets and smaller laptops stay as they were, where there is less room.</p></div>
+          <p class="why"><strong>Why:</strong> 110% is the size that looked right in testing. If your browser is still zoomed in for this app, set it back to 100% (Ctrl+0), or the two will add up.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Size on screen: <code>--app-zoom</code> and CSS <code>zoom</code> on the root in <code>src/styles.css</code>, for screens from 1320px, because a page can’t set the browser’s own zoom. Zoom also scales viewport units (100vh came out 813px in a 739px window), so all 48 viewport sizes now divide by <code>--app-zoom</code>. Breakpoints above 1200px are multiplied by 1.1 so layouts switch at the same space as they did at 100%. The branch and staff action menus divide their measured positions by <code>appZoom()</code>. New <code>src/appZoom.test.js</code> guards the rule, the viewport sizes and the breakpoints; 175 unit tests pass. Checked by hand at 1903px against a 110% screenshot (sidebar 244, menu spacing 54, button 176; no extra scrollbar), at 1366x650 (menus on screen, Add branch fits), at 1280px and on a phone (no zoom, no sideways scrolling), and the login page. Tested in Chrome only. Not every page was opened at the new size.</li>
         <li>Phone numbers: new <code>src/lending/phoneNumbers.js</code> (country list, <code>parsePhone</code>, <code>formatPhone</code>, <code>phoneError</code>, <code>mobileMoneyError</code>) and <code>src/lending/PhoneNumberInput.jsx</code>, used in <code>RegistrationForm.jsx</code> and through <code>PhoneField</code> in <code>BorrowerApplicationForm.jsx</code>. The form keeps “+268 76123456”; the application sends <code>walletNumber</code> without spaces, as before. The server rules are unchanged, and it accepted +268, +27 and +1 numbers in this format. 169 unit tests pass (new: <code>phoneNumbers.test.js</code>; application rules for contact and wallet numbers). Checked by hand: all the boxes, a too-short Eswatini number refused, a South African number with a leading 0 accepted, a pasted +1 number switching country, and the application at phone width. The picker is also on <code>ApplicationCorrections.jsx</code>, <code>AccountSettings.jsx</code>, <code>UserManagement.jsx</code>, <code>BranchManagement.jsx</code>, <code>DirectorSettings.jsx</code> and <code>ProductSettings.jsx</code>; <code>branchModel.js</code> and <code>settingsModel.js</code> use <code>phoneError</code>. The rules are enforced on the screens; the server keeps its broader 7–15 digit checks. 172 unit tests pass. Checked by hand: saving Personal details and a refused short number; the staff, branch, company and company wallet boxes; and a refused short number on Corrections, without resubmitting. Not checked: saving through the staff, branch, company and wallet forms, though the server rules were run against the new format.</li>
         <li><code>signInWithGoogle</code> in <code>src/auth/borrowerAuth.js</code> uses <code>signInWithPopup</code> with session persistence; new <code>src/auth/GoogleSignIn.jsx</code>; shown from <code>src/App.jsx</code> and <code>RegistrationForm.jsx</code>; <code>src/main.jsx</code> shares <code>openAfterSignIn</code> with email sign-in, so a staff account still opens the staff workspace. Closing the Google window shows no error (<code>signInCancelled</code>); a blocked window or switched-off provider shows a clear message.</li>
         <li>Tests: 163 unit tests pass (new: Google messages). The 5 tests in <code>src/auth/borrowerAuth.emulator.test.js</code> pass on separate temporary emulators (new: first Google sign-in has no profile until the details are complete, a profile with a role is refused, signing back in keeps the same account; switched-off Google gets a clear error).</li>
