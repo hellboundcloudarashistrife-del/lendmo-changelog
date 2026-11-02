@@ -130,9 +130,10 @@
   <article class="day" id="2026-11-02" aria-labelledby="day-2026-11-02">
     <div class="day-head">
       <h2 id="day-2026-11-02">2 November 2026</h2>
-      <p>Clients can sign up and sign in with Google. 1 change.</p>
+      <p>Clients can sign up and sign in with Google, and choose a country code for phone numbers. 2 changes.</p>
       <nav class="jump" aria-label="Sections for 2 November 2026">
         <a href="#d02-signin">Signing in <b>1</b></a>
+        <a href="#d02-phones">Phone numbers <b>1</b></a>
       </nav>
     </div>
 
@@ -147,10 +148,22 @@
       </ol>
     </section>
 
+    <section class="group" id="d02-phones" aria-labelledby="d02-phones-title">
+      <h3 id="d02-phones-title">Phone numbers <small>Create account and the loan application</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Choose the country code for a phone number</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Phone numbers were typed into a plain box, with or without a country code, and the mobile money number was fixed to +268.</p><p class="side now"><span>Now</span>The phone number on Create account and Complete your account, the phone and alternative phone in the loan application, and the mobile money number each have a country code dropdown. Eswatini +268 is selected to start with, followed by neighbouring countries and then all others. A 0 typed at the start is dropped, and pasting a full number such as +27 82 123 4567 picks the country. Eswatini numbers must be 8 digits, and an Eswatini mobile money number must start with 76, 78 or 79. Numbers saved earlier without a code count as Eswatini.</p></div>
+          <p class="why"><strong>Why:</strong> So clients with a number from another country can enter it correctly, and every number is saved the same way.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Phone numbers: new <code>src/lending/phoneNumbers.js</code> (country list, <code>parsePhone</code>, <code>formatPhone</code>, <code>phoneError</code>, <code>mobileMoneyError</code>) and <code>src/lending/PhoneNumberInput.jsx</code>, used in <code>RegistrationForm.jsx</code> and through <code>PhoneField</code> in <code>BorrowerApplicationForm.jsx</code>. The form keeps “+268 76123456”; the application sends <code>walletNumber</code> without spaces, as before. The server rules are unchanged, and it accepted +268, +27 and +1 numbers in this format. 169 unit tests pass (new: <code>phoneNumbers.test.js</code>; application rules for contact and wallet numbers). Checked by hand: all the boxes, a too-short Eswatini number refused, a South African number with a leading 0 accepted, a pasted +1 number switching country, and the application at phone width. Not changed: the Corrections form, Personal details, and staff, branch and company phone fields, which remain plain boxes.</li>
         <li><code>signInWithGoogle</code> in <code>src/auth/borrowerAuth.js</code> uses <code>signInWithPopup</code> with session persistence; new <code>src/auth/GoogleSignIn.jsx</code>; shown from <code>src/App.jsx</code> and <code>RegistrationForm.jsx</code>; <code>src/main.jsx</code> shares <code>openAfterSignIn</code> with email sign-in, so a staff account still opens the staff workspace. Closing the Google window shows no error (<code>signInCancelled</code>); a blocked window or switched-off provider shows a clear message.</li>
         <li>Tests: 163 unit tests pass (new: Google messages). The 5 tests in <code>src/auth/borrowerAuth.emulator.test.js</code> pass on separate temporary emulators (new: first Google sign-in has no profile until the details are complete, a profile with a role is refused, signing back in keeps the same account; switched-off Google gets a clear error).</li>
         <li>Checked by hand: the button on both pages and at phone width, and not on Staff sign in; it opens the emulator’s Google screen; a test Google account lands on “Complete your account” with name and email filled in and no password, reaches the client portal, and has no staff record. The test account was removed. Not checked: choosing an account in a real pop-up window, because the browser pane used for testing opens pop-ups in the same tab (“No matching frame”), so that one step used a test Google credential instead.</li>
