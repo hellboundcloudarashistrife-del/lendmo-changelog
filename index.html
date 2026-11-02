@@ -122,11 +122,43 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 30 October 2026</p>
+    <p class="updated">Last updated 2 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-02" aria-labelledby="day-2026-11-02">
+    <div class="day-head">
+      <h2 id="day-2026-11-02">2 November 2026</h2>
+      <p>Clients can sign up and sign in with Google. 1 change.</p>
+      <nav class="jump" aria-label="Sections for 2 November 2026">
+        <a href="#d02-signin">Signing in <b>1</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d02-signin" aria-labelledby="d02-signin-title">
+      <h3 id="d02-signin-title">Signing in <small>Login and Create account pages</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Sign up or sign in with Google</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clients could only create an account with an email and password.</p><p class="side now"><span>Now</span>The Create account page has “Sign up with Google” and the login page has “Sign in with Google”. A first-time client picks their Google account, then only adds a phone number and address on the “Complete your account” page, with no password to make up. Next time, one click signs them in. Anyone who signs up this way is a client; staff accounts are still added by the company under Employees, and the Staff sign in page doesn’t have the button.</p></div>
+          <p class="why"><strong>Why:</strong> It’s quicker for clients, with one less password to remember. This works in the local test app with a stand-in for Google; real Google accounts need Google sign-in turned on when the app goes live.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li><code>signInWithGoogle</code> in <code>src/auth/borrowerAuth.js</code> uses <code>signInWithPopup</code> with session persistence; new <code>src/auth/GoogleSignIn.jsx</code>; shown from <code>src/App.jsx</code> and <code>RegistrationForm.jsx</code>; <code>src/main.jsx</code> shares <code>openAfterSignIn</code> with email sign-in, so a staff account still opens the staff workspace. Closing the Google window shows no error (<code>signInCancelled</code>); a blocked window or switched-off provider shows a clear message.</li>
+        <li>Tests: 163 unit tests pass (new: Google messages). The 5 tests in <code>src/auth/borrowerAuth.emulator.test.js</code> pass on separate temporary emulators (new: first Google sign-in has no profile until the details are complete, a profile with a role is refused, signing back in keeps the same account; switched-off Google gets a clear error).</li>
+        <li>Checked by hand: the button on both pages and at phone width, and not on Staff sign in; it opens the emulator’s Google screen; a test Google account lands on “Complete your account” with name and email filled in and no password, reaches the client portal, and has no staff record. The test account was removed. Not checked: choosing an account in a real pop-up window, because the browser pane used for testing opens pop-ups in the same tab (“No matching frame”), so that one step used a test Google credential instead.</li>
+        <li>Going live: turn on the Google provider in Firebase Authentication and add the app’s web address to the authorised domains. Until then the button says Google sign-in isn’t turned on.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-10-30" aria-labelledby="day-2026-10-30">
     <div class="day-head">
       <h2 id="day-2026-10-30">30 October 2026</h2>
