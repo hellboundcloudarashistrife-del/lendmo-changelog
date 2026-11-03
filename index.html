@@ -130,11 +130,23 @@
   <article class="day" id="2026-11-03" aria-labelledby="day-2026-11-03">
     <div class="day-head">
       <h2 id="day-2026-11-03">3 November 2026</h2>
-      <p>The test copy of the app on the development computer now saves its data every few minutes. 1 change.</p>
+      <p>“View payment instructions” now takes clients straight to the payment details, and the test copy of the app on the development computer saves its data every few minutes. 2 changes.</p>
       <nav class="jump" aria-label="Sections for 3 November 2026">
+        <a href="#d03-pay">Repayments <b>1</b></a>
         <a href="#d03-autosave">Test copy <b>1</b></a>
       </nav>
     </div>
+
+    <section class="group" id="d03-pay" aria-labelledby="d03-pay-title">
+      <h3 id="d03-pay-title">Repayments <small>Client portal: Dashboard, My loans and Repayments</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>“View payment instructions” goes straight to the payment details</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The button opened the top of the Repayments page. The wallets to pay into and the form to report a payment were at the very bottom, under “Tell us about a payment”, below the schedule and payments list, so clients had to scroll to find them.</p><p class="side now"><span>Now</span>The button on the Dashboard and on My loans opens the Repayments page already at “Tell us about a payment”, with the wallets and the form in view. Opening Repayments from the menu still starts at the top.</p></div>
+          <p class="why"><strong>Why:</strong> A button that says “View payment instructions” should show them, not leave the client looking for them.</p>
+        </li>
+      </ol>
+    </section>
 
     <section class="group" id="d03-autosave" aria-labelledby="d03-autosave-title">
       <h3 id="d03-autosave-title">Test copy <small>The copy of the app used for testing on the development computer</small></h3>
@@ -151,6 +163,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Payment instructions: both buttons (<code>SavedBorrowerOverview.jsx</code>, <code>BorrowerLoanDetail.jsx</code>) link to <code>#borrower/repayments?loan=…&amp;pay=1</code>. With <code>pay=1</code>, <code>BorrowerLoanDetail</code> waits for the loan to load, focuses the “Tell us about a payment” heading and scrolls its section into view. It jumps rather than scrolls smoothly because in Chrome the focus change cancels a smooth scroll, and smooth scrolls don’t run in a background tab. Checked in the browser as the demo client: from My loans and from the Dashboard at 1024×768, and from My loans at 1440×900 (110% size). Each time the heading was in view with the page scrolled to the bottom, and the menu’s Repayments link still opened at the top. 179 unit tests pass. Not checked on a phone.</li>
         <li>New <code>scripts/emulatorAutosave.mjs</code>: <code>saveEmulatorData</code> asks the emulator hub to export (<code>POST /_admin/export</code>). On Windows the hub’s final rename fails with EPERM while the emulators run, and a retry loop showed the lock never clears, but copying and deleting work. So the export left in <code>firebase-export-*</code> is copied to <code>&lt;folder&gt;.partial</code>, renamed into place once complete, and the leftover deleted. <code>newestSave</code> picks the folder to load from <code>.firebase-emulator-data</code>, <code>.firebase-autosave-1</code>/<code>-2</code> and any <code>firebase-export-*</code>.</li>
         <li><code>scripts/start-emulators.mjs</code> starts saving every 5 minutes (<code>EMULATOR_AUTOSAVE_MINUTES</code> changes it) after “All emulators ready”. It writes to whichever autosave folder wasn’t loaded at start, so it never replaces a folder the emulators have open. It finds the hub from Firebase’s <code>hub-demo-ledmo.json</code> in the emulators’ temp folder. <code>.gitignore</code> covers <code>.firebase-autosave*/</code>.</li>
         <li>Checked: two saves in a row against the running emulators, each with all 14 accounts and the Firestore and Storage data, taking 7–14 seconds and leaving no stray folders. <code>newestSave</code> then picked the new save. Both scripts pass a syntax check. Not yet run end to end: the start script’s own timer, which first runs the next time the emulators start. Until then, a separate process uses the same code to save every 5 minutes.</li>
