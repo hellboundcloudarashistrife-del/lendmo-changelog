@@ -122,11 +122,42 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 2 November 2026</p>
+    <p class="updated">Last updated 3 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-03" aria-labelledby="day-2026-11-03">
+    <div class="day-head">
+      <h2 id="day-2026-11-03">3 November 2026</h2>
+      <p>The test copy of the app on the development computer now saves its data every few minutes. 1 change.</p>
+      <nav class="jump" aria-label="Sections for 3 November 2026">
+        <a href="#d03-autosave">Test copy <b>1</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d03-autosave" aria-labelledby="d03-autosave-title">
+      <h3 id="d03-autosave-title">Test copy <small>The copy of the app used for testing on the development computer</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The test copy saves itself every 5 minutes</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The test copy only saved its data (accounts, applications, loans and uploads) when it was stopped the proper way. Closing its window or shutting the computer down lost everything since it was started. This happened twice, and a day’s testing had to be redone.</p><p class="side now"><span>Now</span>While it runs, it saves everything every 5 minutes, so at most a few minutes of testing can be lost. When it starts, it picks up the newest save. Stopping it the proper way still saves at that moment too.</p></div>
+          <p class="why"><strong>Why:</strong> Test accounts and test loans kept disappearing, so testing had to start again from scratch. This is only about the test copy. The live app keeps its data online and isn’t affected.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>New <code>scripts/emulatorAutosave.mjs</code>: <code>saveEmulatorData</code> asks the emulator hub to export (<code>POST /_admin/export</code>). On Windows the hub’s final rename fails with EPERM while the emulators run, and a retry loop showed the lock never clears, but copying and deleting work. So the export left in <code>firebase-export-*</code> is copied to <code>&lt;folder&gt;.partial</code>, renamed into place once complete, and the leftover deleted. <code>newestSave</code> picks the folder to load from <code>.firebase-emulator-data</code>, <code>.firebase-autosave-1</code>/<code>-2</code> and any <code>firebase-export-*</code>.</li>
+        <li><code>scripts/start-emulators.mjs</code> starts saving every 5 minutes (<code>EMULATOR_AUTOSAVE_MINUTES</code> changes it) after “All emulators ready”. It writes to whichever autosave folder wasn’t loaded at start, so it never replaces a folder the emulators have open. It finds the hub from Firebase’s <code>hub-demo-ledmo.json</code> in the emulators’ temp folder. <code>.gitignore</code> covers <code>.firebase-autosave*/</code>.</li>
+        <li>Checked: two saves in a row against the running emulators, each with all 14 accounts and the Firestore and Storage data, taking 7–14 seconds and leaving no stray folders. <code>newestSave</code> then picked the new save. Both scripts pass a syntax check. Not yet run end to end: the start script’s own timer, which first runs the next time the emulators start. Until then, a separate process uses the same code to save every 5 minutes.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-11-02" aria-labelledby="day-2026-11-02">
     <div class="day-head">
       <h2 id="day-2026-11-02">2 November 2026</h2>
