@@ -130,12 +130,87 @@
   <article class="day" id="2026-11-03" aria-labelledby="day-2026-11-03">
     <div class="day-head">
       <h2 id="day-2026-11-03">3 November 2026</h2>
-      <p>“View payment instructions” now takes clients straight to the payment details, and the test copy of the app on the development computer saves its data every few minutes. 2 changes.</p>
+      <p>Safety and bookkeeping fixes: only an Owner can make an Owner, a payout can’t be paid twice, signed loans don’t get stuck, sending an application back says what’s missing, applying reveals nothing about others, wallet number changes need a second person, interest is recorded properly and settlement deals expire. Also: “View payment instructions” goes straight to the payment details, and the test copy saves itself. 11 changes.</p>
       <nav class="jump" aria-label="Sections for 3 November 2026">
+        <a href="#d03-staff">Staff accounts <b>1</b></a>
+        <a href="#d03-payouts">Payouts <b>2</b></a>
+        <a href="#d03-applications">Applications <b>2</b></a>
+        <a href="#d03-wallets">Company wallets <b>1</b></a>
+        <a href="#d03-books">Interest and settlements <b>2</b></a>
         <a href="#d03-pay">Repayments <b>1</b></a>
         <a href="#d03-autosave">Test copy <b>1</b></a>
       </nav>
     </div>
+
+    <section class="group" id="d03-staff" aria-labelledby="d03-staff-title">
+      <h3 id="d03-staff-title">Staff accounts <small>Employees</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Only an Owner can add or change an Owner</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Directors and Admin / IT could also give someone the Owner role, or change or switch off an Owner’s account.</p><p class="side now"><span>Now</span>Only an Owner can add an Owner, give someone the Owner role, or change or switch off an Owner’s account. For everyone else the Owner role isn’t offered. Head office gets a notice whenever a new Owner is added, and an active Owner always remains.</p></div>
+          <p class="why"><strong>Why:</strong> Owners hand out approval and payout powers. Anyone able to make an Owner could give those powers to themselves.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d03-payouts" aria-labelledby="d03-payouts-title">
+      <h3 id="d03-payouts-title">Payouts <small>All loans &amp; payouts</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>A payout that was sent can’t be paid a second time</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A transfer already recorded with the provider’s reference could still be marked “failed”, which opened the way to paying the client again.</p><p class="side now"><span>Now</span>Once a transfer has a provider reference, the checker can only confirm it or flag it as a discrepancy. If the wrong amount went out, the provider’s return is recorded first, and only then can the right amount be sent. Earlier attempts stay on the loan’s record.</p></div>
+          <p class="why"><strong>Why:</strong> Money that has left the wallet must never be treated as if it hadn’t.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Signed loans no longer get stuck before payout</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>If a check or the assessment ran out between signing and payout, the loan could never be paid out or confirmed, even after the money was sent.</p><p class="side now"><span>Now</span>Confirming a payout that was already sent doesn’t re-run the eligibility checks. An offer now ends no later than the assessment it rests on. If a check runs out before payout, staff can redo it and the assessment on the signed loan, on the agreed terms.</p></div>
+          <p class="why"><strong>Why:</strong> A client who signed in good faith shouldn’t be left without their loan because a date passed.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d03-applications" aria-labelledby="d03-applications-title">
+      <h3 id="d03-applications-title">Applications <small>Loan application and review</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Sending an application back says exactly what’s missing</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Staff could only type a note. The client saw it above a long form with nothing marked.</p><p class="side now"><span>Now</span>When sending back, staff tick the documents to upload again and the details to correct. The client sees a “What we need from you” list, the boxes to check are highlighted, and the documents to replace are marked.</p></div>
+          <p class="why"><strong>Why:</strong> Clients couldn’t tell what to fix, which slowed down sent-back applications.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Applying no longer reveals anything about other people</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A message on the application form could show details of someone else’s application or loan with LendMo.</p><p class="side now"><span>Now</span>If the details can’t be used, the client is asked to contact their branch, with no details about anyone else, and repeated tries are limited. Staff still see the full reason.</p></div>
+          <p class="why"><strong>Why:</strong> Whether someone borrows from LendMo is private.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d03-wallets" aria-labelledby="d03-wallets-title">
+      <h3 id="d03-wallets-title">Company wallets <small>Settings, Lending settings</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Changing the wallet numbers needs a second person</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>One Owner could change the wallet numbers clients pay into, and the change applied straight away.</p><p class="side now"><span>Now</span>A new number waits until another Owner or a Director approves it. Until then clients keep seeing the current wallets. Renaming a wallet still applies straight away. Head office is told about each request and decision.</p></div>
+          <p class="why"><strong>Why:</strong> The wallets decide where clients’ money goes. Payouts and refunds already need two people, and wallets now do too.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d03-books" aria-labelledby="d03-books-title">
+      <h3 id="d03-books-title">Interest and settlements <small>Loan records and the books</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Interest is recorded as income</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Interest only counted as income when staff pressed a button, so a loan repaid on time never showed its interest as earned.</p><p class="side now"><span>Now</span>Interest counts as income on its due date, automatically. When a loan is paid off early, the interest received counts at once.</p></div>
+          <p class="why"><strong>Why:</strong> The company’s figures were understating its income.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Early settlement deals last 5 days</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Once staff saved a settlement amount, the interest it left out was gone for good, even if the client never paid.</p><p class="side now"><span>Now</span>A settlement amount holds for 5 days, which matches the law. If the loan isn’t paid off by then, the full interest is owed again and the client is told. A new amount can then be worked out. What a client pays when settling early is still to be confirmed with LendMo.</p></div>
+          <p class="why"><strong>Why:</strong> A deal that isn’t taken up shouldn’t cancel the interest for good.</p>
+        </li>
+      </ol>
+    </section>
 
     <section class="group" id="d03-pay" aria-labelledby="d03-pay-title">
       <h3 id="d03-pay-title">Repayments <small>Client portal: Dashboard, My loans and Repayments</small></h3>
@@ -163,6 +238,8 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Fixes from the internal app review (critical and high items, plus the wallet item). Owner role: <code>assertRoleChange</code> in <code>functions/userDomain.js</code>; notice in <code>userService.js</code>; the Employees form only offers roles the person may manage. Payouts: <code>verifyPayout</code> refuses “failed” once a reference is recorded; <code>claimPayout</code> keeps <code>payoutAttempts</code>; a verified return of a discrepancy puts the loan back to waiting for payout. Applications: borrower submissions found only by ID number get a general message and <code>idNumberLookups</code> limits it to 5 a day; <code>requestInfo</code> stores <code>infoRequest.fields</code>; new <code>src/lending/sendBack.js</code> and <code>SendBackChecklist.jsx</code>. Wallets: <code>setConfig</code> keeps number changes in <code>pendingWallets</code>; new <code>decideWalletChange</code> for another Owner or a Director. Interest: new <code>interestToRecognise</code>, <code>reopenInterest</code>, <code>restoreSettlement</code> in <code>functions/accounting.js</code>; the 15-minute job (<code>processLoan</code> in <code>scheduledReminders.js</code>) books due interest and ends expired settlement deals for every active loan, walk-ins included. Signed loans: <code>verifyPayout</code> no longer re-runs eligibility on confirmation; <code>createAgreement</code> caps the offer at the assessment's expiry; checks and assessments can be redone on a signed loan until a payout starts.</li>
+        <li>Tests: 182 unit tests pass (new: interest timing, settlement expiry, offer end date). New emulator tests pass for each fix: Owner role, double payout, ID number privacy, wallet approval, interest on early payoff and its reversal, the 15-minute job, payout after a check expires, redoing a check on a signed loan, and the send-back list. 84 of 89 emulator tests pass. The 5 that fail were already failing for setup reasons: 3 Phase One tests whose sample product lacks screening rules (like Phase Two), and 2 that need emulators started for the test project. In the app, the send-back checklist appears in Pending My Approval and ticking updates its counts; nothing was sent back, so the client’s highlighted form wasn’t seen in the browser. Not done: existing local loans that were already paid off keep their interest as deferred. What a client pays to settle early waits on LendMo.</li>
         <li>Payment instructions: both buttons (<code>SavedBorrowerOverview.jsx</code>, <code>BorrowerLoanDetail.jsx</code>) link to <code>#borrower/repayments?loan=…&amp;pay=1</code>. With <code>pay=1</code>, <code>BorrowerLoanDetail</code> waits for the loan to load, focuses the “Tell us about a payment” heading and scrolls its section into view. It jumps rather than scrolls smoothly because in Chrome the focus change cancels a smooth scroll, and smooth scrolls don’t run in a background tab. Checked in the browser as the demo client: from My loans and from the Dashboard at 1024×768, and from My loans at 1440×900 (110% size). Each time the heading was in view with the page scrolled to the bottom, and the menu’s Repayments link still opened at the top. 179 unit tests pass. Not checked on a phone.</li>
         <li>New <code>scripts/emulatorAutosave.mjs</code>: <code>saveEmulatorData</code> asks the emulator hub to export (<code>POST /_admin/export</code>). On Windows the hub’s final rename fails with EPERM while the emulators run, and a retry loop showed the lock never clears, but copying and deleting work. So the export left in <code>firebase-export-*</code> is copied to <code>&lt;folder&gt;.partial</code>, renamed into place once complete, and the leftover deleted. <code>newestSave</code> picks the folder to load from <code>.firebase-emulator-data</code>, <code>.firebase-autosave-1</code>/<code>-2</code> and any <code>firebase-export-*</code>.</li>
         <li><code>scripts/start-emulators.mjs</code> starts saving every 5 minutes (<code>EMULATOR_AUTOSAVE_MINUTES</code> changes it) after “All emulators ready”. It writes to whichever autosave folder wasn’t loaded at start, so it never replaces a folder the emulators have open. It finds the hub from Firebase’s <code>hub-demo-ledmo.json</code> in the emulators’ temp folder. <code>.gitignore</code> covers <code>.firebase-autosave*/</code>.</li>
