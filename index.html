@@ -130,14 +130,18 @@
   <article class="day" id="2026-11-04" aria-labelledby="day-2026-11-04">
     <div class="day-head">
       <h2 id="day-2026-11-04">4 November 2026</h2>
-      <p>Design fixes on the staff screens: a tidier “what needs fixing” list, warnings where you’re looking, and plain words instead of codes. 4 changes.</p>
+      <p>Fixes for clients (payment steps, plain words, withdrawing), fairer approvals, safer payment and loan records, steadier staff screens, and design fixes on the staff side. 17 changes.</p>
       <nav class="jump" aria-label="Sections for 4 November 2026">
-        <a href="#d04-staff">Staff screens <b>4</b></a>
+        <a href="#d04-clients">For clients <b>4</b></a>
+        <a href="#d04-review">Applications and approvals <b>4</b></a>
+        <a href="#d04-money">Payments and loan records <b>3</b></a>
+        <a href="#d04-staff2">Staff screens and accounts <b>2</b></a>
+        <a href="#d04-staff">Staff screen design <b>4</b></a>
       </nav>
     </div>
 
     <section class="group" id="d04-staff" aria-labelledby="d04-staff-title">
-      <h3 id="d04-staff-title">Staff screens <small>Pending My Approval, application review, Rejected &amp; Sent Back, Approved, branch overview</small></h3>
+      <h3 id="d04-staff-title">Staff screen design <small>Pending My Approval, application review, Rejected &amp; Sent Back, Approved, branch overview</small></h3>
       <ol class="cards">
         <li class="card">
           <div class="card-top"><h4>The “what needs fixing” list is grouped like the application form</h4><span class="pill done">Done</span></div>
@@ -162,10 +166,100 @@
       </ol>
     </section>
 
+    <section class="group" id="d04-clients" aria-labelledby="d04-clients-title">
+      <h3 id="d04-clients-title">For clients <small>Client portal</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Clear steps for paying back</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The payment section listed two numbers labelled “payout wallet” and a form, with no steps.</p><p class="side now"><span>Now</span>It shows three numbered steps: send the amount due (shown) by MTN MoMo or eMali to one of the Lendmo numbers, keep the SMS, then enter the transaction reference. The numbers read “Lendmo · MTN MoMo +268 7612 3456”.</p></div>
+          <p class="why"><strong>Why:</strong> Clients should know exactly how to repay without asking.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Plain words and dates everywhere clients look</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clients saw terms like “Unapplied credit”, codes like “info requested”, a long technical code on the agreement, and dates like 2026-11-30, also on downloaded statements.</p><p class="side now"><span>Now</span>They see “Extra paid, held for you”, “We need more information”, “Waiting for payout”, dates like 30 Nov 2026, and no technical code on screen.</p></div>
+          <p class="why"><strong>Why:</strong> Clients shouldn’t need to know the system’s words.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Clearer messages when things go wrong</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A weak connection showed “internal [0]”. If the application form failed to load, it looked closed, and anything typed could be lost.</p><p class="side now"><span>Now</span>A dropped connection says “Check your connection and try again. Your entries have been kept.” A form that didn’t load says so, with a Try again button.</p></div>
+          <p class="why"><strong>Why:</strong> Clients thought applications were closed when they weren’t.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Withdrawing and linking accounts</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A client who didn’t want to go ahead after being asked for more information couldn’t close the application, so they could never apply again. A client who first applied at a branch couldn’t see that loan after opening an online account.</p><p class="side now"><span>Now</span>Clients can withdraw an application that was sent back to them, and it doesn’t count against them. Staff can link a branch application to the client’s online account after checking it’s theirs.</p></div>
+          <p class="why"><strong>Why:</strong> Neither should leave a client stuck.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d04-review" aria-labelledby="d04-review-title">
+      <h3 id="d04-review-title">Applications and approvals <small>Application review</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Fairer, harder-to-bend approval rules</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Someone could approve their own client by briefly handing the application to a colleague. A client could raise the amount on the corrections form after a decline. An old signed copy could count for a new offer.</p><p class="side now"><span>Now</span>Nobody can approve an application they submitted, corrected or were ever assigned to. Resubmissions are checked again against the one-application and decline rules, and the ID number can’t change once sent. Reopening an offer removes the old signed copy.</p></div>
+          <p class="why"><strong>Why:</strong> Each approval should be independent and on the terms the client actually signed.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Affordability uses honest figures</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Staff could type any salary into the affordability test, with nothing showing what the client had declared.</p><p class="side now"><span>Now</span>The client’s declared figures are shown under each box, and using a higher income needs a written reason that’s kept with the result.</p></div>
+          <p class="why"><strong>Why:</strong> The test protects clients from loans they can’t afford.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Applications can be closed properly</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>An application the client never answered stayed open forever, and the only way out recorded a decline that wrongly limited their next application.</p><p class="side now"><span>Now</span>Staff can close it as “withdrawn” after 14 days without an answer (a branch application straight away), and can record that a branch customer said no to an offer. Neither counts as a decline.</p></div>
+          <p class="why"><strong>Why:</strong> Closing an application shouldn’t count against the client.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Swapped documents are visible</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Staff could replace a client’s payslip or statement during review without the client knowing.</p><p class="side now"><span>Now</span>A reason is needed, the client is told, and someone else must review the new document.</p></div>
+          <p class="why"><strong>Why:</strong> Clients should know what’s on their application.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d04-money" aria-labelledby="d04-money-title">
+      <h3 id="d04-money-title">Payments and loan records <small>Loans, repayments and reports</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Payment claims can’t hide an overdue loan</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A client could report any payment amount, dated any day, as often as they liked, and the loan stopped showing as overdue while it waited.</p><p class="side now"><span>Now</span>One reported payment at a time, for no more than is owed. It holds off “overdue” for at most 7 days while staff check it, and stops counting at once if staff can’t confirm it.</p></div>
+          <p class="why"><strong>Why:</strong> Genuine payments are protected, but reminders can’t be avoided by reporting payments that weren’t made.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Fewer stuck records</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>One typing mistake locked a payment reference for good. Reversing a stray receipt reopened a fully paid loan. A client whose payout was returned could never apply again.</p><p class="side now"><span>Now</span>A rejected receipt frees its reference. After a reversal, the loan’s status is worked out again. A returned payout no longer blocks a new application.</p></div>
+          <p class="why"><strong>Why:</strong> Mistakes should be fixable without leaving records wrong.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Dates and totals that add up</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The 5-day cancellation window counted days in UTC, reports counted refunds as money collected, and staff forms left open overnight used yesterday’s date.</p><p class="side now"><span>Now</span>Days are counted in Eswatini time, refunds come off the money collected, and forms use today’s date.</p></div>
+          <p class="why"><strong>Why:</strong> Small errors like these make the records disagree with reality.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d04-staff2" aria-labelledby="d04-staff2-title">
+      <h3 id="d04-staff2-title">Staff screens and accounts <small>Pending My Approval, overviews, Employees, Branches</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Steadier, easier-to-read staff screens</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Pending My Approval jumped back to page 1 every 30 seconds and could lose a half-written note. The Approve button and status badges were hard to read. Amounts on overview cards were cut off. The branch manager’s numbers didn’t say what they counted.</p><p class="side now"><span>Now</span>The list keeps its place and your note. Buttons and badges meet the contrast standard. Amounts fit their cards. The branch manager sees Applications waiting, Active loans, Overdue loans (with the amount) and Repayments this month. Chart labels are rounded. The app is called “Lendmo” everywhere.</p></div>
+          <p class="why"><strong>Why:</strong> Staff work in these screens all day.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Staff powers stay where they should</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Moving someone between branches on the Branches page kept their approval limit and money duties. An Owner could give branch staff any approval limit.</p><p class="side now"><span>Now</span>Moving someone on either page clears their limit and duties. Branch managers and consultants can’t be given more than E600, LendMo’s limit. Screen settings saved in the browser belong to each person, not the whole branch PC.</p></div>
+          <p class="why"><strong>Why:</strong> A move or a typo shouldn’t hand out more power than intended.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Fixes from the internal app review’s medium and low lists, made on 3 November and finished on 4 November. Main changes: <code>pastAssignees</code> and <code>preparedOrOwned</code> (approval independence), <code>withdrawApplication</code>, <code>linkBorrowerAccount</code>, signed copies tied to the agreement hash, declared-income reasons on assessments, <code>PAYMENT_CHECK_DAYS</code> = 7 in <code>lending.js</code>, reference release on rejection, status re-derived after reversals, Eswatini-day cooling-off, <code>BRANCH_APPROVAL_LIMIT_CENTS</code>, storage.rules closing the unused borrower folder, <code>requestErrors.js</code>, <code>borrowerWords.js</code>, per-person settings in <code>localSettingsStore.js</code>, and the new <code>npm run test:emulators</code> runner on its own ports. Package updates: re2js and body-parser; the remaining warnings come from inside Firebase. Tests: 194 unit tests pass, and all 113 emulator tests pass on the separate test emulators (npm run test:emulators), including new ones for each fix; one test expected an amount without cents and was corrected. Checked in the browser: the client screens, the payment steps, and the staff screens listed under Staff screen design. Not seen on screen: “customer said no”, as the demo data has no unsigned walk-in offer.</li>
         <li>New <code>requestableFieldGroups</code> in <code>src/lending/sendBack.js</code> (ID number left out) used by <code>SendBackChecklist.jsx</code>; <code>noteError</code> in <code>DirectorPendingApplications.jsx</code>; the Rejected &amp; Sent Back panel in <code>ApplicationDashboards.jsx</code> reads <code>infoRequest.documents</code>/<code>fields</code>; new <code>src/dashboard/statusWords.js</code> (<code>staffStatus</code>, <code>termLabel</code>) used in the review screen, the branch work queue and the application lists. Checked in the browser as the Owner and the Branch manager at 1440×900 (110% size) and 1024×768: the grouped checklist, the red warning under the notes box, readable statuses, “One payment”, short loan codes, and no cut-off amounts or sideways scrolling on the overview. The ticked-items list on Rejected &amp; Sent Back wasn’t seen with real ticks, because no application in the demo data was sent back with the checklist. The app builds and 194 unit tests pass.</li>
       </ul>
     </details>
