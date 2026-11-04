@@ -122,11 +122,55 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 3 November 2026</p>
+    <p class="updated">Last updated 4 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-04" aria-labelledby="day-2026-11-04">
+    <div class="day-head">
+      <h2 id="day-2026-11-04">4 November 2026</h2>
+      <p>Design fixes on the staff screens: a tidier “what needs fixing” list, warnings where you’re looking, and plain words instead of codes. 4 changes.</p>
+      <nav class="jump" aria-label="Sections for 4 November 2026">
+        <a href="#d04-staff">Staff screens <b>4</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d04-staff" aria-labelledby="d04-staff-title">
+      <h3 id="d04-staff-title">Staff screens <small>Pending My Approval, application review, Rejected &amp; Sent Back, Approved, branch overview</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The “what needs fixing” list is grouped like the application form</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>When sending an application back, staff saw one long list of 31 details to tick, including the ID number, which can’t be changed once an application is sent.</p><p class="side now"><span>Now</span>The details are grouped under About the client, Address, Work and pay, Spending, Bank and mobile money, and The loan. The ID number is no longer offered. The box the client fills in is headed “What needs fixing”, which reads right for clients and for staff correcting a walk-in.</p></div>
+          <p class="why"><strong>Why:</strong> Staff find the right item faster, and can’t ask for a change the app won’t accept.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A missing reason is shown where you type it</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>In Pending My Approval, pressing Send back or Reject without a reason moved the cursor to the notes box, but the warning appeared far below, off screen, with an unrelated “Refresh application” button.</p><p class="side now"><span>Now</span>The warning appears in red right under the notes box, and the box is outlined until a reason is typed. The approval checklist starts each line with a capital letter.</p></div>
+          <p class="why"><strong>Why:</strong> It looked as if nothing had happened.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Sent-back applications list what was asked for</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Rejected &amp; Sent Back only said “Provide the requested information”.</p><p class="side now"><span>Now</span>It lists each document and detail staff ticked when sending the application back, and marks a document as received once the client uploads a new copy. Older send-backs keep the general line.</p></div>
+          <p class="why"><strong>Why:</strong> The team can see at a glance what each client still owes them.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Clearer words on staff screens</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Staff screens showed stored codes such as “info requested”, “1 months” and full loan IDs like 414f9ea0-c298-4745-….</p><p class="side now"><span>Now</span>They read “Sent back, waiting for the client”, “Signed, waiting for payout”, “One payment”, and short loan codes like 414F9EA0, the same as everywhere else.</p></div>
+          <p class="why"><strong>Why:</strong> Easier to read at a glance, and consistent across the app.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>New <code>requestableFieldGroups</code> in <code>src/lending/sendBack.js</code> (ID number left out) used by <code>SendBackChecklist.jsx</code>; <code>noteError</code> in <code>DirectorPendingApplications.jsx</code>; the Rejected &amp; Sent Back panel in <code>ApplicationDashboards.jsx</code> reads <code>infoRequest.documents</code>/<code>fields</code>; new <code>src/dashboard/statusWords.js</code> (<code>staffStatus</code>, <code>termLabel</code>) used in the review screen, the branch work queue and the application lists. Checked in the browser as the Owner and the Branch manager at 1440×900 (110% size) and 1024×768: the grouped checklist, the red warning under the notes box, readable statuses, “One payment”, short loan codes, and no cut-off amounts or sideways scrolling on the overview. The ticked-items list on Rejected &amp; Sent Back wasn’t seen with real ticks, because no application in the demo data was sent back with the checklist. The app builds and 194 unit tests pass.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-11-03" aria-labelledby="day-2026-11-03">
     <div class="day-head">
       <h2 id="day-2026-11-03">3 November 2026</h2>
