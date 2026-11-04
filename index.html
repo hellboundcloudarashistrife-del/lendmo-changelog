@@ -130,13 +130,13 @@
   <article class="day" id="2026-11-04" aria-labelledby="day-2026-11-04">
     <div class="day-head">
       <h2 id="day-2026-11-04">4 November 2026</h2>
-      <p>Fixes for clients (payment steps, plain words, withdrawing), fairer approvals, safer payment and loan records, steadier staff screens, design fixes on the staff side, signing at the branch as the starting setting, and a tidier signing step and printed agreement. 20 changes.</p>
+      <p>Fixes for clients (payment steps, plain words, withdrawing), fairer approvals, safer payment and loan records, steadier staff screens, design fixes on the staff side, signing at the branch as the starting setting, a tidier signing step and printed agreement, and readable dates and statuses on every staff page. 22 changes.</p>
       <nav class="jump" aria-label="Sections for 4 November 2026">
         <a href="#d04-clients">For clients <b>5</b></a>
         <a href="#d04-review">Applications and approvals <b>5</b></a>
         <a href="#d04-money">Payments and loan records <b>3</b></a>
         <a href="#d04-staff2">Staff screens and accounts <b>2</b></a>
-        <a href="#d04-staff">Staff screen design <b>5</b></a>
+        <a href="#d04-staff">Staff screen design <b>7</b></a>
       </nav>
     </div>
 
@@ -167,6 +167,16 @@
           <div class="card-top"><h4>The signing step comes first</h4><span class="pill done">Done</span></div>
           <div class="compare"><p class="side before"><span>Before</span>On an offer’s Approvals step, “Reopen for reassessment” came first and the full agreement text sat in the middle, so staff had to scroll past both to record a signing or a refusal.</p><p class="side now"><span>Now</span>Under the print buttons, a short line says what to do when the client is at the branch, followed by uploading the signed copy, recording the signing, and “Customer said no”. The full agreement and reopening are folded away at the bottom.</p></div>
           <p class="why"><strong>Why:</strong> This is the screen staff use with the client sitting in front of them.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Readable dates and statuses on every staff page</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Customer support and collection case logs showed raw timestamps like “2026-09-14T13:31:00.000Z”. Reports showed codes like “awaiting_disbursement” and branch codes like “mba”. Loan details, charges and lists showed lowercase statuses and dates like 2026-10-30.</p><p class="side now"><span>Now</span>Dates read “30 Oct 2026” (with the time where it matters), statuses start with a capital (“Active”, “Awaiting disbursement”), and reports show branch names. The Excel download keeps sortable dates and gains branch names.</p></div>
+          <p class="why"><strong>Why:</strong> Staff shouldn’t have to decode what they’re reading.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Clearer Employees and Lending settings pages</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Employees cut long email addresses short with “…”. Lending settings showed “active” in lowercase and described interest as monthly on a reducing balance, which isn’t how LendMo’s one-payment loan works.</p><p class="side now"><span>Now</span>Email addresses show in full, breaking before the “@” when they’re long. The status reads “Active”, and for a one-payment product the interest box is labelled “Interest, charged once (%)” with a matching explanation.</p></div>
+          <p class="why"><strong>Why:</strong> The settings page should describe LendMo’s product the way it actually works.</p>
         </li>
       </ol>
     </section>
@@ -274,6 +284,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Every remaining staff page (Loan servicing, Collections, Finance &amp; reports, Reports, Branches, Employees, Audit trail and each Settings section) was scanned in the browser as the Owner for raw codes, raw dates, “undefined”, cut-off text and sideways scrolling, at 1440×900 (110% size) and 1024×768, and the main ones were looked at on screen. <code>staffDate</code>/<code>staffDateTime</code> (re-exported from <code>borrowerWords.js</code> in <code>statusWords.js</code>) are used in <code>LendingOperations.jsx</code> and <code>OperationsModules.jsx</code>; <code>ReportsWorkspace.jsx</code> formats cells on screen and adds branch names; <code>ProductSettings.jsx</code> labels one-payment interest. After the fixes no page showed raw codes or timestamps, and nothing was cut off or scrolled sideways at either size. The app builds and 194 unit tests pass.</li>
         <li>Signing step and agreement: the Approvals step in <code>DirectorApplicationReview.jsx</code> now shows the signing controls before the folded-away agreement text and reopen form; <code>createAgreement</code> in <code>functions/underwriting.js</code> uses the short reference, <code>offerExpiry</code> (Eswatini time) and plain wording for overpayments, which changes the text and hash of new offers only. Checked on screen with the demo walk-in offer (Thabo Mamba). 194 unit tests pass, and the 37 emulator tests that create and sign agreements pass.</li>
         <li>Signing at the branch: <code>DRAFT_POLICY.signAtBranch</code> in <code>functions/productPolicy.js</code> is now <code>true</code>, so settings saved without it also count as signing at the branch. Test products that exercise online acceptance now say <code>signAtBranch: false</code> explicitly. 194 unit tests and all 113 emulator tests pass.</li>
         <li>Fixes from the internal app review’s medium and low lists, made on 3 November and finished on 4 November. Main changes: <code>pastAssignees</code> and <code>preparedOrOwned</code> (approval independence), <code>withdrawApplication</code>, <code>linkBorrowerAccount</code>, signed copies tied to the agreement hash, declared-income reasons on assessments, <code>PAYMENT_CHECK_DAYS</code> = 7 in <code>lending.js</code>, reference release on rejection, status re-derived after reversals, Eswatini-day cooling-off, <code>BRANCH_APPROVAL_LIMIT_CENTS</code>, storage.rules closing the unused borrower folder, <code>requestErrors.js</code>, <code>borrowerWords.js</code>, per-person settings in <code>localSettingsStore.js</code>, and the new <code>npm run test:emulators</code> runner on its own ports. Package updates: re2js and body-parser; the remaining warnings come from inside Firebase. Tests: 194 unit tests pass, and all 113 emulator tests pass on the separate test emulators (npm run test:emulators), including new ones for each fix; one test expected an amount without cents and was corrected. Checked in the browser: the client screens, the payment steps, and the staff screens listed under Staff screen design. Not seen on screen: “customer said no”, as the demo data has no unsigned walk-in offer.</li>
