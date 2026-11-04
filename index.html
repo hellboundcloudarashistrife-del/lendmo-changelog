@@ -130,10 +130,10 @@
   <article class="day" id="2026-11-04" aria-labelledby="day-2026-11-04">
     <div class="day-head">
       <h2 id="day-2026-11-04">4 November 2026</h2>
-      <p>Fixes for clients (payment steps, plain words, withdrawing), fairer approvals, safer payment and loan records, steadier staff screens, and design fixes on the staff side. 17 changes.</p>
+      <p>Fixes for clients (payment steps, plain words, withdrawing), fairer approvals, safer payment and loan records, steadier staff screens, design fixes on the staff side, and signing at the branch as the starting setting. 18 changes.</p>
       <nav class="jump" aria-label="Sections for 4 November 2026">
         <a href="#d04-clients">For clients <b>4</b></a>
-        <a href="#d04-review">Applications and approvals <b>4</b></a>
+        <a href="#d04-review">Applications and approvals <b>5</b></a>
         <a href="#d04-money">Payments and loan records <b>3</b></a>
         <a href="#d04-staff2">Staff screens and accounts <b>2</b></a>
         <a href="#d04-staff">Staff screen design <b>4</b></a>
@@ -215,6 +215,11 @@
           <div class="compare"><p class="side before"><span>Before</span>Staff could replace a client’s payslip or statement during review without the client knowing.</p><p class="side now"><span>Now</span>A reason is needed, the client is told, and someone else must review the new document.</p></div>
           <p class="why"><strong>Why:</strong> Clients should know what’s on their application.</p>
         </li>
+        <li class="card">
+          <div class="card-top"><h4>Signing at the branch is the starting setting</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A new setup of the app started with online acceptance switched on. Unless someone remembered to tick “Clients sign every loan in person at the branch” in Lending settings, clients could accept offers in the app without coming in.</p><p class="side now"><span>Now</span>Signing at the branch is where every setup starts. Clients can apply and follow their application in the app, but they come into the branch with their ID to sign, and staff upload the signed copy before payout.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo confirmed on 4 November that they don’t do online loans: every client comes in to finalise their loan.</p>
+        </li>
       </ol>
     </section>
 
@@ -259,6 +264,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Signing at the branch: <code>DRAFT_POLICY.signAtBranch</code> in <code>functions/productPolicy.js</code> is now <code>true</code>, so settings saved without it also count as signing at the branch. Test products that exercise online acceptance now say <code>signAtBranch: false</code> explicitly. 194 unit tests and all 113 emulator tests pass.</li>
         <li>Fixes from the internal app review’s medium and low lists, made on 3 November and finished on 4 November. Main changes: <code>pastAssignees</code> and <code>preparedOrOwned</code> (approval independence), <code>withdrawApplication</code>, <code>linkBorrowerAccount</code>, signed copies tied to the agreement hash, declared-income reasons on assessments, <code>PAYMENT_CHECK_DAYS</code> = 7 in <code>lending.js</code>, reference release on rejection, status re-derived after reversals, Eswatini-day cooling-off, <code>BRANCH_APPROVAL_LIMIT_CENTS</code>, storage.rules closing the unused borrower folder, <code>requestErrors.js</code>, <code>borrowerWords.js</code>, per-person settings in <code>localSettingsStore.js</code>, and the new <code>npm run test:emulators</code> runner on its own ports. Package updates: re2js and body-parser; the remaining warnings come from inside Firebase. Tests: 194 unit tests pass, and all 113 emulator tests pass on the separate test emulators (npm run test:emulators), including new ones for each fix; one test expected an amount without cents and was corrected. Checked in the browser: the client screens, the payment steps, and the staff screens listed under Staff screen design. Not seen on screen: “customer said no”, as the demo data has no unsigned walk-in offer.</li>
         <li>New <code>requestableFieldGroups</code> in <code>src/lending/sendBack.js</code> (ID number left out) used by <code>SendBackChecklist.jsx</code>; <code>noteError</code> in <code>DirectorPendingApplications.jsx</code>; the Rejected &amp; Sent Back panel in <code>ApplicationDashboards.jsx</code> reads <code>infoRequest.documents</code>/<code>fields</code>; new <code>src/dashboard/statusWords.js</code> (<code>staffStatus</code>, <code>termLabel</code>) used in the review screen, the branch work queue and the application lists. Checked in the browser as the Owner and the Branch manager at 1440×900 (110% size) and 1024×768: the grouped checklist, the red warning under the notes box, readable statuses, “One payment”, short loan codes, and no cut-off amounts or sideways scrolling on the overview. The ticked-items list on Rejected &amp; Sent Back wasn’t seen with real ticks, because no application in the demo data was sent back with the checklist. The app builds and 194 unit tests pass.</li>
       </ul>
