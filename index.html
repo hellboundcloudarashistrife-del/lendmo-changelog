@@ -130,13 +130,13 @@
   <article class="day" id="2026-11-04" aria-labelledby="day-2026-11-04">
     <div class="day-head">
       <h2 id="day-2026-11-04">4 November 2026</h2>
-      <p>Fixes for clients (payment steps, plain words, withdrawing), fairer approvals, safer payment and loan records, steadier staff screens, design fixes on the staff side, and signing at the branch as the starting setting. 18 changes.</p>
+      <p>Fixes for clients (payment steps, plain words, withdrawing), fairer approvals, safer payment and loan records, steadier staff screens, design fixes on the staff side, signing at the branch as the starting setting, and a tidier signing step and printed agreement. 20 changes.</p>
       <nav class="jump" aria-label="Sections for 4 November 2026">
-        <a href="#d04-clients">For clients <b>4</b></a>
+        <a href="#d04-clients">For clients <b>5</b></a>
         <a href="#d04-review">Applications and approvals <b>5</b></a>
         <a href="#d04-money">Payments and loan records <b>3</b></a>
         <a href="#d04-staff2">Staff screens and accounts <b>2</b></a>
-        <a href="#d04-staff">Staff screen design <b>4</b></a>
+        <a href="#d04-staff">Staff screen design <b>5</b></a>
       </nav>
     </div>
 
@@ -163,6 +163,11 @@
           <div class="compare"><p class="side before"><span>Before</span>Staff screens showed stored codes such as “info requested”, “1 months” and full loan IDs like 414f9ea0-c298-4745-….</p><p class="side now"><span>Now</span>They read “Sent back, waiting for the client”, “Signed, waiting for payout”, “One payment”, and short loan codes like 414F9EA0, the same as everywhere else.</p></div>
           <p class="why"><strong>Why:</strong> Easier to read at a glance, and consistent across the app.</p>
         </li>
+        <li class="card">
+          <div class="card-top"><h4>The signing step comes first</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>On an offer’s Approvals step, “Reopen for reassessment” came first and the full agreement text sat in the middle, so staff had to scroll past both to record a signing or a refusal.</p><p class="side now"><span>Now</span>Under the print buttons, a short line says what to do when the client is at the branch, followed by uploading the signed copy, recording the signing, and “Customer said no”. The full agreement and reopening are folded away at the bottom.</p></div>
+          <p class="why"><strong>Why:</strong> This is the screen staff use with the client sitting in front of them.</p>
+        </li>
       </ol>
     </section>
 
@@ -188,6 +193,11 @@
           <div class="card-top"><h4>Withdrawing and linking accounts</h4><span class="pill done">Done</span></div>
           <div class="compare"><p class="side before"><span>Before</span>A client who didn’t want to go ahead after being asked for more information couldn’t close the application, so they could never apply again. A client who first applied at a branch couldn’t see that loan after opening an online account.</p><p class="side now"><span>Now</span>Clients can withdraw an application that was sent back to them, and it doesn’t count against them. Staff can link a branch application to the client’s online account after checking it’s theirs.</p></div>
           <p class="why"><strong>Why:</strong> Neither should leave a client stuck.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A clearer printed agreement</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The agreement clients sign showed the full system ID, an expiry like “2026-11-18T02:19:05.312Z”, and the accounting term “unapplied credit”.</p><p class="side now"><span>Now</span>It shows the short reference (for example C9B5E83E), an expiry like “18 Nov 2026 at 04:19” in Eswatini time, and says extra money paid is “kept on your account as extra paid”. Offers made before today keep the wording they were made with.</p></div>
+          <p class="why"><strong>Why:</strong> Clients read and sign this document, so it should be easy to read.</p>
         </li>
       </ol>
     </section>
@@ -264,6 +274,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Signing step and agreement: the Approvals step in <code>DirectorApplicationReview.jsx</code> now shows the signing controls before the folded-away agreement text and reopen form; <code>createAgreement</code> in <code>functions/underwriting.js</code> uses the short reference, <code>offerExpiry</code> (Eswatini time) and plain wording for overpayments, which changes the text and hash of new offers only. Checked on screen with the demo walk-in offer (Thabo Mamba). 194 unit tests pass, and the 37 emulator tests that create and sign agreements pass.</li>
         <li>Signing at the branch: <code>DRAFT_POLICY.signAtBranch</code> in <code>functions/productPolicy.js</code> is now <code>true</code>, so settings saved without it also count as signing at the branch. Test products that exercise online acceptance now say <code>signAtBranch: false</code> explicitly. 194 unit tests and all 113 emulator tests pass.</li>
         <li>Fixes from the internal app review’s medium and low lists, made on 3 November and finished on 4 November. Main changes: <code>pastAssignees</code> and <code>preparedOrOwned</code> (approval independence), <code>withdrawApplication</code>, <code>linkBorrowerAccount</code>, signed copies tied to the agreement hash, declared-income reasons on assessments, <code>PAYMENT_CHECK_DAYS</code> = 7 in <code>lending.js</code>, reference release on rejection, status re-derived after reversals, Eswatini-day cooling-off, <code>BRANCH_APPROVAL_LIMIT_CENTS</code>, storage.rules closing the unused borrower folder, <code>requestErrors.js</code>, <code>borrowerWords.js</code>, per-person settings in <code>localSettingsStore.js</code>, and the new <code>npm run test:emulators</code> runner on its own ports. Package updates: re2js and body-parser; the remaining warnings come from inside Firebase. Tests: 194 unit tests pass, and all 113 emulator tests pass on the separate test emulators (npm run test:emulators), including new ones for each fix; one test expected an amount without cents and was corrected. Checked in the browser: the client screens, the payment steps, and the staff screens listed under Staff screen design. Not seen on screen: “customer said no”, as the demo data has no unsigned walk-in offer.</li>
         <li>New <code>requestableFieldGroups</code> in <code>src/lending/sendBack.js</code> (ID number left out) used by <code>SendBackChecklist.jsx</code>; <code>noteError</code> in <code>DirectorPendingApplications.jsx</code>; the Rejected &amp; Sent Back panel in <code>ApplicationDashboards.jsx</code> reads <code>infoRequest.documents</code>/<code>fields</code>; new <code>src/dashboard/statusWords.js</code> (<code>staffStatus</code>, <code>termLabel</code>) used in the review screen, the branch work queue and the application lists. Checked in the browser as the Owner and the Branch manager at 1440×900 (110% size) and 1024×768: the grouped checklist, the red warning under the notes box, readable statuses, “One payment”, short loan codes, and no cut-off amounts or sideways scrolling on the overview. The ticked-items list on Rejected &amp; Sent Back wasn’t seen with real ticks, because no application in the demo data was sent back with the checklist. The app builds and 194 unit tests pass.</li>
