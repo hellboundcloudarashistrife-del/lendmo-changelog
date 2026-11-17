@@ -130,13 +130,13 @@
   <article class="day" id="2026-11-17" aria-labelledby="day-2026-11-17">
     <div class="day-head">
       <h2 id="day-2026-11-17">17 November 2026</h2>
-      <p>A Clients register with walk-in loans that start from a saved client, a money view of every branch with a company total, clearer reasons when an approval can’t go through, a new way to open branches and pick up new applications, light and dark mode, a round of design fixes across the staff screens, and a set of tools and limits for branch managers, and the Owner and Director roles now behave exactly the same. After LendMo’s feedback, applications need only one payslip and loan officers see all of their branch’s clients. 32 changes.</p>
+      <p>A Clients register with walk-in loans that start from a saved client, a money view of every branch with a company total, clearer reasons when an approval can’t go through, a new way to open branches and pick up new applications, light and dark mode, a round of design fixes across the staff screens, and a set of tools and limits for branch managers, and the Owner and Director roles now behave exactly the same. After LendMo’s feedback, applications need only one payslip and loan officers see all of their branch’s clients. Pages also stop failing to open after an update. 33 changes.</p>
       <nav class="jump" aria-label="Sections for 17 November 2026">
         <a href="#d17-clients">Clients and walk-in loans <b>3</b></a>
         <a href="#d17-money">Branch money and the company total <b>4</b></a>
         <a href="#d17-approvals">Applications and approvals <b>7</b></a>
         <a href="#d17-branches">Opening branches <b>1</b></a>
-        <a href="#d17-design">Look and feel <b>7</b></a>
+        <a href="#d17-design">Look and feel <b>8</b></a>
         <a href="#d17-roles">Staff roles <b>1</b></a>
         <a href="#d17-overview">Branch manager overview <b>3</b></a>
         <a href="#d17-corrections">Loan corrections <b>1</b></a>
@@ -247,6 +247,11 @@
     <section class="group" id="d17-design" aria-labelledby="d17-design-title">
       <h3 id="d17-design-title">Look and feel <small>The whole app</small></h3>
       <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Pages open after the app is updated</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>After each update, anyone who already had the app open could get “LendMo couldn’t open this page” when moving to another section, on any portal. Pressing Reload sometimes didn’t help for up to an hour.</p><p class="side now"><span>Now</span>The app briefly shows “Updating LendMo…” and loads the new version by itself. Reloading always picks up the latest version.</p></div>
+          <p class="why"><strong>Why:</strong> Testers kept hitting pages that wouldn’t open on days with several updates.</p>
+        </li>
         <li class="card">
           <div class="card-top"><h4>Light and dark mode</h4><span class="pill done">Done</span></div>
           <div class="compare"><p class="side before"><span>Before</span>The app had one light look.</p><p class="side now"><span>Now</span>A sun or moon button next to the notification bell switches between light mode and a dark navy-and-gold mode. The app remembers the choice on that device.</p></div>
@@ -369,6 +374,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Pages after an update: released as commit dd62771. Hosting served the previous release’s missing page files as <code>index.html</code>, so the browser refused them, and <code>index.html</code> was cached for an hour. <code>firebase.json</code> now sends <code>Cache-Control: no-cache</code> for <code>/</code> and <code>/index.html</code> (confirmed on the live site), and new <code>src/staleRelease.js</code> reloads once when a page file fails to load (guarded for 30 seconds; no automatic reload if browser storage is blocked). 199 unit tests pass. The automatic reload itself hasn’t yet been watched happening in a browser.</li>
         <li>LendMo feedback fixes: released as commit 48c849b with a recorded local-differences fingerprint. <code>requiredDocuments</code> and <code>cleanApplication</code> in <code>functions/lending.js</code> now need only <code>payslip</code> (<code>PAYSLIP_MONTHS = 1</code>, mirrored in <code>src/borrower/applicationForm.js</code>); <code>payslip2</code>/<code>payslip3</code> remain valid document types. <code>listClients</code> uses the new <code>canSeeClient</code> (branch scope for client records) instead of <code>canAccessRecord</code>. 196 unit tests and all 122 emulator tests pass, including a new check that fails without the fix; the live bundle was confirmed to carry the new payslip wording.</li>
         <li>Released in separate scoped releases on 17 November, in this order: 78a9f33 (treasury, approval and portal findings, prepared on 16 November), b1f12ba, 8c9bb79, 9411ea3, e00733b, a0c0a15, 8b10e05, 36a6eab, b1664df, bbb0e3d, 7b1569c and a647b51. These were written up afterwards from the release notes, and each change was confirmed on the live site’s code. Not live yet, so not listed here: bulk client import, the Arrears Ageing report, and signed-copy versions of applications.</li>
         <li>Owner and Director roles: released as commit 9a90654. <code>capabilitiesFor</code> no longer removes branch and branch-finance editing for accounts stored as <code>director</code>, <code>assertRoleChange</code> no longer stops them granting the Owner role, saving such an account stores <code>owner</code>, and <code>escalateApproval</code> notifies every active Owner. 196 unit tests and all 122 emulator tests pass.</li>
