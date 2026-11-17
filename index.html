@@ -130,13 +130,158 @@
   <article class="day" id="2026-11-17" aria-labelledby="day-2026-11-17">
     <div class="day-head">
       <h2 id="day-2026-11-17">17 November 2026</h2>
-      <p>Branch managers get a clearer overview of their team and the day’s payouts, can ask head office for help with an approval, and have their own form for each kind of loan correction. Company-wide settings are now read-only for them. 7 changes.</p>
+      <p>A Clients register with walk-in loans that start from a saved client, a money view of every branch with a company total, clearer reasons when an approval can’t go through, a new way to open branches and pick up new applications, light and dark mode, a round of design fixes across the staff screens, and a set of tools and limits for branch managers. 29 changes.</p>
       <nav class="jump" aria-label="Sections for 17 November 2026">
+        <a href="#d17-clients">Clients and walk-in loans <b>3</b></a>
+        <a href="#d17-money">Branch money and the company total <b>4</b></a>
+        <a href="#d17-approvals">Applications and approvals <b>7</b></a>
+        <a href="#d17-branches">Opening branches <b>1</b></a>
+        <a href="#d17-design">Look and feel <b>7</b></a>
         <a href="#d17-overview">Branch manager overview <b>3</b></a>
         <a href="#d17-corrections">Loan corrections <b>1</b></a>
         <a href="#d17-settings">Settings for branch managers <b>3</b></a>
       </nav>
     </div>
+
+    <section class="group" id="d17-clients" aria-labelledby="d17-clients-title">
+      <h3 id="d17-clients-title">Clients and walk-in loans <small>Loan Applications → Clients, Walk-in application</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>A Clients register</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no list of clients. Staff typed a client’s details again every time they took a walk-in loan.</p><p class="side now"><span>Now</span>Staff register a client once, with all required details and documents, and find them again by name, national ID or phone. The list can be filtered by branch, loan status (pending, awaiting payout, active, overdue, settled, no loans), next repayment due, number of loans paid out and the officer handling them, and shows 25, 50 or 100 clients per page.</p></div>
+          <p class="why"><strong>Why:</strong> One client record that staff reuse, instead of retyping the same person for every loan.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Click a client to see and edit their details and loans</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>To see a client’s past and current loans, staff had to search several different screens.</p><p class="side now"><span>Now</span>Clicking a client’s name opens their profile, which staff can edit. Loan activity shows what they still owe, any overdue amount, active and past loans, and applications still in progress, each linking to the full record. Their documents on file open with one click.</p></div>
+          <p class="why"><strong>Why:</strong> Everything about one client in one place before staff decide on a new loan.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Walk-in loans start by picking the client</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A walk-in application began with the client’s personal, work, income and bank details before reaching the loan amount.</p><p class="side now"><span>Now</span>Staff click the client’s name and go straight to the loan amount. The client’s saved details and documents are filled in for them.</p></div>
+          <p class="why"><strong>Why:</strong> A walk-in loan for a known client takes a minute instead of a full form.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d17-money" aria-labelledby="d17-money-title">
+      <h3 id="d17-money-title">Branch money and the company total <small>Branches → Finance, Capital Pool, Overview</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>A Finance tab for each branch</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The app didn’t show what money each branch held.</p><p class="side now"><span>Now</span>Each branch has a Finance tab listing its bank accounts, mobile-money wallets and cash on hand, each with the date the balance was recorded, and a branch total. The Owner can add and edit them. Directors can view every branch. Branch managers see only their own branch.</p></div>
+          <p class="why"><strong>Why:</strong> Head office can see where the money is, and each manager can see their own.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Capital Pool shows every branch and the company total</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no company-wide view of available funds.</p><p class="side now"><span>Now</span>Capital Pool lists each branch’s recorded funds and adds them up, and warns when a branch has no balance recorded, so the total is only partial. A planned lending allocation of SZL 100,000 is recorded for each branch and shown next to its balance. The Treasury summary also shows borrowed capital, the principal clients still owe.</p></div>
+          <p class="why"><strong>Why:</strong> Head office can see what’s available to lend and what’s already out.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Enough money for the loans waiting to be paid out?</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Nothing compared the money available with the loans approved and waiting for payout.</p><p class="side now"><span>Now</span>Payout liquidity, on the Overview and in Capital Pool, shows how much would be left after paying out every accepted loan, or the shortfall.</p></div>
+          <p class="why"><strong>Why:</strong> Spot a shortfall before clients are told their money is on the way.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Portfolio health and last update time</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The overview didn’t show how healthy the loan book was, and a zero could mean “nothing” or “didn’t load”.</p><p class="side now"><span>Now</span>Portfolio health shows the share of open loans that are overdue, the share in default or written off, and how much of this month’s due repayments have been paid. The figures show when they were last updated, and say “Sync failed” if a refresh didn’t work.</p></div>
+          <p class="why"><strong>Why:</strong> Leadership can trust the numbers and see trouble early.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d17-approvals" aria-labelledby="d17-approvals-title">
+      <h3 id="d17-approvals-title">Applications and approvals <small>Loan Applications, Pending My Approval, Loans &amp; payouts</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The app says why a loan can’t be approved</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clicking Approve on an application that wasn’t ready did nothing, with no explanation.</p><p class="side now"><span>Now</span>The Approve button stays greyed out and the screen lists what’s missing, such as documents, screening checks, a review note or a high enough approval limit, with links to fix each one. All Applications and Pending My Approval show the reason on each application, and the payout list shows why a payout failed.</p></div>
+          <p class="why"><strong>Why:</strong> Staff were stuck without knowing what to do next.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A New Applications queue</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>New applications from clients arrived unassigned and were hard to find.</p><p class="side now"><span>Now</span>New Applications lists every submission nobody has picked up yet. Open &amp; assign takes staff straight to assigning someone to review it.</p></div>
+          <p class="why"><strong>Why:</strong> No new application is left waiting unnoticed.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>The Pending filter shows applications</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>In All Applications, the Pending filter showed nothing.</p><p class="side now"><span>Now</span>Pending approval shows submitted applications and those under review.</p></div>
+          <p class="why"><strong>Why:</strong> It was reported as broken.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Approval queue rows open in place</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Each application in the approval queue took up a lot of room, and reviewing one meant leaving the queue.</p><p class="side now"><span>Now</span>Rows start folded. Clicking one opens its details right there, where staff can act on it.</p></div>
+          <p class="why"><strong>Why:</strong> Quicker to work through a long queue.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Loans &amp; payouts and Repayments are separate lists</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Switching between Loans &amp; payouts and Repayments left the page unchanged.</p><p class="side now"><span>Now</span>Repayments shows paid-out loans with how much has been repaid, what’s still owed and the next due date.</p></div>
+          <p class="why"><strong>Why:</strong> The switch didn’t do anything before.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Empty lists say they’re empty</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>An empty Applicant Directory or Rejected &amp; Sent Back page showed a blank area.</p><p class="side now"><span>Now</span>They read “No application history available” and “Currently No Rejected &amp; Sent Back Loans”.</p></div>
+          <p class="why"><strong>Why:</strong> A blank page looks like something went wrong.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Application outcomes as columns</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The Application outcomes chart in Loan Application Reports used sideways bars.</p><p class="side now"><span>Now</span>It uses upright columns, with each status along the bottom and the total above each column.</p></div>
+          <p class="why"><strong>Why:</strong> Easier to compare at a glance.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d17-branches" aria-labelledby="d17-branches-title">
+      <h3 id="d17-branches-title">Opening branches <small>Branches → Add branch</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>A shorter Add branch form and a setup page</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>One long form, and a new branch was open for applications straight away, even with no manager.</p><p class="side now"><span>Now</span>Add branch asks for the basics and suggests a branch code. Save and continue opens a setup page where staff assign a manager or let head office cover, then open the branch for applications. A branch can take applications while its payout setup is still pending, and taking new applications can be paused while existing work carries on.</p></div>
+          <p class="why"><strong>Why:</strong> Branches open when someone is ready to handle their applications.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d17-design" aria-labelledby="d17-design-title">
+      <h3 id="d17-design-title">Look and feel <small>The whole app</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Light and dark mode</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The app had one light look.</p><p class="side now"><span>Now</span>A sun or moon button next to the notification bell switches between light mode and a dark navy-and-gold mode. The app remembers the choice on that device.</p></div>
+          <p class="why"><strong>Why:</strong> Easier on the eyes for people who prefer a dark screen.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Notifications open under the bell</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Notifications didn’t open next to the bell, and the unread count wasn’t round.</p><p class="side now"><span>Now</span>The bell opens a dropdown just below it, which closes when you click away or press Escape. The unread count is a neat circle.</p></div>
+          <p class="why"><strong>Why:</strong> Notifications appear where you clicked.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Text and dropdowns sit properly</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Some text overlapped or was squeezed in headers, cards and tables. Selected values in dropdowns sat off-centre, and dropdown menus didn’t match the app.</p><p class="side now"><span>Now</span>Text wraps cleanly, long names no longer run into other columns, dropdown values are centred, and dropdown menus use the app’s colours in both modes. On phones, wide tables scroll inside their box.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in testing across several screens.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Clearer keyboard outlines</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The blue outline that shows where you are when using the keyboard was cut off on search boxes, dropdowns and pop-ups.</p><p class="side now"><span>Now</span>The outline is complete and rounded, and on the Employees search it goes around both the magnifier and the box.</p></div>
+          <p class="why"><strong>Why:</strong> People using a keyboard can always see where they are.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Pages show when they’re loading</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A slow click sometimes looked like nothing had happened, some branch menus closed on small screens, and a document preview could open blank. The page also shifted sideways when changing sections.</p><p class="side now"><span>Now</span>Slow pages and actions show they’re loading, with a Try again button if something fails. Those menus and previews work, and the page keeps the same width between sections.</p></div>
+          <p class="why"><strong>Why:</strong> Staff could tell whether the app was working.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A tidier Owner dashboard</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Status chips on the overview cards competed with the main figures, Quick actions had a lot of empty space, Refresh buttons looked different from page to page, and Audit Trail action names were missing spaces.</p><p class="side now"><span>Now</span>The chips are softer, Quick actions is compact, Refresh buttons match, and action names read normally. The Reports branch filter lists every branch you can see, even ones without loans yet.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in the Owner’s testing.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Smaller report buttons and fewer repeated links</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Print Report and Download Excel were oversized, and an employee’s own page still had a View details button.</p><p class="side now"><span>Now</span>The report buttons are smaller, and View details only appears in the employee list.</p></div>
+          <p class="why"><strong>Why:</strong> Less clutter on busy pages.</p>
+        </li>
+      </ol>
+    </section>
 
     <section class="group" id="d17-overview" aria-labelledby="d17-overview-title">
       <h3 id="d17-overview-title">Branch manager overview <small>Overview, for branch managers</small></h3>
@@ -195,9 +340,185 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
-        <li>Released as commit 6ab595a on GitHub main, built and published with <code>npm run release:live</code> using a recorded local-differences fingerprint (other unreleased local work was left out). The <code>loanApplication</code>, <code>branchManagement</code> and <code>userManagement</code> functions were updated, then hosting, and the release check confirmed the live site serves 6ab595a.</li>
+        <li>Released in separate scoped releases on 17 November, in this order: 78a9f33 (treasury, approval and portal findings, prepared on 16 November), b1f12ba, 8c9bb79, 9411ea3, e00733b, a0c0a15, 8b10e05, 36a6eab, b1664df, bbb0e3d, 7b1569c and a647b51. These were written up afterwards from the release notes, and each change was confirmed on the live site’s code. Not live yet, so not listed here: bulk client import, the Arrears Ageing report, and signed-copy versions of applications.</li>
+        <li>Branch manager changes: released as commit 6ab595a on GitHub main, built and published with <code>npm run release:live</code> using a recorded local-differences fingerprint (other unreleased local work was left out). The <code>loanApplication</code>, <code>branchManagement</code> and <code>userManagement</code> functions were updated, then hosting, and the release check confirmed the live site serves 6ab595a.</li>
         <li>New <code>functions/financialCorrections.js</code>, <code>src/dashboard/BranchManagerPanels.jsx</code> and <code>branch-manager-panels.css</code>; <code>branchOfficerActivity</code> and <code>branchPayoutSummary</code> in <code>overviewModel.js</code>; the <code>escalateApproval</code> action in <code>loanApplicationService.js</code>; correction postings in <code>lendingOperations.js</code> and <code>accounting.js</code>; title lock in <code>accountSettings.js</code>; read-only settings in <code>DirectorSettings.jsx</code> and <code>AccountSettings.jsx</code>.</li>
         <li>196 unit tests pass and the production build succeeds. 47 emulator tests pass (operations, core journey, users and service suites). Not walked through in the browser on the live site.</li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="day" id="2026-11-16" aria-labelledby="day-2026-11-16">
+    <div class="day-head">
+      <h2 id="day-2026-11-16">16 November 2026</h2>
+      <p>Print buttons on every important document, a walk-in application ready to sign, a fix for the approvals page going blank, Owner and Director combined into one role, Consultant renamed Loan Officer, steadier page sizes, and the opening logo animation back. 8 changes.</p>
+      <nav class="jump" aria-label="Sections for 16 November 2026">
+        <a href="#d16-print">Printing <b>2</b></a>
+        <a href="#d16-approvals">Pending My Approval <b>2</b></a>
+        <a href="#d16-roles">Staff roles <b>2</b></a>
+        <a href="#d16-design">Look and feel <b>2</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d16-print" aria-labelledby="d16-print-title">
+      <h3 id="d16-print-title">Printing <small>Applications, loans, repayments, reports</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Print the walk-in application for signing</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>After submitting a walk-in application, staff had to find it again to print it.</p><p class="side now"><span>Now</span>The confirmation screen has Print application for signing, which opens the printer choice straight away. The printout has signature and date lines for the client and a staff witness.</p></div>
+          <p class="why"><strong>Why:</strong> The client can sign before they leave the branch.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Visible Print buttons on every important document</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Some documents could only be printed through the browser’s own menu.</p><p class="side now"><span>Now</span>Applications, quotes, agreements, loan statements, payment receipts, repayment invoices and reports each have a Print button. Uploaded documents such as ID cards and bank statements have one beside them too. Choosing Save as PDF in the print window keeps a copy.</p></div>
+          <p class="why"><strong>Why:</strong> Branches need paper copies for their files.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d16-approvals" aria-labelledby="d16-approvals-title">
+      <h3 id="d16-approvals-title">Pending My Approval <small>Loan Applications</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The page no longer goes blank</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Opening an application with uploaded documents turned the whole screen white.</p><p class="side now"><span>Now</span>The application opens normally, and its documents can be viewed and printed.</p></div>
+          <p class="why"><strong>Why:</strong> A tester couldn’t review a real application.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Empty queues explain why</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>When nothing was assigned or ready for you, the queue was just empty, even though applications existed.</p><p class="side now"><span>Now</span>The page explains why it’s empty, for example that an application isn’t assigned yet or still needs screening, and has a button to show all the applications you’re allowed to see.</p></div>
+          <p class="why"><strong>Why:</strong> Staff thought applications had gone missing.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d16-roles" aria-labelledby="d16-roles-title">
+      <h3 id="d16-roles-title">Staff roles <small>Employees</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Owner and Director are one role</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The app had separate Owner and Director roles.</p><p class="side now"><span>Now</span>LendMo confirmed these are the same job, so new accounts use Owner. Existing Director accounts keep their duties.</p></div>
+          <p class="why"><strong>Why:</strong> To match how LendMo is actually run.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Consultant is now called Loan Officer</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The role was called Consultant, so testers couldn’t find a Loan Officer.</p><p class="side now"><span>Now</span>It’s called Loan Officer everywhere, with the same permissions and branch access.</p></div>
+          <p class="why"><strong>Why:</strong> The app should use LendMo’s own job titles.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d16-design" aria-labelledby="d16-design-title">
+      <h3 id="d16-design-title">Look and feel <small>Client and staff portals</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Pages no longer seem to zoom in and out</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Some sections had a bigger sidebar, logo and text than others, so switching sections looked like zooming.</p><p class="side now"><span>Now</span>Every section in the client and staff portals uses the same compact size.</p></div>
+          <p class="why"><strong>Why:</strong> The jumping was distracting.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>The opening logo animation is back</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The live app showed a plain loading screen when it opened.</p><p class="side now"><span>Now</span>The LendMo logo animates on a white background each time the app opens or reloads. Devices set to reduce motion see the logo without movement.</p></div>
+          <p class="why"><strong>Why:</strong> It had been left out of an earlier update by mistake.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>Commits on GitHub main: 52a9ade, a2de265, 395a2b1, 2957ef4, 45b8733, 303bd46 and c434805. From 303bd46 on, <code>scripts/hosting-release.mjs</code> builds each release from GitHub main and refuses to publish if local changes are missing, unless they are recorded with a reviewed fingerprint (2ae68a8, cd47721, 5847b57). These were written up afterwards from the release notes and checked against the live site’s code.</li>
+      </ul>
+    </details>
+  </article>
+
+  <article class="day" id="2026-11-13" aria-labelledby="day-2026-11-13">
+    <div class="day-head">
+      <h2 id="day-2026-11-13">13 November 2026</h2>
+      <p>Fixes from the client and loan officer testing reports, six branches open for applications, and LendMo-branded printouts and downloads. 9 changes.</p>
+      <nav class="jump" aria-label="Sections for 13 November 2026">
+        <a href="#d13-clients">For clients <b>4</b></a>
+        <a href="#d13-officers">For loan officers <b>2</b></a>
+        <a href="#d13-branches">Branches <b>1</b></a>
+        <a href="#d13-print">Printing and downloads <b>2</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d13-clients" aria-labelledby="d13-clients-title">
+      <h3 id="d13-clients-title">For clients <small>Loan application and client dashboard</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Choosing a branch no longer blocks the application</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A new client could reach the last step and find Submit unavailable, with no branch to pick.</p><p class="side now"><span>Now</span>The branch list shows only branches taking applications. If none are, or the loan product is paused, the message says so plainly. A saved draft and its uploads are kept.</p></div>
+          <p class="why"><strong>Why:</strong> A tester couldn’t submit an application at all.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>One payment on your next payday</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The application offered a slider for 1 to 24 months.</p><p class="side now"><span>Now</span>It shows “One payment on your next payday”, matching LendMo’s loan.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo only offers one-payment loans.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>ID and mobile-money numbers are checked</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The ID number wasn’t checked against the date of birth, and a number could be paired with the wrong mobile-money provider.</p><p class="side now"><span>Now</span>The app checks the ID number matches the date of birth, and warns when a wallet number doesn’t belong to the chosen provider, such as an MTN number entered as eMali.</p></div>
+          <p class="why"><strong>Why:</strong> Catches mistakes before money is sent to the wrong wallet.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A clearer loan summary for clients</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The client’s active loan card showed only the total to repay.</p><p class="side now"><span>Now</span>It breaks the total into the amount borrowed, interest and fees, with the status in the corner. Clients also see who their loan officer is and how to contact them, and guidance on borrowing again.</p></div>
+          <p class="why"><strong>Why:</strong> Requested in the client testing report.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d13-officers" aria-labelledby="d13-officers-title">
+      <h3 id="d13-officers-title">For loan officers <small>Then called Consultant</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Loan officers see only their own applications</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Lists and downloads could include applications assigned to other staff.</p><p class="side now"><span>Now</span>Lists and Excel downloads include only the applications assigned to that loan officer.</p></div>
+          <p class="why"><strong>Why:</strong> Clients’ details stay with the staff handling them.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Working navigation and a separate approval queue</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Back to Overview on the Loan Applications page did nothing, and applications waiting for approval were mixed in with the rest.</p><p class="side now"><span>Now</span>The button works, approvals have their own queue, and each application shows its review history.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in the loan officer testing report.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d13-branches" aria-labelledby="d13-branches-title">
+      <h3 id="d13-branches-title">Branches <small>Branch choice on the application</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Six branches take applications</h4><span class="pill partly">Partly done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Only Khona was set up.</p><p class="side now"><span>Now</span>Clients can choose Khona, Mbabane, Simunye, Bhunya, Piggs Peak or Mhlambanyatsi. The addresses, wallet numbers and agreement wording for the five new branches are placeholders for testing.</p></div>
+          <p class="why"><strong>Why:</strong> So testers can try applications at every branch. The real details are still needed from LendMo.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d13-print" aria-labelledby="d13-print-title">
+      <h3 id="d13-print-title">Printing and downloads <small>Reports, applications, agreements</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Print reports and walk-in applications</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Reports and walk-in applications couldn’t be printed from the app.</p><p class="side now"><span>Now</span>They print, and loan agreements download as PDF files for clients and staff.</p></div>
+          <p class="why"><strong>Why:</strong> Branches keep paper and PDF copies.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>LendMo branding on printouts and Excel files</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Printed documents and Excel downloads were plain.</p><p class="side now"><span>Now</span>They carry the LendMo logo and colours.</p></div>
+          <p class="why"><strong>Why:</strong> Documents look official when handed to clients.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>The testing-report fixes and branch setup were published directly from the development computer on 13 November, before releases were built from GitHub. The printing changes are commits 7066d25, 2432e90, f8286d0 and d2fcdf2. These were written up afterwards from the release notes and checked against the live site’s code. A follow-up list for loan officers that was part of this release is no longer on the live site, so it isn’t listed here.</li>
       </ul>
     </details>
   </article>
