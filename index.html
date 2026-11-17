@@ -122,11 +122,86 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 4 November 2026</p>
+    <p class="updated">Last updated 17 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-17" aria-labelledby="day-2026-11-17">
+    <div class="day-head">
+      <h2 id="day-2026-11-17">17 November 2026</h2>
+      <p>Branch managers get a clearer overview of their team and the day’s payouts, can ask head office for help with an approval, and have their own form for each kind of loan correction. Company-wide settings are now read-only for them. 7 changes.</p>
+      <nav class="jump" aria-label="Sections for 17 November 2026">
+        <a href="#d17-overview">Branch manager overview <b>3</b></a>
+        <a href="#d17-corrections">Loan corrections <b>1</b></a>
+        <a href="#d17-settings">Settings for branch managers <b>3</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d17-overview" aria-labelledby="d17-overview-title">
+      <h3 id="d17-overview-title">Branch manager overview <small>Overview, for branch managers</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>See what each loan officer is working on</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The branch manager could see how many applications were waiting, but not who was handling them or which ones had stopped moving.</p><p class="side now"><span>Now</span>A table lists each loan officer at the branch with how many applications they have waiting and in review. Any application with no update for 48 hours is counted as stalled and shown in red.</p></div>
+          <p class="why"><strong>Why:</strong> Managers can spot stuck files and follow up before a client is kept waiting.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>End-of-day payout check</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no single place to compare the money paid out on a day with what mobile money had confirmed.</p><p class="side now"><span>Now</span>Pick a date to see the branch’s total cash out, how much of it mobile money has confirmed, and any confirmed reversals. Provider fees are left out of the totals.</p></div>
+          <p class="why"><strong>Why:</strong> Makes it quick to check that every payout went through before closing the day.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Ask the Director to look at an approval</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>When a loan needed approval from head office, the branch manager had to contact the Director outside the app.</p><p class="side now"><span>Now</span>The branch manager picks the application, writes a short reason and sends it. The Director gets an in-app message with a link straight to the application. If there is no active Director, it goes to the Owner.</p></div>
+          <p class="why"><strong>Why:</strong> Approvals that need head office get noticed faster, and the request is on record.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d17-corrections" aria-labelledby="d17-corrections-title">
+      <h3 id="d17-corrections-title">Loan corrections <small>Loan adjustments, Loan write-offs, Loan balance adjustments</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>A separate form for each kind of correction</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Loan adjustments, write-offs and balance adjustments all used the same “Request a balance reduction” form, with only an amount and a reason.</p><p class="side now"><span>Now</span>Loan adjustments correct posted interest or a late fee. Balance adjustments correct the principal. Write-offs record the proposed loss and a bad-debt reason, such as uncollectible debt or borrower insolvency. Each needs a supporting reference, and only loans with money still owed can be picked. Someone in finance other than the person asking still approves or rejects each request.</p></div>
+          <p class="why"><strong>Why:</strong> Each correction lands in the right place in the books, and write-offs are recorded properly for review.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d17-settings" aria-labelledby="d17-settings-title">
+      <h3 id="d17-settings-title">Settings for branch managers <small>Settings: Company and My profile</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Company logo can’t be changed by branch managers</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Branch managers could see buttons to upload or remove the company logo.</p><p class="side now"><span>Now</span>The logo buttons are greyed out for branch managers.</p></div>
+          <p class="why"><strong>Why:</strong> The company’s branding is managed by head office.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Company profile is view-only for branch managers</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The company profile fields looked editable to branch managers.</p><p class="side now"><span>Now</span>The fields are greyed out with a note that an authorised company administrator can update them, and saving is blocked for branch managers.</p></div>
+          <p class="why"><strong>Why:</strong> Company details should only change through head office.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Branch managers can’t change their own job title</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A branch manager could change the display title on their own profile.</p><p class="side now"><span>Now</span>The title is set by a company administrator. Branch managers can still update their own name and phone number.</p></div>
+          <p class="why"><strong>Why:</strong> Job titles should match what the company has assigned.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>Released as commit 6ab595a on GitHub main, built and published with <code>npm run release:live</code> using a recorded local-differences fingerprint (other unreleased local work was left out). The <code>loanApplication</code>, <code>branchManagement</code> and <code>userManagement</code> functions were updated, then hosting, and the release check confirmed the live site serves 6ab595a.</li>
+        <li>New <code>functions/financialCorrections.js</code>, <code>src/dashboard/BranchManagerPanels.jsx</code> and <code>branch-manager-panels.css</code>; <code>branchOfficerActivity</code> and <code>branchPayoutSummary</code> in <code>overviewModel.js</code>; the <code>escalateApproval</code> action in <code>loanApplicationService.js</code>; correction postings in <code>lendingOperations.js</code> and <code>accounting.js</code>; title lock in <code>accountSettings.js</code>; read-only settings in <code>DirectorSettings.jsx</code> and <code>AccountSettings.jsx</code>.</li>
+        <li>196 unit tests pass and the production build succeeds. 47 emulator tests pass (operations, core journey, users and service suites). Not walked through in the browser on the live site.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-11-04" aria-labelledby="day-2026-11-04">
     <div class="day-head">
       <h2 id="day-2026-11-04">4 November 2026</h2>
