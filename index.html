@@ -130,9 +130,10 @@
   <article class="day" id="2026-11-17" aria-labelledby="day-2026-11-17">
     <div class="day-head">
       <h2 id="day-2026-11-17">17 November 2026</h2>
-      <p>A Clients register with walk-in loans that start from a saved client, a money view of every branch with a company total, clearer reasons when an approval can’t go through, a new way to open branches and pick up new applications, light and dark mode, a round of design fixes across the staff screens, and a set of tools and limits for branch managers, and the Owner and Director roles now behave exactly the same. After LendMo’s feedback, applications need only one payslip and loan officers see all of their branch’s clients. Pages also stop failing to open after an update. 33 changes.</p>
+      <p>A Clients register with walk-in loans that start from a saved client, a money view of every branch with a company total, clearer reasons when an approval can’t go through, a new way to open branches and pick up new applications, light and dark mode, a round of design fixes across the staff screens, and a set of tools and limits for branch managers, and the Owner and Director roles now behave exactly the same. After LendMo’s feedback, applications need only one payslip and loan officers see all of their branch’s clients. Pages also stop failing to open after an update. The bell clears itself when opened, with a full notification history, and Clients can be exported. 37 changes.</p>
       <nav class="jump" aria-label="Sections for 17 November 2026">
-        <a href="#d17-clients">Clients and walk-in loans <b>3</b></a>
+        <a href="#d17-clients">Clients and walk-in loans <b>5</b></a>
+        <a href="#d17-bell">Notifications <b>2</b></a>
         <a href="#d17-money">Branch money and the company total <b>4</b></a>
         <a href="#d17-approvals">Applications and approvals <b>7</b></a>
         <a href="#d17-branches">Opening branches <b>1</b></a>
@@ -149,6 +150,16 @@
       <h3 id="d17-clients-title">Clients and walk-in loans <small>Loan Applications → Clients, Walk-in application</small></h3>
       <ol class="cards">
         <li class="card">
+          <div class="card-top"><h4>Export clients, and a template for importing</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clients had an import, but nowhere to get a file in the right layout, and a Walk-in application button that was already in the menu.</p><p class="side now"><span>Now</span><b>Export clients</b> saves the list (or only the filtered clients) as an Excel file. The import page explains where a file can come from and has a <b>Download template</b> with the right column headings. An exported file can be imported back in. The extra Walk-in button is gone.</p></div>
+          <p class="why"><strong>Why:</strong> Importing is meant for bringing in clients from LendMo’s old system, and staff needed a clear starting point.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Start a new client when an old one is half-finished</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Add client reopened whatever client a staff member last left unfinished, sometimes with the ID locked, and there was no clear way to start again.</p><p class="side now"><span>Now</span>Add client now says when it has reopened an unfinished client and has a <b>Start a new client</b> button that clears it and unlocks the ID. Saved client records are not changed.</p></div>
+          <p class="why"><strong>Why:</strong> Staff couldn’t add a new client while an old draft was in the way.</p>
+        </li>
+        <li class="card">
           <div class="card-top"><h4>A Clients register</h4><span class="pill done">Done</span></div>
           <div class="compare"><p class="side before"><span>Before</span>There was no list of clients. Staff typed a client’s details again every time they took a walk-in loan.</p><p class="side now"><span>Now</span>Staff register a client once, with all required details and documents, and find them again by name, national ID or phone. The list can be filtered by branch, loan status (pending, awaiting payout, active, overdue, settled, no loans), next repayment due, number of loans paid out and the officer handling them, and shows 25, 50 or 100 clients per page.</p></div>
           <p class="why"><strong>Why:</strong> One client record that staff reuse, instead of retyping the same person for every loan.</p>
@@ -162,6 +173,22 @@
           <div class="card-top"><h4>Walk-in loans start by picking the client</h4><span class="pill done">Done</span></div>
           <div class="compare"><p class="side before"><span>Before</span>A walk-in application began with the client’s personal, work, income and bank details before reaching the loan amount.</p><p class="side now"><span>Now</span>Staff click the client’s name and go straight to the loan amount. The client’s saved details and documents are filled in for them.</p></div>
           <p class="why"><strong>Why:</strong> A walk-in loan for a known client takes a minute instead of a full form.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d17-bell" aria-labelledby="d17-bell-title">
+      <h3 id="d17-bell-title">Notifications <small>The bell at the top of every page</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Opening the bell clears it</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The red number stayed until each notification was marked read one by one, and old notifications filled the list.</p><p class="side now"><span>Now</span>Opening the bell shows only what is new and counts it as read, so the number goes away. When nothing is new, the list says “No new notifications”.</p></div>
+          <p class="why"><strong>Why:</strong> Nobody was going to click “Mark read” on every notification.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A history of all notifications</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no place to look back at older notifications.</p><p class="side now"><span>Now</span>“See all notifications” at the bottom of the bell opens a history grouped by day (Today, Yesterday, then the date), with the time of each one.</p></div>
+          <p class="why"><strong>Why:</strong> Old notifications are still useful to look back on, just not in the way every day.</p>
         </li>
       </ol>
     </section>
@@ -374,6 +401,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Notifications and clients: released as commits 9e02313 and 2427b19. <code>NotificationBell.jsx</code> marks the unread items read when it opens and lists only those; new <code>notificationHistory.js</code> groups the history by day; <code>listNotifications</code> takes <code>history: true</code> for up to 200 items. <code>clientSheetColumns</code>/<code>clientSheetRows</code> in <code>clientImportFile.js</code> feed the export and template through <code>xlsxExport.js</code>, with a test that an export imports back in with ID leading zeros kept. <code>useBorrowerApplication</code> exposes <code>unfinishedClient</code> and clears <code>clientId</code> when a draft is discarded. 203 unit tests and the notification emulator tests pass; checked in the browser on the local app.</li>
         <li>Pages after an update: released as commit dd62771. Hosting served the previous release’s missing page files as <code>index.html</code>, so the browser refused them, and <code>index.html</code> was cached for an hour. <code>firebase.json</code> now sends <code>Cache-Control: no-cache</code> for <code>/</code> and <code>/index.html</code> (confirmed on the live site), and new <code>src/staleRelease.js</code> reloads once when a page file fails to load (guarded for 30 seconds; no automatic reload if browser storage is blocked). 199 unit tests pass. The automatic reload itself hasn’t yet been watched happening in a browser.</li>
         <li>LendMo feedback fixes: released as commit 48c849b with a recorded local-differences fingerprint. <code>requiredDocuments</code> and <code>cleanApplication</code> in <code>functions/lending.js</code> now need only <code>payslip</code> (<code>PAYSLIP_MONTHS = 1</code>, mirrored in <code>src/borrower/applicationForm.js</code>); <code>payslip2</code>/<code>payslip3</code> remain valid document types. <code>listClients</code> uses the new <code>canSeeClient</code> (branch scope for client records) instead of <code>canAccessRecord</code>. 196 unit tests and all 122 emulator tests pass, including a new check that fails without the fix; the live bundle was confirmed to carry the new payslip wording.</li>
         <li>Released in separate scoped releases on 17 November, in this order: 78a9f33 (treasury, approval and portal findings, prepared on 16 November), b1f12ba, 8c9bb79, 9411ea3, e00733b, a0c0a15, 8b10e05, 36a6eab, b1664df, bbb0e3d, 7b1569c and a647b51. These were written up afterwards from the release notes, and each change was confirmed on the live site’s code. Not live yet, so not listed here: bulk client import, the Arrears Ageing report, and signed-copy versions of applications.</li>
