@@ -130,13 +130,14 @@
   <article class="day" id="2026-11-17" aria-labelledby="day-2026-11-17">
     <div class="day-head">
       <h2 id="day-2026-11-17">17 November 2026</h2>
-      <p>A Clients register with walk-in loans that start from a saved client, a money view of every branch with a company total, clearer reasons when an approval can’t go through, a new way to open branches and pick up new applications, light and dark mode, a round of design fixes across the staff screens, and a set of tools and limits for branch managers. 29 changes.</p>
+      <p>A Clients register with walk-in loans that start from a saved client, a money view of every branch with a company total, clearer reasons when an approval can’t go through, a new way to open branches and pick up new applications, light and dark mode, a round of design fixes across the staff screens, and a set of tools and limits for branch managers, and the Owner and Director roles now behave exactly the same. 30 changes.</p>
       <nav class="jump" aria-label="Sections for 17 November 2026">
         <a href="#d17-clients">Clients and walk-in loans <b>3</b></a>
         <a href="#d17-money">Branch money and the company total <b>4</b></a>
         <a href="#d17-approvals">Applications and approvals <b>7</b></a>
         <a href="#d17-branches">Opening branches <b>1</b></a>
         <a href="#d17-design">Look and feel <b>7</b></a>
+        <a href="#d17-roles">Staff roles <b>1</b></a>
         <a href="#d17-overview">Branch manager overview <b>3</b></a>
         <a href="#d17-corrections">Loan corrections <b>1</b></a>
         <a href="#d17-settings">Settings for branch managers <b>3</b></a>
@@ -169,7 +170,7 @@
       <ol class="cards">
         <li class="card">
           <div class="card-top"><h4>A Finance tab for each branch</h4><span class="pill done">Done</span></div>
-          <div class="compare"><p class="side before"><span>Before</span>The app didn’t show what money each branch held.</p><p class="side now"><span>Now</span>Each branch has a Finance tab listing its bank accounts, mobile-money wallets and cash on hand, each with the date the balance was recorded, and a branch total. The Owner can add and edit them. Directors can view every branch. Branch managers see only their own branch.</p></div>
+          <div class="compare"><p class="side before"><span>Before</span>The app didn’t show what money each branch held.</p><p class="side now"><span>Now</span>Each branch has a Finance tab listing its bank accounts, mobile-money wallets and cash on hand, each with the date the balance was recorded, and a branch total. Owners can add and edit them. Branch managers see only their own branch.</p></div>
           <p class="why"><strong>Why:</strong> Head office can see where the money is, and each manager can see their own.</p>
         </li>
         <li class="card">
@@ -283,6 +284,17 @@
       </ol>
     </section>
 
+    <section class="group" id="d17-roles" aria-labelledby="d17-roles-title">
+      <h3 id="d17-roles-title">Staff roles <small>Employees, Branches, approvals</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Former Director accounts work exactly like Owners</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Owner and Director had been combined into one role, but accounts first made as Directors were still treated differently. They couldn’t edit branches or branch money, couldn’t make someone an Owner, and branch managers’ requests went to them before the Owners.</p><p class="side now"><span>Now</span>Every Owner, including former Directors, has the same powers. Branch managers’ requests go to all active Owners, and screens no longer mention a Director.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo confirmed the Owner and the Director are the same job, so the app shouldn’t treat them differently.</p>
+        </li>
+      </ol>
+    </section>
+
     <section class="group" id="d17-overview" aria-labelledby="d17-overview-title">
       <h3 id="d17-overview-title">Branch manager overview <small>Overview, for branch managers</small></h3>
       <ol class="cards">
@@ -297,8 +309,8 @@
           <p class="why"><strong>Why:</strong> Makes it quick to check that every payout went through before closing the day.</p>
         </li>
         <li class="card">
-          <div class="card-top"><h4>Ask the Director to look at an approval</h4><span class="pill done">Done</span></div>
-          <div class="compare"><p class="side before"><span>Before</span>When a loan needed approval from head office, the branch manager had to contact the Director outside the app.</p><p class="side now"><span>Now</span>The branch manager picks the application, writes a short reason and sends it. The Director gets an in-app message with a link straight to the application. If there is no active Director, it goes to the Owner.</p></div>
+          <div class="card-top"><h4>Ask head office to look at an approval</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>When a loan needed approval from head office, the branch manager had to contact head office outside the app.</p><p class="side now"><span>Now</span>The branch manager picks the application, writes a short reason and sends it. Every Owner gets an in-app message with a link straight to the application.</p></div>
           <p class="why"><strong>Why:</strong> Approvals that need head office get noticed faster, and the request is on record.</p>
         </li>
       </ol>
@@ -341,6 +353,7 @@
       <h4>How it was checked</h4>
       <ul>
         <li>Released in separate scoped releases on 17 November, in this order: 78a9f33 (treasury, approval and portal findings, prepared on 16 November), b1f12ba, 8c9bb79, 9411ea3, e00733b, a0c0a15, 8b10e05, 36a6eab, b1664df, bbb0e3d, 7b1569c and a647b51. These were written up afterwards from the release notes, and each change was confirmed on the live site’s code. Not live yet, so not listed here: bulk client import, the Arrears Ageing report, and signed-copy versions of applications.</li>
+        <li>Owner and Director roles: released as commit 9a90654. <code>capabilitiesFor</code> no longer removes branch and branch-finance editing for accounts stored as <code>director</code>, <code>assertRoleChange</code> no longer stops them granting the Owner role, saving such an account stores <code>owner</code>, and <code>escalateApproval</code> notifies every active Owner. 196 unit tests and all 122 emulator tests pass.</li>
         <li>Branch manager changes: released as commit 6ab595a on GitHub main, built and published with <code>npm run release:live</code> using a recorded local-differences fingerprint (other unreleased local work was left out). The <code>loanApplication</code>, <code>branchManagement</code> and <code>userManagement</code> functions were updated, then hosting, and the release check confirmed the live site serves 6ab595a.</li>
         <li>New <code>functions/financialCorrections.js</code>, <code>src/dashboard/BranchManagerPanels.jsx</code> and <code>branch-manager-panels.css</code>; <code>branchOfficerActivity</code> and <code>branchPayoutSummary</code> in <code>overviewModel.js</code>; the <code>escalateApproval</code> action in <code>loanApplicationService.js</code>; correction postings in <code>lendingOperations.js</code> and <code>accounting.js</code>; title lock in <code>accountSettings.js</code>; read-only settings in <code>DirectorSettings.jsx</code> and <code>AccountSettings.jsx</code>.</li>
         <li>196 unit tests pass and the production build succeeds. 47 emulator tests pass (operations, core journey, users and service suites). Not walked through in the browser on the live site.</li>
