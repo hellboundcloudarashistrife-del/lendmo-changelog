@@ -130,9 +130,10 @@
   <article class="day" id="2026-11-18" aria-labelledby="day-2026-11-18">
     <div class="day-head">
       <h2 id="day-2026-11-18">18 November 2026</h2>
-      <p>A daily cash count for each branch, so a day that starts with a different amount from the day before is caught and corrected straight away. 2 changes.</p>
+      <p>A daily cash count for each branch, cash payouts and repayments linked to the branch cash box and confirmed at an end-of-day cash-up that must balance, LendMo’s repayment methods, a payout wallet for each branch, and a cashbook. 7 changes.</p>
       <nav class="jump" aria-label="Sections for 18 November 2026">
         <a href="#d18-cash">Daily cash count <b>2</b></a>
+        <a href="#d18-cashup">Cash-up, payouts and repayments <b>5</b></a>
       </nav>
     </div>
 
@@ -152,10 +153,42 @@
       </ol>
     </section>
 
+    <section class="group" id="d18-cashup" aria-labelledby="d18-cashup-title">
+      <h3 id="d18-cashup-title">Cash-up, payouts and repayments <small>Loan servicing, Repayments, Branches → Finance, Settings → Lending settings</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Cash payouts come out of the branch cash box</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Every payout was recorded as a mobile-money transfer and checked by a second person.</p><p class="side now"><span>Now</span>Staff choose <b>Cash</b> or <b>Mobile money</b>. A cash payout needs the client’s signed payout slip and is confirmed at the end-of-day cash-up.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo pays loans out in cash as well as by mobile money, and the client’s signature proves a cash loan.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A payout wallet for each branch</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>All branches paid out from the same company wallets.</p><p class="side now"><span>Now</span>In Lending settings each company wallet is marked as a branch’s payout wallet or as the shared account clients pay into. Mobile-money payouts use the branch’s own wallet once it has one.</p></div>
+          <p class="why"><strong>Why:</strong> Each LendMo branch has its own mobile-money wallet for payouts.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>LendMo’s repayment methods</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Repayments could only be recorded as mobile money.</p><p class="side now"><span>Now</span>Staff record cash, bank transfer, debit order, Realpay or mobile money. Only cash goes through the branch cash box and is confirmed at the cash-up; the others go to the shared account and are checked by a second person. Clients can still report their own mobile-money payments.</p></div>
+          <p class="why"><strong>Why:</strong> These are the ways LendMo’s clients actually pay.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>The day can’t close until the cash-up balances</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Closing the day only saved the count.</p><p class="side now"><span>Now</span>Closing the day is the cash-up: the count must equal the opening count plus cash repayments less cash payouts, all listed on the form. When it balances, every cash payout and repayment is confirmed. When it doesn’t, nothing is confirmed, every Owner is told straight away and the day stays open until the error is found and corrected. Only an Owner can close it anyway, with a written reason.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo’s rule is that staff can’t leave the office until a cash error is found and corrected.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A cashbook for each branch</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no list of the money moving through a branch.</p><p class="side now"><span>Now</span>Each branch’s Finance tab lists its payouts and repayments for the last 30 days, in cash and mobile money, with today’s totals.</p></div>
+          <p class="why"><strong>Why:</strong> Managers and Owners can see every movement in one place.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Cash-up and payment methods: released as commit d5e2018. Cash payouts and repayments wait as <code>recorded_pending_cashup</code> / <code>pending_cashup</code>; <code>closeCashDay</code> (loanApplication callable) compares the count with the opening count plus pending cash in less pending cash out, and either confirms them all in one transaction (journals to <code>cash_on_hand</code>) or records the attempt and alerts the Owners. Bank transfer, debit order and Realpay post to <code>bank_funds</code>. Company wallets gain an optional <code>branchId</code>. 210 unit tests and 125 emulator tests pass, including a three-day cash journey. The first deploy attempt timed out loading the functions code on this PC and was rerun with <code>FUNCTIONS_DISCOVERY_TIMEOUT=60</code>.</li>
         <li>Released as commit 6627a60. New <code>functions/cashDays.js</code> (comparison and permission rules) and <code>getCashDays</code>, <code>openCashDay</code> and <code>closeCashDay</code> in the <code>branchManagement</code> callable, stored as <code>orgs/{org}/branches/{branch}/cashDays/{YYYY-MM-DD}</code> (Eswatini date). A difference requires a reason, writes an audit record and creates a <code>cash_mismatch</code> notification for each active Owner. Only the branch’s own manager or an Owner can count; other managers and loan officers are refused. 207 unit tests and 13 emulator tests pass; the full flow (Branch Manager opens with a difference, Owner gets the alert, Owner closes the day) was checked in the browser on the local app.</li>
       </ul>
     </details>
