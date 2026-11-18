@@ -130,9 +130,9 @@
   <article class="day" id="2026-11-18" aria-labelledby="day-2026-11-18">
     <div class="day-head">
       <h2 id="day-2026-11-18">18 November 2026</h2>
-      <p>A daily cash count for each branch, cash payouts and repayments linked to the branch cash box and confirmed at an end-of-day cash-up that must balance, LendMo’s repayment methods, a payout wallet for each branch, a cashbook, a tidier wallet list, and totals cards that look the same on every staff page. 9 changes.</p>
+      <p>A daily cash count for each branch, cash payouts and repayments linked to the branch cash box and confirmed at an end-of-day cash-up that must balance, LendMo’s repayment methods, a payout wallet for each branch, a cashbook, a tidier wallet list, and totals cards that look the same on every staff page. 10 changes.</p>
       <nav class="jump" aria-label="Sections for 18 November 2026">
-        <a href="#d18-cash">Daily cash count <b>2</b></a>
+        <a href="#d18-cash">Daily cash count <b>3</b></a>
         <a href="#d18-cashup">Cash-up, payouts and repayments <b>6</b></a>
         <a href="#d18-design">Look and feel <b>1</b></a>
       </nav>
@@ -150,6 +150,11 @@
           <div class="card-top"><h4>A reminder on the Branch Manager’s Overview</h4><span class="pill done">Done</span></div>
           <div class="compare"><p class="side before"><span>Before</span>Branch Managers had no prompt to count the cash.</p><p class="side now"><span>Now</span>The Overview shows whether today has been opened or closed, with a button straight to the count. Each branch’s Finance tab lists the last seven days and highlights any differences.</p></div>
           <p class="why"><strong>Why:</strong> A count that is easy to forget doesn’t protect anything.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>The cash count says what to do next</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Once the day was closed, the Open and Close buttons simply disappeared, so it looked as if there was nowhere to type the count.</p><p class="side now"><span>Now</span>A line under the counts always says what to do next: count and press <b>Open the day</b>, count again and press <b>Close the day</b>, or that today’s cash-up is done and the next count is tomorrow morning. Staff who can’t count are told that only the branch’s manager or an Owner can.</p></div>
+          <p class="why"><strong>Why:</strong> Testing showed people couldn’t find where to type the count after the day had closed.</p>
         </li>
       </ol>
     </section>
@@ -205,6 +210,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Cash count hint: released as commit 5779d2f (website only). <code>BranchCashCount</code> shows a <code>.bm-cash-next</code> line for each state (not opened, open, closed, cannot count). 210 unit tests pass; checked in the browser as an Owner.</li>
         <li>Matching totals cards: released as commit 257d7ad (website only). The Overview’s <code>StatCard</code> moved to <code>src/dashboard/StatCard.jsx</code> and is used by <code>UserManagement.jsx</code> and <code>BranchManagement.jsx</code> in a three-card <code>.dco-kpis.dco-kpis-3</code> row; both Add buttons use <code>.dco-primary</code>. The <code>um-summary</code>, <code>bm-summary</code> and <code>bm-add</code> rules were removed. 210 unit tests pass and the production build succeeds; checked in the browser in light, dark and phone views, with no sideways scrolling.</li>
         <li>Wallet list: released as commit d1d5573. New <code>WalletList</code> component in <code>src/lending/ProductSettings.jsx</code> (rows updated by wallet id, not position) and <code>.wf-wallet-*</code> styles in <code>workflow.css</code>; stacked cards at 640px and below. Saved wallet data is unchanged. 210 unit tests pass; edit, add and remove checked in the browser at desktop and phone widths.</li>
         <li>Cash-up and payment methods: released as commit d5e2018. Cash payouts and repayments wait as <code>recorded_pending_cashup</code> / <code>pending_cashup</code>; <code>closeCashDay</code> (loanApplication callable) compares the count with the opening count plus pending cash in less pending cash out, and either confirms them all in one transaction (journals to <code>cash_on_hand</code>) or records the attempt and alerts the Owners. Bank transfer, debit order and Realpay post to <code>bank_funds</code>. Company wallets gain an optional <code>branchId</code>. 210 unit tests and 125 emulator tests pass, including a three-day cash journey. The first deploy attempt timed out loading the functions code on this PC and was rerun with <code>FUNCTIONS_DISCOVERY_TIMEOUT=60</code>.</li>
