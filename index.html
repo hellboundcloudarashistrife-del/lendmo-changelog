@@ -122,11 +122,45 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 17 November 2026</p>
+    <p class="updated">Last updated 18 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-18" aria-labelledby="day-2026-11-18">
+    <div class="day-head">
+      <h2 id="day-2026-11-18">18 November 2026</h2>
+      <p>A daily cash count for each branch, so a day that starts with a different amount from the day before is caught and corrected straight away. 2 changes.</p>
+      <nav class="jump" aria-label="Sections for 18 November 2026">
+        <a href="#d18-cash">Daily cash count <b>2</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d18-cash" aria-labelledby="d18-cash-title">
+      <h3 id="d18-cash-title">Daily cash count <small>Branches → a branch → Finance, and the Branch Manager’s Overview</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Open and close each day with a cash count</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Nothing in the app checked that a branch started the day with the same cash it ended with the day before.</p><p class="side now"><span>Now</span>The Branch Manager opens the day by counting the cash box and typing the amount, and closes it the same way. An Owner can do it for any branch, which covers branches without a manager. If the opening amount is different from the last closing count, the app shows the difference and asks for a reason. Every Owner is told straight away, with a link to the branch. A day that was opened but never closed is flagged.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo asked for this as a control, so mistakes are corrected as soon as they happen.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A reminder on the Branch Manager’s Overview</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Branch Managers had no prompt to count the cash.</p><p class="side now"><span>Now</span>The Overview shows whether today has been opened or closed, with a button straight to the count. Each branch’s Finance tab lists the last seven days and highlights any differences.</p></div>
+          <p class="why"><strong>Why:</strong> A count that is easy to forget doesn’t protect anything.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>Released as commit 6627a60. New <code>functions/cashDays.js</code> (comparison and permission rules) and <code>getCashDays</code>, <code>openCashDay</code> and <code>closeCashDay</code> in the <code>branchManagement</code> callable, stored as <code>orgs/{org}/branches/{branch}/cashDays/{YYYY-MM-DD}</code> (Eswatini date). A difference requires a reason, writes an audit record and creates a <code>cash_mismatch</code> notification for each active Owner. Only the branch’s own manager or an Owner can count; other managers and loan officers are refused. 207 unit tests and 13 emulator tests pass; the full flow (Branch Manager opens with a difference, Owner gets the alert, Owner closes the day) was checked in the browser on the local app.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-11-17" aria-labelledby="day-2026-11-17">
     <div class="day-head">
       <h2 id="day-2026-11-17">17 November 2026</h2>
