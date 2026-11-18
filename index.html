@@ -130,12 +130,13 @@
   <article class="day" id="2026-11-18" aria-labelledby="day-2026-11-18">
     <div class="day-head">
       <h2 id="day-2026-11-18">18 November 2026</h2>
-      <p>A daily cash count for each branch, cash payouts and repayments linked to the branch cash box and confirmed at an end-of-day cash-up that must balance, LendMo’s repayment methods, a payout wallet for each branch, a cashbook, a tidier wallet list, totals cards that look the same on every staff page, and a borrower payment form that says what happened after Send. 11 changes.</p>
+      <p>A daily cash count for each branch, cash payouts and repayments linked to the branch cash box and confirmed at an end-of-day cash-up that must balance, LendMo’s repayment methods, a payout wallet for each branch, a cashbook, a tidier wallet list, totals cards that look the same on every staff page, a borrower payment form that says what happened after Send, and five fixes from testing. 16 changes.</p>
       <nav class="jump" aria-label="Sections for 18 November 2026">
         <a href="#d18-cash">Daily cash count <b>3</b></a>
         <a href="#d18-cashup">Cash-up, payouts and repayments <b>6</b></a>
         <a href="#d18-design">Look and feel <b>1</b></a>
         <a href="#d18-borrower">Borrower payments <b>1</b></a>
+        <a href="#d18-fixes">Fixes from testing <b>5</b></a>
       </nav>
     </div>
 
@@ -218,11 +219,43 @@
       </ol>
     </section>
 
+    <section class="group" id="d18-fixes" aria-labelledby="d18-fixes-title">
+      <h3 id="d18-fixes-title">Fixes from testing <small>Collections, Customer support, Application details and every page</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Text boxes stay inside their card</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Text boxes such as “Why is approval needed?” and the collection case reason could be dragged wider than their card.</p><p class="side now"><span>Now</span>Every text box can be made taller but never wider than the card it sits in.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in testing on the Branch Manager overview and Collection cases.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>The same blue outline on every field</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The collection case reason field showed a gold outline when clicked, while other fields were blue.</p><p class="side now"><span>Now</span>Fields on the collection case and request pages use the same blue outline as the rest of the app.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in testing; one colour makes it clear which field you are typing in.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Forms clear after saving</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>After opening a support case the form still held the old subject and details, so the next case started with the wrong information.</p><p class="side now"><span>Now</span>Support case, payout and repayment forms clear after a successful save. If the save fails, what you typed stays so you can try again.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in testing on Customer support.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A proper file button for supporting evidence</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Add supporting evidence on an application showed the browser’s plain “Choose File” button.</p><p class="side now"><span>Now</span>It has a LendMo <b>Choose file</b> button that shows the chosen file’s name and size.</p></div>
+          <p class="why"><strong>Why:</strong> It now matches the other upload areas in the app.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Buttons react when pressed</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clicking a button gave no sign that it had been pressed.</p><p class="side now"><span>Now</span>Buttons give a small press when clicked. People who have turned on reduced motion see a slight darkening instead.</p></div>
+          <p class="why"><strong>Why:</strong> Requested in testing so people know their click registered.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
         <li>Payment form messages: released as commit 6395a3e (website only). <code>BorrowerLoanDetail.jsx</code> tracks which form a message belongs to and renders it before that form’s button, focused and scrolled into view. New app-wide <code>showToast</code> (<code>src/appearance/toast.js</code>, <code>Toast.jsx</code> mounted in <code>main.jsx</code>). Dark-mode borrower errors use <code>--theme-red</code>. 210 unit tests pass and the build succeeds; in the browser the “payment already waiting” error showed in the form and the toast displayed. A real successful send wasn’t repeated because the demo loan already had a claim waiting.</li>
+        <li>Fixes from testing (TaskTrack subtasks st-1794982495307, st-1794984138474, st-1794996809944, st-1794994898409, st-1794986971555, st-1794984989098): released as commit 2f6aeb8 (website only). Global <code>textarea</code> max-width and vertical-only resize, with <code>minmax(0,1fr)</code> label columns in <code>.om-form</code> and <code>.branch-approval-panel</code>; <code>--portal-focus-color</code> ring on <code>.om-*</code> forms; <code>ActionForm</code> resets to its blank values after a successful save; <code>UploadEvidence</code> uses a hidden file input behind a <code>.dar-file-button</code>; button press uses the <code>scale</code> property so existing transforms are untouched. 210 unit tests pass; text boxes, focus colour and form reset checked in the browser. The evidence picker was not checked by eye.</li>
         <li>Cash count hint: released as commit 5779d2f (website only). <code>BranchCashCount</code> shows a <code>.bm-cash-next</code> line for each state (not opened, open, closed, cannot count). 210 unit tests pass; checked in the browser as an Owner.</li>
         <li>Matching totals cards: released as commit 257d7ad (website only). The Overview’s <code>StatCard</code> moved to <code>src/dashboard/StatCard.jsx</code> and is used by <code>UserManagement.jsx</code> and <code>BranchManagement.jsx</code> in a three-card <code>.dco-kpis.dco-kpis-3</code> row; both Add buttons use <code>.dco-primary</code>. The <code>um-summary</code>, <code>bm-summary</code> and <code>bm-add</code> rules were removed. 210 unit tests pass and the production build succeeds; checked in the browser in light, dark and phone views, with no sideways scrolling.</li>
         <li>Wallet list: released as commit d1d5573. New <code>WalletList</code> component in <code>src/lending/ProductSettings.jsx</code> (rows updated by wallet id, not position) and <code>.wf-wallet-*</code> styles in <code>workflow.css</code>; stacked cards at 640px and below. Saved wallet data is unchanged. 210 unit tests pass; edit, add and remove checked in the browser at desktop and phone widths.</li>
