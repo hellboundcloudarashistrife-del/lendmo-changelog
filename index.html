@@ -130,10 +130,10 @@
   <article class="day" id="2026-11-18" aria-labelledby="day-2026-11-18">
     <div class="day-head">
       <h2 id="day-2026-11-18">18 November 2026</h2>
-      <p>A daily cash count for each branch, cash payouts and repayments linked to the branch cash box and confirmed at an end-of-day cash-up that must balance, LendMo’s repayment methods, a payout wallet for each branch, and a cashbook. 7 changes.</p>
+      <p>A daily cash count for each branch, cash payouts and repayments linked to the branch cash box and confirmed at an end-of-day cash-up that must balance, LendMo’s repayment methods, a payout wallet for each branch, a cashbook, and a tidier wallet list. 8 changes.</p>
       <nav class="jump" aria-label="Sections for 18 November 2026">
         <a href="#d18-cash">Daily cash count <b>2</b></a>
-        <a href="#d18-cashup">Cash-up, payouts and repayments <b>5</b></a>
+        <a href="#d18-cashup">Cash-up, payouts and repayments <b>6</b></a>
       </nav>
     </div>
 
@@ -181,6 +181,11 @@
           <div class="compare"><p class="side before"><span>Before</span>There was no list of the money moving through a branch.</p><p class="side now"><span>Now</span>Each branch’s Finance tab lists its payouts and repayments for the last 30 days, in cash and mobile money, with today’s totals.</p></div>
           <p class="why"><strong>Why:</strong> Managers and Owners can see every movement in one place.</p>
         </li>
+        <li class="card">
+          <div class="card-top"><h4>A tidier list of payment wallets</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>In Lending settings every wallet showed as a large block of form fields, so a wallet for each branch filled the whole screen.</p><p class="side now"><span>Now</span>Each wallet is one line showing its name, provider, number and what it is used for. The shared account comes first, then each branch’s payout wallet. <b>Edit</b> opens just that one wallet, and a wallet missing its provider or number is marked <b>Needs details</b>.</p></div>
+          <p class="why"><strong>Why:</strong> With a wallet for every branch, the old layout was cluttered and hard to scan.</p>
+        </li>
       </ol>
     </section>
 
@@ -188,6 +193,7 @@
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Wallet list: released as commit d1d5573. New <code>WalletList</code> component in <code>src/lending/ProductSettings.jsx</code> (rows updated by wallet id, not position) and <code>.wf-wallet-*</code> styles in <code>workflow.css</code>; stacked cards at 640px and below. Saved wallet data is unchanged. 210 unit tests pass; edit, add and remove checked in the browser at desktop and phone widths.</li>
         <li>Cash-up and payment methods: released as commit d5e2018. Cash payouts and repayments wait as <code>recorded_pending_cashup</code> / <code>pending_cashup</code>; <code>closeCashDay</code> (loanApplication callable) compares the count with the opening count plus pending cash in less pending cash out, and either confirms them all in one transaction (journals to <code>cash_on_hand</code>) or records the attempt and alerts the Owners. Bank transfer, debit order and Realpay post to <code>bank_funds</code>. Company wallets gain an optional <code>branchId</code>. 210 unit tests and 125 emulator tests pass, including a three-day cash journey. The first deploy attempt timed out loading the functions code on this PC and was rerun with <code>FUNCTIONS_DISCOVERY_TIMEOUT=60</code>.</li>
         <li>Released as commit 6627a60. New <code>functions/cashDays.js</code> (comparison and permission rules) and <code>getCashDays</code>, <code>openCashDay</code> and <code>closeCashDay</code> in the <code>branchManagement</code> callable, stored as <code>orgs/{org}/branches/{branch}/cashDays/{YYYY-MM-DD}</code> (Eswatini date). A difference requires a reason, writes an audit record and creates a <code>cash_mismatch</code> notification for each active Owner. Only the branch’s own manager or an Owner can count; other managers and loan officers are refused. 207 unit tests and 13 emulator tests pass; the full flow (Branch Manager opens with a difference, Owner gets the alert, Owner closes the day) was checked in the browser on the local app.</li>
       </ul>
