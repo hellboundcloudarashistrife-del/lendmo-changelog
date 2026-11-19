@@ -130,10 +130,12 @@
   <article class="day" id="2026-11-19" aria-labelledby="day-2026-11-19">
     <div class="day-head">
       <h2 id="day-2026-11-19">19 November 2026</h2>
-      <p>Staff can write a notice to a customer about their loan, and clients paid twice a month can give both pay dates. 2 changes.</p>
+      <p>Staff can write a notice to a customer about their loan, clients paid twice a month can give both pay dates, the Owner can allocate the capital pool to branches, and two fixes from testing. 5 changes.</p>
       <nav class="jump" aria-label="Sections for 19 November 2026">
         <a href="#d19-notices">Customer notices <b>1</b></a>
         <a href="#d19-pay">Pay dates <b>1</b></a>
+        <a href="#d19-pool">Capital pool <b>1</b></a>
+        <a href="#d19-fixes">Fixes from testing <b>2</b></a>
       </nav>
     </div>
 
@@ -159,10 +161,38 @@
       </ol>
     </section>
 
+    <section class="group" id="d19-pool" aria-labelledby="d19-pool-title">
+      <h3 id="d19-pool-title">Capital pool <small>Capital Pool, and each branch’s Finance tab</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Allocate money from the capital pool to branches</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Each branch had a planned allocation that was typed in one at a time, with no company total to take it from.</p><p class="side now"><span>Now</span>The Owner sets the company’s <b>capital pool total</b>, then uses <b>Allocate</b> on a branch to give it money from the pool or return money to the pool. The page shows the pool total, how much is allocated and how much is left. Every move needs a reason and is listed with who made it and when. Each branch’s Finance tab shows its allocation and its moves straight away. It is a lending budget: no bank or wallet balances change.</p></div>
+          <p class="why"><strong>Why:</strong> Requested in testing so money can be shared out to branches from one place.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d19-fixes" aria-labelledby="d19-fixes-title">
+      <h3 id="d19-fixes-title">Fixes from testing <small>Clients and Reports</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Add client always starts empty</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>If someone had left a client half-finished, Add client reopened that person’s details instead of an empty form.</p><p class="side now"><span>Now</span><b>Add client</b> always opens an empty form. If an unfinished client is waiting, it asks first before removing it, and a <b>Resume</b> button on the Clients page reopens that client instead.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in testing: new clients started with another client’s details.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Branch Managers only see their own branch in Reports</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The Reports branch filter offered “All permitted branches” and other branch names, which looked like access to other branches.</p><p class="side now"><span>Now</span>Staff limited to one branch see that branch fixed in the filter and on printed reports. A new check confirms they only ever receive their own branch’s records.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in testing: Branch Managers must not see other branches’ reports.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Capital pool and fixes: released as commit 026be16 (website and functions), also pushed to GitHub main. Capital pool (st-1794998990759): new <code>setCapitalPoolTotal</code> and <code>allocateCapital</code> in the branch service; pool total in <code>orgs/{org}/capitalPool/current</code>, moves in <code>capitalMoves</code> (request ID as document ID, so retries apply once), allocations stay in <code>branchCapitalAllocations</code>; <code>saveCapitalAllocation</code> is refused once a pool exists; <code>getCapitalPool</code> and <code>getFinance</code> return the pool figures and moves. Add client (st-1794989888092): <code>freshClient</code> removes the unfinished client draft after the person confirms; Clients shows Resume. Reports (st-1794992628241): non-Owner staff see their branch fixed; a two-branch emulator test confirms <code>getOperations</code> only returns the manager’s branch. 212 unit tests and 129 emulator tests pass; all three were checked in the browser.</li>
         <li>Two pay dates (TaskTrack subtask st-1794991267015): released as commit 55308ed (website and functions). New income frequency <code>twice_monthly</code>; the second day is <code>work.payslips[0].secondPayDate</code> on drafts and <code>secondPayDate</code> on applications and client records, validated 1–31 and different from <code>payDate</code> in both <code>applicationForm.js</code> and <code>cleanApplication</code>, and dropped for other frequencies. <code>withDueDates</code> still uses <code>payDate</code>. Shown on client profile, review and print; correctable via send-back. 212 unit tests and 127 emulator tests pass; the form was checked in the browser, but a full twice-a-month submission was not.</li>
         <li>Customer notices (TaskTrack subtask st-1794994099587): released as commit 42f629c (website and functions). New <code>postNotice</code> and <code>listNotices</code> actions in <code>lendingOperations.js</code>, requiring <code>applications.review</code> and the loan’s scope; each notice is stored in <code>orgs/{org}/notices</code> with an audit record and a borrower notification (category <code>notice</code>). In-app only; no SMS or email. 210 unit tests and 127 emulator tests pass (new test covers scope, permissions, blank messages and customers without an account); checked in the browser by posting as the Owner and reading it as the customer.</li>
       </ul>
