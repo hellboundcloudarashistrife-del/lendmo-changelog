@@ -130,13 +130,14 @@
   <article class="day" id="2026-11-19" aria-labelledby="day-2026-11-19">
     <div class="day-head">
       <h2 id="day-2026-11-19">19 November 2026</h2>
-      <p>Staff can write a notice to a customer about their loan, clients paid twice a month can give both pay dates, the Owner can allocate the capital pool to branches, two fixes from testing, and a Cash &amp; Bank section with cash shifts for each person. 9 changes.</p>
+      <p>Staff can write a notice to a customer about their loan, clients paid twice a month can give both pay dates, the Owner can allocate the capital pool to branches, two fixes from testing, and a Cash &amp; Bank section with cash shifts for each person.. The Owner role is now called Director everywhere. 10 changes.</p>
       <nav class="jump" aria-label="Sections for 19 November 2026">
         <a href="#d19-notices">Customer notices <b>1</b></a>
         <a href="#d19-pay">Pay dates <b>1</b></a>
         <a href="#d19-pool">Capital pool <b>1</b></a>
         <a href="#d19-fixes">Fixes from testing <b>2</b></a>
         <a href="#d19-cash">Cash &amp; Bank <b>4</b></a>
+        <a href="#d19-roles">Staff roles <b>1</b></a>
       </nav>
     </div>
 
@@ -215,10 +216,22 @@
       </ol>
     </section>
 
+    <section class="group" id="d19-roles" aria-labelledby="d19-roles-title">
+      <h3 id="d19-roles-title">Staff roles <small>Every staff screen</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The Owner role is now called Director</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The company-level role was called Owner: the Owner portal, the Owner overview, and messages such as “Every Owner is told”.</p><p class="side now"><span>Now</span>It is called Director everywhere: the Director portal, the Director overview, the role list in Employees, and every message and alert. Nothing changes about what the role can do, and existing accounts keep working. The separate test Director login was removed, since it was the same role.</p></div>
+          <p class="why"><strong>Why:</strong> Director is the name LendMo agreed on for this role.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Director name: released as commit bf8c945 (website and the three callables). <code>STAFF_ROLE_LABELS.owner</code> is now “Director” and user-facing “Owner” text across 32 files reads “Director”; the stored role value stays <code>owner</code> and <code>normalizeStaffRole</code> still maps <code>director</code> to it. 212 unit tests and 129 emulator tests pass; checked in the browser as the demo Director. The test login director@lendmo.test was deleted from the live project the same day.</li>
         <li>Cash &amp; Bank shifts: released as commit b472b64 (website and functions), also pushed to GitHub main. New <code>openShift</code>, <code>closeShift</code> and <code>getShifts</code> in the loanApplication callable; shifts in <code>orgs/{org}/shifts</code> (numbered from <code>counters/shifts</code>), each person’s open shift and last closing count in <code>cashUsers/{uid}</code>. Cash payouts and repayments need the recorder’s open shift at the loan’s branch and store <code>shiftId</code>; closing confirms the shift’s pending cash with the same confirmation code as the old cash-up. Cash recorded before shifts is picked up by the same person’s next shift; <code>closeCashDay</code> now only handles that older cash, and the UI no longer uses Open/Close the day. The cash journey emulator test was rewritten for shifts; 212 unit tests and 129 emulator tests pass; opening, mismatch, balanced close, opening check and Owner close were checked in the browser.</li>
         <li>Capital pool and fixes: released as commit 026be16 (website and functions), also pushed to GitHub main. Capital pool (st-1794998990759): new <code>setCapitalPoolTotal</code> and <code>allocateCapital</code> in the branch service; pool total in <code>orgs/{org}/capitalPool/current</code>, moves in <code>capitalMoves</code> (request ID as document ID, so retries apply once), allocations stay in <code>branchCapitalAllocations</code>; <code>saveCapitalAllocation</code> is refused once a pool exists; <code>getCapitalPool</code> and <code>getFinance</code> return the pool figures and moves. Add client (st-1794989888092): <code>freshClient</code> removes the unfinished client draft after the person confirms; Clients shows Resume. Reports (st-1794992628241): non-Owner staff see their branch fixed; a two-branch emulator test confirms <code>getOperations</code> only returns the manager’s branch. 212 unit tests and 129 emulator tests pass; all three were checked in the browser.</li>
         <li>Two pay dates (TaskTrack subtask st-1794991267015): released as commit 55308ed (website and functions). New income frequency <code>twice_monthly</code>; the second day is <code>work.payslips[0].secondPayDate</code> on drafts and <code>secondPayDate</code> on applications and client records, validated 1–31 and different from <code>payDate</code> in both <code>applicationForm.js</code> and <code>cleanApplication</code>, and dropped for other frequencies. <code>withDueDates</code> still uses <code>payDate</code>. Shown on client profile, review and print; correctable via send-back. 212 unit tests and 127 emulator tests pass; the form was checked in the browser, but a full twice-a-month submission was not.</li>
