@@ -122,11 +122,57 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 19 November 2026</p>
+    <p class="updated">Last updated 20 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-20" aria-labelledby="day-2026-11-20">
+    <div class="day-head">
+      <h2 id="day-2026-11-20">20 November 2026</h2>
+      <p>The Director’s own changes no longer wait for a second Director, all branches show on one page, and the branch team picker is readable in dark mode. 3 changes.</p>
+      <nav class="jump" aria-label="Sections for 20 November 2026">
+        <a href="#d20-director">Director <b>1</b></a>
+        <a href="#d20-branches">Branches <b>2</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d20-director" aria-labelledby="d20-director-title">
+      <h3 id="d20-director-title">Director <small>Settings → Lending settings, Employees, Settings → payout team, loan corrections</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The Director’s changes apply straight away</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Changing a payout wallet number, setting your own duties or approval limit, and deciding a correction you asked for all waited for “another Director”. LendMo has one Director, so they could never go through.</p><p class="side now"><span>Now</span>A Director’s wallet changes apply straight away, and a change already waiting can be approved by the Director who asked. The Director can set their own duties and limit, and decide their own correction requests. Everything is still recorded in the history and audit trail. Checks between other staff, such as a second person confirming a payout or repayment, are unchanged.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo has a single Director, the owner of the business.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-branches" aria-labelledby="d20-branches-title">
+      <h3 id="d20-branches-title">Branches <small>Branches list and Manage branch team</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>All branches on one page</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The Branches list showed 4 branches per page, so 6 branches needed two pages.</p><p class="side now"><span>Now</span>All branches show on one page. Page buttons only appear past 100 branches.</p></div>
+          <p class="why"><strong>Why:</strong> There is no reason to split such a short list.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Readable team picker in dark mode</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>In Manage branch team, people who can’t be picked had a white background in dark mode, so their names were almost invisible.</p><p class="side now"><span>Now</span>Those rows, the hover colour and the small text now follow light and dark mode, so every name is readable.</p></div>
+          <p class="why"><strong>Why:</strong> Reported in testing.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>Released as commit ca53bd2 (website and functions) with d5ec54f and 953e01d, also pushed to GitHub main. Single Director: <code>setConfig</code> no longer creates <code>pendingWallets</code>; <code>decideWalletChange</code> lets the requester decide; <code>setPermissions</code> and <code>setPayoutTeam</code> allow a Director’s own row; <code>decideFinancialRequest</code> lets a Director decide their own request. Branches list requests <code>pageSize: 100</code> (the server limit) and hides pagination below that. Team picker rows use <code>--d-soft</code>, <code>--d-border</code> and <code>--d-muted</code>. Four emulator tests were updated for the single-Director rules; 212 unit tests and 129 emulator tests pass. Approving a waiting wallet change, the one-page list and the picker in dark and light mode were checked in the browser.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-11-19" aria-labelledby="day-2026-11-19">
     <div class="day-head">
       <h2 id="day-2026-11-19">19 November 2026</h2>
