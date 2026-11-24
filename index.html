@@ -130,10 +130,20 @@
   <article class="day" id="2026-11-20" aria-labelledby="day-2026-11-20">
     <div class="day-head">
       <h2 id="day-2026-11-20">20 November 2026</h2>
-      <p>The Director’s own changes no longer wait for a second Director, all branches show on one page, and the branch team picker is readable in dark mode. 3 changes.</p>
+      <p>The Director’s own changes no longer wait for a second Director, all branches show on one page, and the branch team picker is readable in dark mode. Buttons that did the wrong thing are fixed, serious actions now ask “are you sure?” first, every screen has a way out, the whole app now uses one plain name for each thing, staff home pages and loan pages say what to do next, every page shares one look, the most crowded pages are tidied, reminders and notices are ready to reach every client by email, several gaps in money handling are closed, staff get bulk client import, new reports and better lists, and the client application form saves itself and takes several files per document, overdue loans gain arrears interest, and pages stay fast as the loan book grows. 38 changes.</p>
       <nav class="jump" aria-label="Sections for 20 November 2026">
         <a href="#d20-director">Director <b>1</b></a>
         <a href="#d20-branches">Branches <b>2</b></a>
+        <a href="#d20-buttons">Buttons and messages <b>6</b></a>
+        <a href="#d20-words">Wording <b>3</b></a>
+        <a href="#d20-next">What to do next <b>2</b></a>
+        <a href="#d20-look">One look <b>1</b></a>
+        <a href="#d20-tidy">Tidier pages <b>3</b></a>
+        <a href="#d20-reminders">Reminders and backups <b>2</b></a>
+        <a href="#d20-money">Money handling <b>6</b></a>
+        <a href="#d20-tools">Staff tools <b>5</b></a>
+        <a href="#d20-portal">Client portal <b>3</b></a>
+        <a href="#d20-arrears">Arrears interest and speed <b>3</b></a>
       </nav>
     </div>
 
@@ -164,11 +174,257 @@
       </ol>
     </section>
 
+    <section class="group" id="d20-buttons" aria-labelledby="d20-buttons-title">
+      <h3 id="d20-buttons-title">Buttons and messages <small>Across the staff screens and the client portal</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Buttons that did the wrong thing are fixed</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Some buttons did something different from what they said: saving a note on a collection case changed its status to “Investigating”; “Update case” always failed on adjustment and write-off requests; the cash payout cancel form showed the mobile-money explanation; a loan officer saw a “Reject” button that could never be pressed; a client with a loan in progress was sent to their old application; and a notification about a case opened the whole list.</p><p class="side now"><span>Now</span>A note keeps the case’s status. Adjustment and write-off requests link to the page where they are decided. The cash form explains cash. Loan officers see “Only a Director can decline an application.” The client is sent to their loan, and a notification opens that exact case. Help, Privacy and Terms on the password screen open their information instead of going back to log in.</p></div>
+          <p class="why"><strong>Why:</strong> Found in the button audit of 20 November.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Branches can be paused and reopened</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no way to pause a branch’s new applications, change who handles them, or reopen a deactivated branch from the branch menu.</p><p class="side now"><span>Now</span>The branch menu now has “Pause new applications”, “Change who handles new applications” and, for a paused or inactive branch, “Open for applications”.</p></div>
+          <p class="why"><strong>Why:</strong> The screens for this existed but no button opened them.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Serious actions ask “are you sure?” first</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Approving, declining or sending back an application, confirming a payout, reversing a repayment, writing off a loan, cancelling a loan, closing a cash shift, saving a branch manager or team, and changing the payout team all happened on one click. A client accepting a loan online had no check at all.</p><p class="side now"><span>Now</span>Each of these first shows a short question naming the client and the amount and saying what happens next, with a clear “Yes, …” button and a safe “Keep …” or “Not yet” button. The safe choice is the one selected.</p></div>
+          <p class="why"><strong>Why:</strong> These steps message the client, move money or can’t be undone, so a slip of the mouse shouldn’t be enough.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Each money action says what happened</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Every form on the Finance and loan screens said “Saved. The records below have been refreshed.”, whatever it did, and a refusal could appear out of sight further up the page.</p><p class="side now"><span>Now</span>Each action now says what happened and who acts next, for example “Payout recorded. A second person now needs to check it before the loan starts.” The message also appears as a pop-up wherever you are, and a refusal is scrolled into view.</p></div>
+          <p class="why"><strong>Why:</strong> People couldn’t tell whether a button had worked.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A way out of dead ends</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>“Staff access required” only offered signing out. Home-page tiles could lead there. Some greyed-out buttons didn’t say why. A blocked print window quietly downloaded a file. On a slow phone connection a client could see “Unable to load your account”.</p><p class="side now"><span>Now</span>“Staff access required” has a “Back to home” button, and home tiles only show pages you can open. Greyed-out buttons say what is missing (for example “To accept, tick the box above”). A blocked print window says a copy was downloaded instead. A slow connection now waits instead of failing.</p></div>
+          <p class="why"><strong>Why:</strong> People got stuck and didn’t know what to do next.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Plain wording in error messages</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Some messages used technical wording, such as “This request ID was used for a different response”, “Journal does not balance” or a message about Firebase email delivery.</p><p class="side now"><span>Now</span>These now say what happened in plain words and what to do, for example “This form was already sent with different details. Refresh the page and enter it again.”</p></div>
+          <p class="why"><strong>Why:</strong> Messages should make sense to anyone using the app.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>No more browser pop-ups</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Saving staff duties, lending settings and a few other actions, and leaving a page with unsaved changes, used the browser’s grey “lendmo-loans-portal.web.app says” box with OK and Cancel.</p><p class="side now"><span>Now</span>Every question appears in the app’s own box with clear buttons, such as “Yes, save duties and limit” / “Go back” or “Yes, discard changes” / “Keep editing”.</p></div>
+          <p class="why"><strong>Why:</strong> The browser box looked like a warning from outside the app and its OK/Cancel didn’t say what would happen.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-words" aria-labelledby="d20-words-title">
+      <h3 id="d20-words-title">Wording <small>Every screen, staff and client portal</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>One name for each thing</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The same thing had several names: the person borrowing was a client, customer, borrower or applicant; a repayment was also a receipt or collection; sending an application back was also “request information” and “info requested”; reminders were “dunning”, “due notices” and “in-app notices”.</p><p class="side now"><span>Now</span>Each thing has one name everywhere: <strong>client</strong>, <strong>repayment</strong>, <strong>payout</strong>, <strong>send back to client</strong>, <strong>affordability check</strong>, <strong>payment reminder</strong>. Statuses read the same on every list, for the Director and for branch staff, and a client turning down an offer shows as “Client said no”, never “Rejected”.</p></div>
+          <p class="why"><strong>Why:</strong> Staff found the mixed names confusing.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Buttons say what they do</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Many buttons used vague or misleading words, such as “Approve” (which also sends the offer), “Claim payout”, “Verify receipt”, “Post due interest and fees”, “Send setup email” (which sends a password reset), “Import client details” (which imports nothing) and five different “Save changes”.</p><p class="side now"><span>Now</span>Buttons say what happens and to what: “Approve and send offer”, “I’ll pay this out”, “Check repayment”, “Charge due interest and late fees”, “Email password link”, “Fill Add client from a spreadsheet”, “Save branch”, “Save payout team”. Messages after each button say what happened and who acts next.</p></div>
+          <p class="why"><strong>Why:</strong> So nobody has to guess what a button will do.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Page names match the sidebar</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The sidebar, the path at the top of the page and the page title often disagreed (for example “Process dunning”, “Process collection dunning”; “All loans & payouts”, “All loans”; “Employees”, “User management”).</p><p class="side now"><span>Now</span>They use the same name: for example “Send payment reminders”, “Payment reminder rules”, “Loans and payouts”, “Repayments”, “Declined and sent back”, “Employees”. Sidebar items stay in the same places. In the client portal, “Apply for a loan” opens “Apply for a loan”, the Help assistant gives the right answers for one-payment loans signed at the branch, and walk-in forms speak to staff (“How much does the client want?”).</p></div>
+          <p class="why"><strong>Why:</strong> People couldn’t tell whether they were on the page they clicked.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-next" aria-labelledby="d20-next-title">
+      <h3 id="d20-next-title">What to do next <small>Staff home pages and loan pages</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>A to-do list on every staff home page</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Home pages showed totals and charts, but not what needed doing. Staff had to know which page to open for each job.</p><p class="side now"><span>Now</span>Each staff home page starts with a short to-do list for that person: clients waiting to sign, signed loans to pay out, payouts and repayments waiting for your check, applications to review, correction requests to decide, and overdue loans to call. Each line has one button that opens the right loan or application. People only see jobs their duties allow, and never a check on something they recorded themselves. When there is nothing to do it says “You’re up to date”.</p></div>
+          <p class="why"><strong>Why:</strong> Staff weren’t sure what to do or where to go.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Each loan page shows where it is and the next step</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A loan page showed up to eight forms at once, with nothing saying which one was needed now.</p><p class="side now"><span>Now</span>A progress line shows where the loan is (Offer, Signed, Paid out, Repaying, Paid off), and a highlighted box says the next step in one sentence, for example “SZL 2,500 overdue for 26 days. Call Zodwa Hlophe, then record what they pay.”, with the form for that step right there. Every other action is under “More actions”, closed until you open it.</p></div>
+          <p class="why"><strong>Why:</strong> So nobody has to work out which of many forms to use.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-look" aria-labelledby="d20-look-title">
+      <h3 id="d20-look-title">One look <small>Every staff page and the client portal</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>One button colour, readable text, one page header</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The main button was gold on the sign-in page, red on the Overview, Clients and Collections, and blue on Finance and Capital Pool, so “Add branch” looked like a warning. Many labels were 9 to 11 pixels high. Pages used three different headers, and some printed their title twice.</p><p class="side now"><span>Now</span>Every main button is the logo gold; red is only for actions that remove, reverse or cancel. Links are blue. No text is smaller than 12 pixels. Every staff page has the same header (Home / section / page), using the same names as the sidebar, and the title appears once.</p></div>
+          <p class="why"><strong>Why:</strong> The app looked cluttered and inconsistent, and some text was hard to read.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-tidy" aria-labelledby="d20-tidy-title">
+      <h3 id="d20-tidy-title">Tidier pages <small>Finance, Customer support, Collections, Overview, Capital Pool, Clients, client portal</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Forms stay closed until you need them</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Finance was about 18 screens long, with two entry forms open above every accounting entry. Customer support had 12 forms open at once. Collection cases, corrections, write-offs, repayment notices and messages to clients all had a form open above their list.</p><p class="side now"><span>Now</span>Each “create” form sits behind a button (for example “+ Open collection case”) and opens only when you press it. Finance shows accounting entries 25 at a time with a date filter. Customer support, collection cases and correction requests are short lists with a search box and Open / Waiting / Resolved / All filters; opening one shows just that one, with a link back. Pending My Approval shows “9 things to sort out before approval” on one line instead of nine bullet points. Opening a loan now shows that loan straight away, with a link back to the list.</p></div>
+          <p class="why"><strong>Why:</strong> Pages were long and cluttered, and it wasn’t clear where to look.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Calmer Overview, Capital Pool and Clients</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The Director overview had 14 boxes, repeated figures, a “Target” column that always said “Not configured”, and large amounts that broke across lines. Capital Pool had three rows of tiles and boxes inside boxes. Clients had seven filters in a row.</p><p class="side now"><span>Now</span>The Overview has one row of totals, one row of money figures, Portfolio health, the chart (now labelled in SZL) and the branch table, after the to-do list. Capital Pool has one summary row and one table of branches. Clients shows search, branch and loan status, with the other filters under “More filters”, and an unfinished client shows as a small notice.</p></div>
+          <p class="why"><strong>Why:</strong> Too much on screen at once.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Client portal: the right thing first</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A client with a loan already open saw the whole application form, which they couldn’t send. On a phone, the first question was more than a screen down. The home page repeated the same amount in three boxes.</p><p class="side now"><span>Now</span>A client with a loan open sees only a message and a “View your loan” button. On a phone, the steps and the first question come first, the document list folds away, and the step tabs are one compact row. The home page starts with one “What you owe” card: the next payment, when it’s due, and “How to pay”.</p></div>
+          <p class="why"><strong>Why:</strong> Most clients use a phone.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-reminders" aria-labelledby="d20-reminders-title">
+      <h3 id="d20-reminders-title">Reminders and backups <small>Behind the scenes</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Reminders reach walk-in clients, and say how much and when</h4><span class="pill partly">Ready, not live yet</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Clients who signed at a branch without an online account got no reminders, notices or statements at all. Emails only said “There is an update in your account”. A notice of default sent by email was cancelled before it went out. If the reminder job missed a day, that reminder was lost.</p><p class="side now"><span>Now</span>Walk-in clients are emailed at the address they chose for documents when they signed (or their application email); those without an email stay on the staff to-do list to phone. Emails carry the actual message, for example “SZL 1,875.00 is due on 25 Nov 2026 for loan 414F9EA0. Pay by MoMo…”. A notice of default always goes by email. A missed day is caught up on the next run. This goes live once LendMo’s email account is set up and the jobs are released.</p></div>
+          <p class="why"><strong>Why:</strong> Almost every LendMo client is a walk-in, and they weren’t being reminded.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Nightly backup of the database</h4><span class="pill partly">Ready, not live yet</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was no backup of the live database.</p><p class="side now"><span>Now</span>A nightly job copies the whole database to a separate storage area at 2am, in a folder per night, with written steps for restoring it. It starts once the storage area is created and the jobs are released.</p></div>
+          <p class="why"><strong>Why:</strong> So a mistake or a fault can be undone.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-money" aria-labelledby="d20-money-title">
+      <h3 id="d20-money-title">Money handling <small>Loans and payouts, Repayments, Finance, Cash &amp; Bank</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Payments on a written-off loan</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Money a client paid after their loan was written off couldn’t be recorded against the loan.</p><p class="side now"><span>Now</span>Staff record it as usual and a second person checks it. It is booked as money recovered; the loan stays written off and shows “Recovered so far”.</p></div>
+          <p class="why"><strong>Why:</strong> Clients sometimes pay after a write-off.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Reverse any repayment, not just the newest</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>To reverse an older repayment (for example one that bounced), every later repayment had to be reversed and entered again, each needing two people.</p><p class="side now"><span>Now</span>Any confirmed repayment can be reversed in one step. The later repayments are re-applied to the loan automatically, and the question before it says how many.</p></div>
+          <p class="why"><strong>Why:</strong> Saves a long, error-prone sequence.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Refunds by cash or bank transfer</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Refunds of extra money a client paid could only be sent by mobile money.</p><p class="side now"><span>Now</span>Refunds can also be paid in cash from the branch cash box (counted in the cash shift and confirmed when it closes) or by bank transfer.</p></div>
+          <p class="why"><strong>Why:</strong> Clients repay by cash and bank too.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>One transfer paying several loans</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A single bank transfer or debit-order batch covering several clients could only be recorded once under its reference.</p><p class="side now"><span>Now</span>Tick “This reference covers several loans” and enter the transfer total; each loan’s share is recorded under the real reference, up to that total.</p></div>
+          <p class="why"><strong>Why:</strong> So records match the bank statement.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Attach the slip</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Payouts, repayments, refunds, reversals and wallet movements only took a typed reference.</p><p class="side now"><span>Now</span>A photo or PDF of the slip or statement can be attached, and opened later with “View slip”. Every view is recorded.</p></div>
+          <p class="why"><strong>Why:</strong> Proof stays with the record.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>See who can check it, and tell them</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>When a payout or repayment waited for a second person, nothing said who could check it, and nobody was told.</p><p class="side now"><span>Now</span>Each waiting item says who can check it, with a “Tell them” button that sends them a message. If nobody else has the duty, it says to ask a Director to give someone that duty. The loan’s next step now mentions a repayment waiting for a check before chasing the client.</p></div>
+          <p class="why"><strong>Why:</strong> Work was getting stuck waiting on a second person.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-tools" aria-labelledby="d20-tools-title">
+      <h3 id="d20-tools-title">Staff tools <small>Clients, Reports, every list, Cash &amp; Bank, Audit trail, Settings</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Import many clients from a spreadsheet</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Importing a spreadsheet only filled in Add client one row at a time.</p><p class="side now"><span>Now</span>Check the file, see how many rows are ready, need fixing or already exist, then add all ready rows at once (client records only, no loans). Rows that already exist are skipped, never overwritten, and skipped rows can be downloaded with the reason.</p></div>
+          <p class="why"><strong>Why:</strong> To move LendMo’s existing client book in.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Two new reports</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There were four reports, none on write-offs or income.</p><p class="side now"><span>Now</span>“Write-offs and Recoveries” lists each written-off loan with the amount, what has been recovered since and what is still unrecovered. “Interest and Fee Income” shows interest and late fees earned per month and branch, with waivers and recoveries shown separately. Both are for Directors with the finance duty.</p></div>
+          <p class="why"><strong>Why:</strong> Asked for by the business.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Choose how many rows to show</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Most lists showed 10 rows; Pending My Approval showed 4; the overview showed only the first 4 approved loans.</p><p class="side now"><span>Now</span>Every list lets you choose 25, 50 or 100 rows, and remembers your choice.</p></div>
+          <p class="why"><strong>Why:</strong> Too much paging through tiny lists.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Longer cash history, exports and audit search</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The cashbook showed only the last 30 days, cash counts 7 days and shifts the latest 300. The audit trail had no search, and several lists couldn’t be exported.</p><p class="side now"><span>Now</span>Cashbook, cash counts and cash shifts have a From and To date. Cash shifts, cashbook, Employees, Branches, the audit trail and the Capital Pool table can be exported to Excel. The audit trail can be searched by date, person and action.</p></div>
+          <p class="why"><strong>Why:</strong> Needed for month-end checks.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Change your own password</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Account & security in Settings said “Coming later”.</p><p class="side now"><span>Now</span>Staff can change their password there (current password, new password, confirm), or ask for a reset email.</p></div>
+          <p class="why"><strong>Why:</strong> Basic account safety.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-portal" aria-labelledby="d20-portal-title">
+      <h3 id="d20-portal-title">Client portal <small>Apply for a loan, My loans, statements and receipts</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>The application form saves itself</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The form only saved when you pressed Save. Refreshing the page or losing signal lost what you had typed and sent you back to step 1, and documents only uploaded when you saved.</p><p class="side now"><span>Now</span>The form saves a few seconds after you stop typing (“Saved 10:42”), keeps a backup on the phone if the signal drops, and reopens on the step you were on. A document starts uploading as soon as you choose it. Staff walk-in forms save the same way.</p></div>
+          <p class="why"><strong>Why:</strong> Most clients apply on a phone with a patchy signal.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Several files for one document</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Each document took one file, so a two-sided ID card or a bank statement in three files didn’t fit.</p><p class="side now"><span>Now</span>Each document takes up to 5 files (“Add the front and back” for the ID card), each with View and Remove. Staff see and check all of them together.</p></div>
+          <p class="why"><strong>Why:</strong> Real documents often come in several pages.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>PDF statements, receipts and quotes</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Statements, receipts, repayment notices and quotes downloaded as web pages, which are awkward to open on a phone. The loan planner talked about monthly repayments.</p><p class="side now"><span>Now</span>They download as proper PDF files with the LendMo logo and the same figures. The planner says “One payment on your next payday” for LendMo’s one-payment loans.</p></div>
+          <p class="why"><strong>Why:</strong> Clients and staff need documents they can keep and send.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d20-arrears" aria-labelledby="d20-arrears-title">
+      <h3 id="d20-arrears-title">Arrears interest and speed <small>Overdue loans, Lending settings, every loan list</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Arrears interest on overdue loans</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A loan that stayed overdue only ever got the one late fee.</p><p class="side now"><span>Now</span>For each full month a loan stays overdue, 25% of what is overdue is added as arrears interest (simple, never on earlier arrears interest). The total never goes above the principal still unpaid. It is paused while a payment is being checked, during a dispute, a valid settlement figure or a cooling-off cancellation. The client is told by email, and it shows on the loan page, the client’s home page, statements and the Interest and Fee Income report. The rate and on/off switch are in Lending settings.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo asked for “25% of what’s owed, per full month”.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Arrears interest can be corrected</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Fix a charge covered interest and late fees only.</p><p class="side now"><span>Now</span>Fix a charge can also reduce posted arrears interest, and each new loan keeps the arrears rule it was offered with.</p></div>
+          <p class="why"><strong>Why:</strong> Mistakes must be fixable, and a later settings change mustn’t change signed loans.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Faster pages as the loan book grows</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Loan pages, home to-do lists, risk checks and shift close read every record, one loan at a time.</p><p class="side now"><span>Now</span>They read only what they need: with 24 loans, the loans page went from 73 lookups to 4; risk checks read about a quarter of the records; shift close reads only loans holding cash. What you see is unchanged.</p></div>
+          <p class="why"><strong>Why:</strong> Pages would slow down badly as LendMo lends more.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
         <li>Released as commit ca53bd2 (website and functions) with d5ec54f and 953e01d, also pushed to GitHub main. Single Director: <code>setConfig</code> no longer creates <code>pendingWallets</code>; <code>decideWalletChange</code> lets the requester decide; <code>setPermissions</code> and <code>setPayoutTeam</code> allow a Director’s own row; <code>decideFinancialRequest</code> lets a Director decide their own request. Branches list requests <code>pageSize: 100</code> (the server limit) and hides pagination below that. Team picker rows use <code>--d-soft</code>, <code>--d-border</code> and <code>--d-muted</code>. Four emulator tests were updated for the single-Director rules; 212 unit tests and 129 emulator tests pass. Approving a waiting wallet change, the one-page list and the picker in dark and light mode were checked in the browser.</li>
+        <li>Buttons and messages (stage 1 of the 20 Nov audit, not yet released): shared <code>confirmAction()</code> / <code>ConfirmDialog</code> in <code>src/appearance</code>; per-action results in <code>lendingActionMessages.js</code>; application confirms in <code>applicationConfirm.js</code>; <code>findOpenApplication</code> now returns <code>loanId</code>; staff notification links carry <code>?case=</code> / <code>?ticket=</code>; the 1.5-second profile limit applies only with emulators. New unit tests in <code>src/lending/buttonFixes.test.js</code>.</li>
+        <li>Wording (stage 2, not yet released): approved word list in <code>WORD_LIST.md</code>; one status map per audience (<code>staffStatus</code>, <code>borrowerStatus</code>), with the local maps in ConnectedApplications, ApplicationDashboards, DirectorApplicationsReport and the review header removed; sidebar labels read page titles from <code>directorRoutes.js</code>; staff/client wording helpers <code>formWords</code> and <code>stepTitle</code> in <code>applicationForm.js</code>. Only human-readable server strings changed; stored audit and ledger text is unchanged.</li>
+        <li>What to do next (stage 3, not yet released): <code>todoModel.js</code> builds the to-do list from <code>getOperations</code> and the applications list (no server change); <code>TodoList.jsx</code> on the Director and staff home pages; <code>loanNextStep.js</code> gives each loan its progress step and next step; LendingOperations shows that form in the next-step box and the rest under More actions. Tests: <code>todoModel.test.js</code>, <code>loanNextStep.test.js</code>.</li>
+        <li>One look (stage 4, not yet released): <code>src/appearance/shared-look.css</code> holds the spacing, text-size and corner scale and gives every page's primary-button class the gold style (raised priority over page stylesheets); 192 font sizes under 12px raised to 12px; one breadcrumb header in <code>Dashboard.jsx</code>. Measured on 14 staff pages: text under 12px went from up to 53 items per page to 0, and distinct text sizes from up to 16 to 5–12.</li>
+        <li>Tidier pages (stage 5, not yet released): shared <code>.ui-reveal</code> (closed form behind a button) and <code>.ui-filters</code>/<code>.ui-chip</code> in <code>shared-look.css</code>; list-then-detail views using <code>?ticket=</code> and <code>?case=</code>; layout only, no API changes. Page length at 1440×900: Finance 18 → 2.8 screens, Customer support 6.4 → 1.3, every staff page measured ≤ 2.8.</li>
+        <li>Reminders and backups (stage 6, not yet released): <code>notificationDelivery.js</code> maps every category to a real preference group (fixes default notices being cancelled), sends the notification’s own title and text, and emails walk-in clients via <code>deliverTo</code>; <code>scheduledReminders.js</code> uses <code>clientRecipient</code> for reminders, notices, settlement-ended and statements; <code>overdueReminderDue</code> catches up missed days using <code>loan.overdueReminders</code>; new <code>nightlyDatabaseBackup</code> (Firestore export, needs <code>LENDMO_BACKUP_BUCKET</code>); <code>npm run release:live:jobs</code> publishes the jobs. Steps in <code>GO_LIVE_JOBS.md</code> and <code>BACKUP_AND_RESTORE.md</code>. Tests: <code>functions/test/notifications.test.js</code>; a local run queued emails for six walk-in clients.</li>
+        <li>Money handling (stage 8, not yet released): recoveries post to new income account <code>bad_debt_recovered</code> (<code>loan.recoveredCents</code>); one-step reversal re-applies later repayments (<code>takeBackPayments</code>, <code>replayPayments</code>, journal <code>repayment_reallocated</code>, <code>loan.receiptSeq</code>); refunds take a method and cash refunds go through the shift; batch references store a declared total; slips via <code>functions/moneyEvidence.js</code> and <code>readMoneySlip</code>; <code>askForCheck</code> and <code>waitingFor</code> names. Tests: <code>functions/test/moneyGaps.emulator.test.js</code> (6), <code>moneyEvidence.test.js</code>, <code>src/dashboard/moneyGaps.test.js</code>; 240 unit tests pass; emulator suite 129/134 with only the 5 older single-Director failures.</li>
+        <li>Staff tools (stage 9, not yet released): <code>importClients</code> in <code>clientService.js</code> (100 rows per call, idempotent by requestId); reports <code>writeoffs-recoveries</code> and <code>interest-fee-income</code> from journals (<code>getOperations</code> returns <code>financeView</code>); <code>pageSizeStore.js</code>; <code>functions/dateRange.js</code> with date-ranged, paged <code>getCashbook</code>, <code>getCashDays</code>, <code>getShifts</code> and audit (cursor); <code>staffExports.js</code>; <code>ChangePassword.jsx</code>. New Firestore indexes for audit and shifts must be deployed. 251 unit tests pass; emulator 134/139 with only the 5 older failures.</li>
+        <li>Client portal (stage 10, not yet released): <code>src/borrower/autosave.js</code> (debounced server autosave, local backup, step kept as <code>?step=n</code>); documents stored as a file list per type (up to 5) with old single-file records read through <code>functions/documentFiles.js</code>, plus <code>removeDocumentFile</code>; PDFs via lazy pdfmake in <code>src/lending/pdfDocuments.js</code> / <code>pdfDownload.js</code>. 269 unit tests pass (run per file); emulator 139/144 with only the 5 older failures. On 23 Nov an outside overwrite reverted about 16 files to older copies; all were restored from commit 22a83a0 and the stage 10 work re-applied.</li>
+        <li>Arrears interest (stage 7, not yet released): <code>functions/arrearsInterest.js</code>; setting <code>arrearsInterest {enabled, ratePct}</code> in product policy, copied onto each loan at offer; charged by <code>scheduledReminders</code> and <code>postCharges</code> on each full-month mark of the oldest overdue due date (<code>loan.arrearsCharges</code>), capped at unpaid principal; journals Dr <code>arrears_interest_receivable</code> / Cr <code>arrears_interest_income</code>; allocation interest → arrears interest → principal → late fees; corrections kind <code>arrears_interest</code>. Tests: <code>arrearsInterest.test.js</code>, <code>arrearsInterest.emulator.test.js</code>.</li>
+        <li>Speed (stage 11, not yet released): <code>getOperations</code> uses collection-group reads plus <code>view: 'summary'</code>; role-scoped application queries; <code>functions/riskContext.js</code> with <code>walletDigits</code> and Director action <code>backfillRiskIndex</code> (run once per org after release); <code>loansWithPendingCash</code> for shift and day close; paged staff notifications. New indexes in <code>firestore.indexes.json</code> must be deployed. Test: <code>scaling.emulator.test.js</code>. 280 unit tests pass; emulator 146/151 with only the 5 older single-Director failures.</li>
       </ul>
     </details>
   </article>
