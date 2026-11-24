@@ -122,11 +122,96 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 20 November 2026</p>
+    <p class="updated">Last updated 24 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-24" aria-labelledby="day-2026-11-24">
+    <div class="day-head">
+      <h2 id="day-2026-11-24">24 November 2026</h2>
+      <p>Cash &amp; Bank now works like Compuloan’s: a Cashbook page for every cash box, bank account and wallet with live balances and transactions, shifts opened on a chosen cash box with a full actions menu, float top-ups, banking and expenses recorded in the shift, and branch finance pages that read from the cashbooks. 9 changes.</p>
+      <nav class="jump" aria-label="Sections for 24 November 2026">
+        <a href="#d24-cashbook">Cashbook <b>3</b></a>
+        <a href="#d24-shift">Shift <b>4</b></a>
+        <a href="#d24-branches">Branch finance <b>2</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d24-cashbook" aria-labelledby="d24-cashbook-title">
+      <h3 id="d24-cashbook-title">Cashbook <small>Cash &amp; Bank → Cashbook (new)</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>A Cashbook page like Compuloan’s</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Cash &amp; Bank had a read-only list of checked payouts and repayments per branch. There was no list of the places money is kept and nothing could be done there.</p><p class="side now"><span>Now</span>Cash &amp; Bank opens to two pages, Cashbook and Shift, as in Compuloan. Cashbook lists every branch cash box, bank account and mobile-money wallet with its branch and balance, totals for cash, bank and wallets, and Add and Refresh. Each row’s ⋮ menu has Update, Transactions and Deactivate.</p></div>
+          <p class="why"><strong>Why:</strong> LendMo asked for Compuloan’s Cash &amp; Bank as it is, so moving across is easy.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Balances and transactions for every cashbook</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Branch balances were typed in by hand and never changed with payouts or repayments.</p><p class="side now"><span>Now</span>Each cashbook’s balance is its opening balance plus every confirmed payout, repayment, refund and wallet movement since. Transactions shows each one with the balance after it, the balance at the start and end of the dates chosen, a link to the loan, and Excel export. Directors set each opening balance, for example the Compuloan balance on the day of the move.</p></div>
+          <p class="why"><strong>Why:</strong> Staff need to see what each cash box, bank account and wallet actually holds.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Bank payments are labelled as bank</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Repayments by bank transfer, debit order or Realpay showed as mobile money in the cashbook.</p><p class="side now"><span>Now</span>They show under the shared bank account cashbook as bank money.</p></div>
+          <p class="why"><strong>Why:</strong> The cashbook must say where the money really went.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d24-shift" aria-labelledby="d24-shift-title">
+      <h3 id="d24-shift-title">Shift <small>Cash &amp; Bank → Shift</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Shifts open on a chosen cash box</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Every shift used the branch’s one cash box, and the Open button vanished without saying why when you already had a shift open.</p><p class="side now"><span>Now</span>Open shift asks for the branch (Directors), the cash box and the float. Cash paid out or taken in during the shift goes to that cash box. If you already have a shift open, the page says which one and where.</p></div>
+          <p class="why"><strong>Why:</strong> Matches Compuloan, where each shift belongs to a cashbook.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>A ⋮ menu on every shift</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>A shift could only be counted and closed; a closed shift couldn’t be looked at.</p><p class="side now"><span>Now</span>Each shift’s ⋮ menu offers View (the opening count, every payout, repayment, refund and entry in it, and any counts that didn’t balance), Count and close, Print cash-up (a slip with signature lines) and Cancel shift for one opened by mistake while nothing is in it.</p></div>
+          <p class="why"><strong>Why:</strong> Staff need to check, print and correct shifts, as in Compuloan.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Float top-ups, banking and expenses</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>There was nowhere to record cash brought into the cash box, cash taken to the bank, or petty-cash spending.</p><p class="side now"><span>Now</span>Directors and branch managers record them in their open shift: a float top-up (from head office or a bank account), cash banked into a chosen bank account, or an expense with its receipt number and what it was for. They count in the shift’s cash-up and move the cashbook balances at once. Directors are told about every expense.</p></div>
+          <p class="why"><strong>Why:</strong> Cash comes and goes for more than loans, and the cash-up must account for it.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>The old daily cash count is gone</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>An older “open the day / close the day” cash count still existed beside shifts.</p><p class="side now"><span>Now</span>Shifts are the only cash-up.</p></div>
+          <p class="why"><strong>Why:</strong> Two cash-ups could disagree about whether cash was confirmed.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="group" id="d24-branches" aria-labelledby="d24-branches-title">
+      <h3 id="d24-branches-title">Branch finance <small>Branches → Finance and Setup, Capital Pool, Branch Manager overview</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Branch Finance shows the branch’s cashbooks</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The Finance tab had hand-typed “Branch accounts” and a separate read-only cashbook list.</p><p class="side now"><span>Now</span>It shows the branch’s cashbooks with what each holds, the total and the lending budget, with links to Transactions and Add or Update for Directors. Accounts typed in before still appear, as cashbooks.</p></div>
+          <p class="why"><strong>Why:</strong> One set of figures for the branch’s money, everywhere.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Capital Pool and branch setup use the cashbooks</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Capital Pool showed each branch’s hand-typed balance “as of” a date, and the setup guide asked for a branch account.</p><p class="side now"><span>Now</span>Capital Pool shows what each branch’s cashbooks hold, the setup guide’s “Bank account and cash box” step adds a bank cashbook, and the Branch Manager’s cash reminder links to the cashbooks.</p></div>
+          <p class="why"><strong>Why:</strong> Balances should come from recorded money, not typing.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>New <code>functions/cashbooks.js</code>: cashbooks are derived from <code>cash_&lt;branch&gt;</code>, Lending settings wallets, <code>shared_account</code> and branch <code>financeAccounts</code> (<code>fa_&lt;branch&gt;_&lt;id&gt;</code>), overlaid by stored <code>orgs/{org}/cashbooks/{id}</code>; balance = opening balance + confirmed journals by <code>companyWalletId</code> after the opening date, computed on read. Branch actions <code>listCashbooks</code>, <code>saveCashbook</code>, <code>getCashbookTransactions</code>; <code>getFinance</code> and <code>getCapitalPool</code> read cashbook balances.</li>
+        <li>Shifts: <code>openShift</code> takes <code>cashbookId</code>; cash payouts, repayments and refunds store <code>cashbookId</code> and their journals use it (reference uniqueness still keyed by the branch cash box); new <code>cancelShift</code> and <code>recordCashbookEntry</code> (journals via a <code>cash_transfers</code> clearing account, expenses to <code>operating_expenses</code>); <code>closing.items</code> kept for view and print. Removed <code>getCashDays</code>, <code>openCashDay</code>, <code>closeCashDay</code>.</li>
+        <li>Screens: <code>src/dashboard/Cashbooks.jsx</code>, shared <code>src/appearance/RowMenu.jsx</code>, Cash &amp; Bank sidebar group. Tests: <code>functions/test/cashbooks.test.js</code>, <code>cashbooks.emulator.test.js</code> and two new shift tests in <code>moneyGaps.emulator.test.js</code>; 292 unit tests and 158 emulator tests pass; checked in the browser as Director and Branch Manager.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-11-20" aria-labelledby="day-2026-11-20">
     <div class="day-head">
       <h2 id="day-2026-11-20">20 November 2026</h2>
