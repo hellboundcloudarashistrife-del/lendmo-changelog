@@ -130,9 +130,10 @@
   <article class="day" id="2026-11-25" aria-labelledby="day-2026-11-25">
     <div class="day-head">
       <h2 id="day-2026-11-25">25 November 2026</h2>
-      <p>Grey secondary text is now easy to read on every staff screen, Cash &amp; Bank reads properly in dark mode, and the gold buttons on branch pages have readable text. 3 changes.</p>
+      <p>Grey secondary text is now easy to read on every staff screen, Cash &amp; Bank reads properly in dark mode, and the gold buttons on branch pages have readable text. A check of every page in every portal found two small faults, now fixed. 5 changes.</p>
       <nav class="jump" aria-label="Sections for 25 November 2026">
         <a href="#d25-readable">Easier to read <b>3</b></a>
+        <a href="#d25-fixes">Small fixes <b>2</b></a>
       </nav>
     </div>
 
@@ -157,10 +158,27 @@
       </ol>
     </section>
 
+    <section class="group" id="d25-fixes" aria-labelledby="d25-fixes-title">
+      <h3 id="d25-fixes-title">Small fixes <small>Cash &amp; Bank → Cashbook, Settings → Lending settings</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Clear message for a cashbook that can’t be found</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Opening the transactions of a cashbook that had been removed, or belonged to another branch, said “This branch is unavailable or no longer exists.”</p><p class="side now"><span>Now</span>It says the cashbook wasn’t found and to go back and choose one from the list.</p></div>
+          <p class="why"><strong>Why:</strong> The message should name the right thing.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Lending settings open cleanly for Admin / IT</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Each time an Admin / IT user opened Lending settings, the page quietly asked for a list it isn’t allowed to see and was refused. Nothing showed on screen.</p><p class="side now"><span>Now</span>The page only asks for that list when the person may see it. The read-only view is unchanged.</p></div>
+          <p class="why"><strong>Why:</strong> Found while checking every page of every portal for faults.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Function audit (<code>FUNCTION_AUDIT_2026-11-25.md</code>): all 110 pages across the five portals opened as each demo role with failed requests, script errors and error states recorded; none broken. Fixes: <code>ProductSettings.jsx</code> calls <code>getApplicationOptions</code> only with <code>applications.create</code>; <code>Cashbooks.jsx</code> shows its own not-found message. Local tooling: <code>scripts/start-emulators.mjs</code> now patches the firebase-tools install on PATH (the global one), not only a project copy, so an autosave no longer crashes the emulators when a stored file is missing — reproduced by hiding a blob and saving.</li>
         <li>From the Impeccable UI audit (<code>UI_AUDIT_IMPECCABLE.md</code>, P1 items). Light-mode muted colour <code>--d-muted</code> / <code>--bm-muted</code> set to <code>#4a6596</code> (5.84:1 on white, 4.99:1 on <code>#e3eeff</code>); per-page overrides (<code>#597bb6</code>, <code>#4e70b7</code>) and 15 hard-coded muted literals now use the token, so dark mode keeps <code>--theme-muted</code>. Removed <code>color: white !important</code> from <code>.bm-primary</code>. Cash &amp; Bank: dark colours for <code>.cbk-totals</code>, removed the duplicate <code>.om-intro</code>, open-shift notice uses a full border. Contrast measured in the browser on 8 screens in both themes: 0 failing text elements (was up to 65 per page); 293 unit tests pass.</li>
       </ul>
     </details>
