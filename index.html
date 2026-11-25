@@ -122,11 +122,50 @@
     <p class="eyebrow">LendMo loan app</p>
     <h1>What’s changed in the app</h1>
     <p class="lead">Every change to the LendMo loan app, explained simply. Newest first. Each change shows how it worked before and how it works now.</p>
-    <p class="updated">Last updated 24 November 2026</p>
+    <p class="updated">Last updated 25 November 2026</p>
     <p class="how"><span><i class="swatch before" aria-hidden="true"></i>Before: how it used to work</span><span><i class="swatch now" aria-hidden="true"></i>Now: how it works today</span></p>
   </header>
 
   <!-- Newest day first. Copy this whole <article> to start a new day. -->
+  <article class="day" id="2026-11-25" aria-labelledby="day-2026-11-25">
+    <div class="day-head">
+      <h2 id="day-2026-11-25">25 November 2026</h2>
+      <p>Grey secondary text is now easy to read on every staff screen, Cash &amp; Bank reads properly in dark mode, and the gold buttons on branch pages have readable text. 3 changes.</p>
+      <nav class="jump" aria-label="Sections for 25 November 2026">
+        <a href="#d25-readable">Easier to read <b>3</b></a>
+      </nav>
+    </div>
+
+    <section class="group" id="d25-readable" aria-labelledby="d25-readable-title">
+      <h3 id="d25-readable-title">Easier to read <small>All staff screens, Cash &amp; Bank, Branches and Capital Pool</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Secondary text is darker and easier to read</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Table headings, dates, notes and the small lines under figures used a pale blue-grey that fell below the accepted readability level on light backgrounds; one page had over 60 such lines.</p><p class="side now"><span>Now</span>They use one darker blue-grey that passes on every light background. Measured on eight main screens, none of this text is below the level any more, in light or dark mode.</p></div>
+          <p class="why"><strong>Why:</strong> Staff read these lines all day, often on laptops in bright rooms.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Cash &amp; Bank in dark mode</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>In dark mode the “Cash &amp; Bank” intro and the Cashbook money totals were dark text on a dark background, almost invisible.</p><p class="side now"><span>Now</span>The totals read clearly, and the intro, which only repeated the page title, is gone.</p></div>
+          <p class="why"><strong>Why:</strong> The money totals are the first thing staff look for on that page.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Readable gold buttons on branch pages</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Gold buttons on the branch and Capital Pool pages (such as “Change pool total” and “Add cashbook”) had white text, which was hard to read on gold.</p><p class="side now"><span>Now</span>They use navy text on gold, like every other main button in the app.</p></div>
+          <p class="why"><strong>Why:</strong> One readable button style everywhere.</p>
+        </li>
+      </ol>
+    </section>
+
+    <details class="tech">
+      <summary>Technical details for the development team</summary>
+      <h4>How it was checked</h4>
+      <ul>
+        <li>From the Impeccable UI audit (<code>UI_AUDIT_IMPECCABLE.md</code>, P1 items). Light-mode muted colour <code>--d-muted</code> / <code>--bm-muted</code> set to <code>#4a6596</code> (5.84:1 on white, 4.99:1 on <code>#e3eeff</code>); per-page overrides (<code>#597bb6</code>, <code>#4e70b7</code>) and 15 hard-coded muted literals now use the token, so dark mode keeps <code>--theme-muted</code>. Removed <code>color: white !important</code> from <code>.bm-primary</code>. Cash &amp; Bank: dark colours for <code>.cbk-totals</code>, removed the duplicate <code>.om-intro</code>, open-shift notice uses a full border. Contrast measured in the browser on 8 screens in both themes: 0 failing text elements (was up to 65 per page); 293 unit tests pass.</li>
+      </ul>
+    </details>
+  </article>
+
   <article class="day" id="2026-11-24" aria-labelledby="day-2026-11-24">
     <div class="day-head">
       <h2 id="day-2026-11-24">24 November 2026</h2>
