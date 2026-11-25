@@ -130,10 +130,11 @@
   <article class="day" id="2026-11-25" aria-labelledby="day-2026-11-25">
     <div class="day-head">
       <h2 id="day-2026-11-25">25 November 2026</h2>
-      <p>Grey secondary text is now easy to read on every staff screen, Cash &amp; Bank reads properly in dark mode, and the gold buttons on branch pages have readable text. A check of every page in every portal found two small faults, now fixed. 5 changes.</p>
+      <p>Grey secondary text is now easy to read on every staff screen, Cash &amp; Bank reads properly in dark mode, and the gold buttons on branch pages have readable text. A check of every page in every portal found two small faults, now fixed, and the last readability, keyboard and phone issues from the design audit are sorted. 9 changes.</p>
       <nav class="jump" aria-label="Sections for 25 November 2026">
         <a href="#d25-readable">Easier to read <b>3</b></a>
         <a href="#d25-fixes">Small fixes <b>2</b></a>
+        <a href="#d25-polish">Easier to use <b>4</b></a>
       </nav>
     </div>
 
@@ -174,10 +175,37 @@
       </ol>
     </section>
 
+    <section class="group" id="d25-polish" aria-labelledby="d25-polish-title">
+      <h3 id="d25-polish-title">Easier to use <small>Loan applications, Overview, Cash &amp; Bank, Branches</small></h3>
+      <ol class="cards">
+        <li class="card">
+          <div class="card-top"><h4>Cashbook works on phones</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>On a phone the Cashbook page zoomed out to fit a table wider than the screen, so everything was tiny; names and branches overlapped.</p><p class="side now"><span>Now</span>The page stays at the phone’s width. The cashbook list shows name, balance and the actions menu; Transactions keeps all its columns and scrolls sideways inside the table, with long references wrapping. Minus signs stay on the same line as the amount.</p></div>
+          <p class="why"><strong>Why:</strong> Branch staff check balances on their phones.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Bigger targets for small links</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>The “Home” breadcrumb, the Overview’s “View all …” links, cashbook names, branch email links and the coloured outcome bar on Loan applications were 15–20 pixels tall, easy to miss with a finger.</p><p class="side now"><span>Now</span>All are at least 24 pixels tall.</p></div>
+          <p class="why"><strong>Why:</strong> Small targets are hard to tap on phones and tablets.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Readable links and status colours</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Blue links on the Loan applications pages and the red “loans overdue” / green “confirmed repayments” lines on the Overview were slightly too pale to read comfortably.</p><p class="side now"><span>Now</span>They use a slightly deeper blue, red and green that pass the readability level.</p></div>
+          <p class="why"><strong>Why:</strong> Completes the readability work from earlier today.</p>
+        </li>
+        <li class="card">
+          <div class="card-top"><h4>Keyboard focus on action menus</h4><span class="pill done">Done</span></div>
+          <div class="compare"><p class="side before"><span>Before</span>Using the keyboard, the ⋮ menu items on Cash &amp; Bank only changed their background when selected.</p><p class="side now"><span>Now</span>They show the same clear focus outline as the rest of the app.</p></div>
+          <p class="why"><strong>Why:</strong> People using the keyboard need to see where they are.</p>
+        </li>
+      </ol>
+    </section>
+
     <details class="tech">
       <summary>Technical details for the development team</summary>
       <h4>How it was checked</h4>
       <ul>
+        <li>Impeccable audit P2 items: phone zoom-out came from the cashbook table's min-width with an unconstrained scroll box (fixed with <code>max-width: calc(calc(100vw / var(--app-zoom, 1)) - 32px)</code> and per-table phone rules in <code>cash-and-bank.css</code>); 24px minimum height for <code>.lw-breadcrumb a</code>, <code>.dco-text-link</code>, <code>.cbk-name</code>, <code>.cb-inline-action</code>, <code>.bm-email</code> and the outcome bar in <code>shared-look.css</code>; link blue <code>#0b5bd3</code> on Loan applications, <code>.dco-positive</code> <code>#007a2e</code> and <code>.dco-negative</code> <code>#d1062c</code>; <code>:focus-visible</code> ring on the row menu. The search-box focus finding was a false alarm (already covered in <code>focus.css</code>). Measured at 1440px: 0 contrast failures and 0 targets under 24px on 10 screens; at 375px Cashbook and Transactions stay 375px wide. 293 unit tests pass.</li>
         <li>Function audit (<code>FUNCTION_AUDIT_2026-11-25.md</code>): all 110 pages across the five portals opened as each demo role with failed requests, script errors and error states recorded; none broken. Fixes: <code>ProductSettings.jsx</code> calls <code>getApplicationOptions</code> only with <code>applications.create</code>; <code>Cashbooks.jsx</code> shows its own not-found message. Local tooling: <code>scripts/start-emulators.mjs</code> now patches the firebase-tools install on PATH (the global one), not only a project copy, so an autosave no longer crashes the emulators when a stored file is missing — reproduced by hiding a blob and saving.</li>
         <li>From the Impeccable UI audit (<code>UI_AUDIT_IMPECCABLE.md</code>, P1 items). Light-mode muted colour <code>--d-muted</code> / <code>--bm-muted</code> set to <code>#4a6596</code> (5.84:1 on white, 4.99:1 on <code>#e3eeff</code>); per-page overrides (<code>#597bb6</code>, <code>#4e70b7</code>) and 15 hard-coded muted literals now use the token, so dark mode keeps <code>--theme-muted</code>. Removed <code>color: white !important</code> from <code>.bm-primary</code>. Cash &amp; Bank: dark colours for <code>.cbk-totals</code>, removed the duplicate <code>.om-intro</code>, open-shift notice uses a full border. Contrast measured in the browser on 8 screens in both themes: 0 failing text elements (was up to 65 per page); 293 unit tests pass.</li>
       </ul>
